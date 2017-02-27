@@ -1,0 +1,41 @@
+/* pages/review/review.wxss */
+.review{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.textarea{
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    padding: 10px;
+}
+.avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+image{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.review-head{
+    position: relative;
+    font-size: 14px;
+    color: #666;
+}
+.writer{
+    position: absolute;
+    top: 0;
+    left: 60px;
+}
+.createtime{
+    position: absolute;
+    top: 20px;
+    left: 60px;
+    font-size: 12px;
+    color: #999;
+}

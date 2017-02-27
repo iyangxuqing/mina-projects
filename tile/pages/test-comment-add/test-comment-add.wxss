@@ -1,0 +1,2 @@
+/* pages/test-comment-add/test-comment-add.wxss */
+@import "../../template/comment-new/comment-new.wxss";

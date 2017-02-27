@@ -1,0 +1,16 @@
+<!-- wetoast.wxml -->
+<template name="wetoast">
+	<view class="wetoast {{reveal ? 'wetoast-show' : ''}}">
+		<view class="wetoast-mask"></view>
+		<view class="wetoast-body" animation="{{animationData}}">
+			<block wx:if="{{icon}}">
+				<view class="wetoast-icon">
+					<image class="wetoast-icon-desc" src="{{icon}}"/>
+				</view>
+			</block>
+			<block wx:if="{{title}}">
+				<view class="wetoast-title">{{title}}</view>
+			</block>
+		</view>
+	</view>
+</template>

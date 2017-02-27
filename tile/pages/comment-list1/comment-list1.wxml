@@ -1,0 +1,43 @@
+<template is="comments" data="{{comments}}"/>
+
+<template name="comments">
+  <view class="comments">
+    <block wx:for="{{comments}}" wx:for-item="comment" wx:key="">
+      <view class="comment">
+        <view class="comment-left">
+          <view class="comment-avatar">
+            <image src="{{comment.avatar}}"></image>
+          </view>
+        </view>
+        <view class="comment-right">
+          <view class="comment-head">
+            <view class="comment-writer">{{comment.writer}}</view>
+          </view>
+          <view class="comment-body">
+            <view class="comment-text">
+              {{comment.text}}
+            </view>
+            <view class="comment-photos">
+              <block wx:for="{{comment.photos}}" wx:for-item="photo" wx:key="">
+                <view class="comment-photo">
+                  <image src="{{photo}}" />
+                </view>
+              </block>
+            </view>
+          </view>
+          <view class="comment-foot">
+            <view class="createtime">{{comment.created}}</view>
+            <view class="comment-icons">
+              <view class="comment-icon">
+                <image src="../../images/icon/praise.png"></image>
+              </view>
+              <view class="comment-icon">
+                <image src="../../images/icon/comment2.png"></image>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</template>

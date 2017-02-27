@@ -1,0 +1,23 @@
+<template name="comment-new">
+  <view class="comment-container">
+    <view class="comment-text">
+      <textarea value="" placeholder="发表评论..." bindinput="onCommentTextInput" />
+    </view>
+    <view class="comment-photos">
+      <block wx:if="{{photos}}">
+        <block wx:for="{{photos}}" wx:key="">
+          <view class="comment-photo">
+            <image src="{{item}}" />
+            <view class="comment-photo-del-trigger {{publishState=='unpublish' ? 'show' : 'hide'}}" catchtap="onCommentPhotoDel" data-index="{{index}}">
+              <image src="../../images/icon/close-white.png"></image>
+            </view>
+          </view>
+        </block>
+      </block>
+      <view class="comment-photo comment-photo-add-trigger" catchtap="onCommentPhotoAdd" wx:if="{{!photos || photos.length<9}}">
+        <image src="../../images/icon/camera.png" />
+      </view>
+    </view>
+    <button class="comment-publish" catchtap="onCommentPublish" loading="{{publishState=='publishing'}}">发布评论</button>
+  </view>
+</template>

@@ -1,0 +1,17 @@
+{
+  "pages":[
+    "pages/test-comment-add/test-comment-add",
+    "pages/comment-list1/comment-list1",
+    "pages/comment-list/comment-list",
+    "pages/test-chooseImage/test-chooseImage",
+    "pages/review/review",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  }
+}
