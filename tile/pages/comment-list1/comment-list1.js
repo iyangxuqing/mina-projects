@@ -43,19 +43,19 @@ Page({
   },
   onLoad: function (options) {
     var that = this;
-    // http.get({
-    //   url: 'mysql/commentget.php',
-    //   success: function(res){
-    //     var comments = res;
-    //     for(var i in comments){
-    //       comments[i].photos = comments[i].photos.split(",");
-    //     }
-    //     console.log(comments)
-    //     that.setData({
-    //       comments: comments
-    //     })
-    //   }
-    //})
+    http.get({
+      url: 'mysql/commentget.php',
+      success: function(res){
+        var comments = res;
+        for(var i in comments){
+          comments[i].photos = comments[i].photos.split(",");
+        }
+        console.log(comments)
+        that.setData({
+          comments: comments
+        })
+      }
+    })
   },
   onReady: function () {
     // 页面渲染完成
