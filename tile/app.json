@@ -1,6 +1,6 @@
 {
   "pages":[
-    "pages/_login/_login",
+    "pages/myhome/myhome",
     "pages/comment-list1/comment-list1",
     "pages/comment-list/comment-list",
     "pages/test-comment-add/test-comment-add",
