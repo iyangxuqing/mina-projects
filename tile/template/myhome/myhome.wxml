@@ -2,7 +2,7 @@
   <view class="myhome-container">
     <view class="userinfo">
       <block wx:if="{{!userInfo.avatarUrl}}">
-        <image class="avatar" src="icon/user.png" />
+        <image class="avatar" src="/template/myhome/icon/user.png" />
         <text class="nickname">点击登录</text>
       </block>
       <block wx:else>
@@ -12,23 +12,23 @@
     </view>
     <view class="navs">
       <navigator class="nav" url="./myhome">
-        <image src='icon/order.png'></image>
+        <image src='/template/myhome/icon/order.png'></image>
         <text>订单管理</text>
       </navigator>
       <navigator class="nav" url="./myhome">
-        <image src='icon/address.png'></image>
+        <image src='/template/myhome/icon/address.png'></image>
         <text>我的地址</text>
       </navigator>
       <navigator class="nav" url="./myhome">
-        <image src='icon/collect.png'></image>
+        <image src='/template/myhome/icon/collect.png'></image>
         <text>我的收藏</text>
       </navigator>
       <navigator class="nav" url="./myhome">
-        <image src='icon/box.png'></image>
+        <image src='/template/myhome/icon/box.png'></image>
         <text>盒子介绍</text>
       </navigator>
       <navigator class="nav" url="./myhome">
-        <image src='icon/call-center.png'></image>
+        <image src='/template/myhome/icon/call-center.png'></image>
         <text>联系客服</text>
       </navigator>
     </view>

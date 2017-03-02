@@ -75,10 +75,12 @@ function onCommentPublish(e) {
         'commentNew.publishState': 'published'
       })
       that.wetoast.toast();
+      console.log(Date.now())
       that.wetoast.toast({
         icon: 'success',
         title: '发布成功',
         success: function () {
+          console.log(Date.now())
         }
       })
     },
@@ -116,9 +118,6 @@ function publish(option) {
       for (let i in uploadedFiles) {
         photoUrls.push(uploadedFiles[i].target)
       }
-      console.log(photoUrls);
-      console.log(JSON.stringify(photoUrls))
-      console.log(photoUrls.join(','))
       var photoUrls = photoUrls.join(',');
       //将评论内容写入数据库
       http.get({
