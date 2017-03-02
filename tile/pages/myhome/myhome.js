@@ -4,8 +4,11 @@ var app = getApp()
 Page({
   data:{},
   onLoad:function(options){
+    var that = this;
     app.getUserInfo(function(res){
-      console.log(res)
+      that.setData({
+        userInfo: res
+      })
     })
   },
   onReady:function(){

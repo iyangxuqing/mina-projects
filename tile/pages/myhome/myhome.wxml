@@ -1,2 +1,4 @@
 <!--pages/myhome/myhome.wxml-->
-<text>pages/myhome/myhome.wxml</text>
+<import src="../../template/myhome/myhome.wxml"/>
+
+<template is="myhome" data="{{userInfo}}"/>
