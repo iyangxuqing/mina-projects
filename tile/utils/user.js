@@ -1,5 +1,6 @@
+const apiBaseUrl = 'https://yixing02.applinzi.com/api/';
+
 function login() {
-    var apiBaseUrl = 'https://yixing02.applinzi.com/api/';
     wx.login({
         success: function (res) {
             wx.request({
@@ -61,6 +62,18 @@ function getUserInfo(cb) {
                 wx.getUserInfo({
                     success: function (res) {
                         that.globalData.userInfo = res.userInfo
+                        console.log(res.userInfo);
+                        console.log(res.userInfo.avatarUrl.length);
+                        wx.request({
+                            url: apiBaseUrl + 'login/user.php?m=setUserInfo',
+                            header: {
+                                token: wx.getStorageSync('token')
+                            },
+                            data: res.userInfo,
+                            success: function(res){
+                                console.log(res);
+                            }
+                        })
                         if (typeof cb == "function") {
                             cb(that.globalData.userInfo)
                         }
@@ -78,7 +91,6 @@ function getUserInfo(cb) {
 }
 
 function getCryptUserInfo(cb) {
-    var apiBaseUrl = 'https://yixing02.applinzi.com/api/'
     if (this.globalData.userInfo) {
         if (typeof cb == "function") {
             cb(this.globalData.userInfo)
