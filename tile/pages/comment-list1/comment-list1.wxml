@@ -11,16 +11,18 @@
       <view class="comment">
         <view class="comment-left">
           <view class="comment-avatar">
-            <image src="{{comment.avatar}}"></image>
+            <image src="{{comment.avatarUrl}}"></image>
           </view>
         </view>
         <view class="comment-right">
           <view class="comment-head">
-            <view class="comment-writer">{{comment.writer}}</view>
+            <view class="comment-writer">{{comment.nickName}}</view>
           </view>
           <view class="comment-body">
-            <view class="comment-text">
-              {{comment.text}}
+            <view class="comment-texts">
+              <block wx:for="{{comment.texts}}" wx:key="" wx:for-item="text">
+                <view class="comment-text">{{text}}</view>
+              </block>
             </view>
             <view class="comment-photos">
               <block wx:for="{{comment.photos}}" wx:for-item="photo" wx:key="">

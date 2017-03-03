@@ -1,5 +1,7 @@
 // pages/comment-list/comment-list.js
+var util = require("../../utils/util.js");
 var http = require("../../utils/http.js");
+var db = require("../../utils/db.js");
 var WeToast = require("../../template/wetoast/wetoast.js");
 var commentNew = require("../../template/comment-new/comment-new.js");
 
@@ -11,18 +13,14 @@ Page({
     WeToast.WeToast();
 
     var that = this;
-    http.get({
-      url: 'mysql/commentget.php',
+    db.getComments({
       success: function(res){
-        var comments = res;
-        for(var i in comments){
-          comments[i].photos = comments[i].photos.split(",");
-        }
         that.setData({
-          comments: comments
+          comments: res
         })
       }
     })
+
   },
   onReady: function () {
     // 页面渲染完成

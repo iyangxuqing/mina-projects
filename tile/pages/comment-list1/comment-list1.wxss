@@ -26,9 +26,12 @@
     color: royalblue;
     margin-bottom: 10rpx;
 }
-.comment-text{
+.comment-texts{
     color: #353535;
     margin-bottom: 10rpx;
+}
+.comment-text{
+    margin-bottom: 2rpx;
 }
 .comment-photos{
     display: flex;

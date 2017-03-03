@@ -1,10 +1,11 @@
 // template/comment-new/comment-new.js
 var http = require("../../utils/http.js");
+var db = require("../../utils/db.js");
 
 function commentNew(page) {
   page.setData({
     commentNew: {
-      text: '',
+      texts: '',
       photos: [],
       publishState: 'unpublish', //unpublish,publishing,published
     }
@@ -13,12 +14,29 @@ function commentNew(page) {
   page.onCommentPhotoAdd = onCommentPhotoAdd
   page.onCommentPhotoDel = onCommentPhotoDel
   page.onCommentPublish = onCommentPublish
+  page.onCommentAdded = onCommentAdded
+}
+
+function onCommentAdded(e){
+  var that = this;
+  db.getComments({
+    success: function(res){
+      that.setData({
+        comments: res,
+        commentNew: {
+          texts: '',
+          photos: [],
+          publishState: 'unpublish'
+        }
+      })
+    }
+  })
 }
 
 function onCommentTextInput(e) {
-  var text = e.detail.value;
+  var texts = e.detail.value;
   this.setData({
-    'commentNew.text': text
+    'commentNew.texts': texts
   })
 }
 
@@ -75,12 +93,11 @@ function onCommentPublish(e) {
         'commentNew.publishState': 'published'
       })
       that.wetoast.toast();
-      console.log(Date.now())
       that.wetoast.toast({
         icon: 'success',
         title: '发布成功',
         success: function () {
-          console.log(Date.now())
+          that.onCommentAdded();
         }
       })
     },
@@ -121,9 +138,9 @@ function publish(option) {
       var photoUrls = photoUrls.join(',');
       //将评论内容写入数据库
       http.get({
-        url: 'mysql/commentcreate.php',
+        url: 'mysql/commentAdd.php',
         data: {
-          text: commentNew.text,
+          texts: commentNew.texts,
           photos: photoUrls,
           issueId: commentNew.issueId
         },

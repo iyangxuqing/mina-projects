@@ -1,7 +1,7 @@
 <template name="comment-new">
   <view class="comment-new-container">
     <view class="comment-new-text">
-      <textarea value="" placeholder="发表评论..." bindinput="onCommentTextInput" />
+      <textarea value="{{texts}}" placeholder="发表评论..." bindinput="onCommentTextInput" />
     </view>
     <view class="comment-new-photos">
       <block wx:if="{{photos}}">
