@@ -1,13 +1,24 @@
 // pages/test-comment-add/test-comment-add.js
 let WeToast = require("../../template/wetoast/wetoast.js");
-let commentNew = require("../../template/comment-new/comment-new.js");
+let commentNew = require("../../template/comment-new2/comment-new.js");
+var emitter = require("../../utils/event.js");
 
 Page({
   data:{
+    at: 'at01',
   },
   onLoad:function(options){
-    WeToast.WeToast();
-    commentNew.commentNew(this);
+
+    Object.assign(this, new emitter.Emitter())
+    console.log(this);
+
+    // WeToast.WeToast();
+    // commentNew.commentNew(this);
+    // console.log(commentNew.commentNewObject);
+    // Object.assign(this, commentNew.commentNewObject);
+    // console.log(this);
+    // this.onAbc();
+    // console.log(this.data);
   },
   onReady:function(){
     // 页面渲染完成

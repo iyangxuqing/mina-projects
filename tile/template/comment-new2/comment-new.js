@@ -2,6 +2,15 @@
 var http = require("../../utils/http.js");
 var db = require("../../utils/db.js");
 
+var commentNewObject = {
+  onAbc: function(e){
+    console.log('on-abc');
+    this.setData({
+      'test01': 'test01'
+    })
+  }
+};
+
 function commentNew(page) {
   page.setData({
     commentNew: {
@@ -176,5 +185,6 @@ function publish(option) {
 }
 
 module.exports = {
-  commentNew: commentNew
+  commentNew: commentNew,
+  commentNewObject: commentNewObject
 }
