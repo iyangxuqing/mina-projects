@@ -1,0 +1,7 @@
+
+<!--pages/textarea/textarea.wxml-->
+<text>pages/textarea/textarea.wxml</text>
+<button size="mini" class="review-button" bindtap="onReviewTap">评论</button>
+<view class="textarea">
+  <textarea class="review-textarea" placeholder="留下你的评论" fixed="true" focus="{{reviewInputShow}}" auto-focus="{{false}}" auto-height="true" />
+</view>
