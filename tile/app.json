@@ -1,11 +1,13 @@
 {
   "pages":[
     "pages/textarea/textarea",
-    "pages/test-comment-add/test-comment-add",
+    "pages/addReview/addReview",
     "pages/comment-list1/comment-list1",
+    "pages/test-comment-add/test-comment-add",
     "pages/myhome/myhome",
     "pages/review/review",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/device/device"
   ],
   "window":{
     "backgroundTextStyle":"light",

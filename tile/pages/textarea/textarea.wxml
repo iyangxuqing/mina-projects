@@ -1,7 +1,20 @@
-
-<!--pages/textarea/textarea.wxml-->
-<text>pages/textarea/textarea.wxml</text>
-<button size="mini" class="review-button" bindtap="onReviewTap">评论</button>
-<view class="textarea">
-  <textarea class="review-textarea" placeholder="留下你的评论" fixed="true" focus="{{reviewInputShow}}" auto-focus="{{false}}" auto-height="true" />
-</view>
+<scroll-view scroll-y="{{true}}" scroll-top="{{offsetTop}}">
+  <block wx:for="{{comments}}" wx:key="" wx:for-item="comment">
+    <view class="comment">
+      <view>{{comment.content}}</view>
+      <block wx:if="{{comment.reviews}}" wx:for="{{comment.reviews}}" wx:key="" wx:for-item="review">
+        <view class="review">
+          <block wx:for="{{review.content}}" wx:key="" wx:for-item="paragraph">
+            <view class="review-text-paragraph">
+              {{paragraph}}
+            </view>
+          </block>
+        </view>
+      </block>
+      <button size="mini" class="review-button" bindtap="onReviewTap" data-index="{{index}}">评论</button>
+      <view wx:if="{{reviewedCommentIndex==index}}" class="textarea-container">
+        <textarea class="review-textarea" placeholder="留下你的评论" focus="{{focus}}" cursor-spacing="150" bindconfirm="onTextareaConfirm" bindblur="onTextareaBlur" />
+      </view>
+    </view>
+  </block>
+</scroll-view>

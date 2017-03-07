@@ -1,19 +1,32 @@
 /* pages/textarea/textarea.wxss */
-.review-button{
-    margin-top: 200px;
-    margin-left: 260px;
+.show{
+    display: block;
 }
-.textarea{
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
+.hide{
+    display: none;
+}
+.review-button{
+    margin: 10px 0 20px 260px;
+}
+.comment{
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
+.textarea-container{
     width: 100%;
+    background-color: #ccc;
+    box-sizing: border-box;
+    padding:10rpx 20rpx;
 }
 .review-textarea{
-    /*position: fixed;
-    left: 0;
-    bottom: 0;*/
     width: 100%;
     background-color: #eee;
+}
+.review{
+    text-indent: 2em;
+    font-style: italic;
+}
+scroll-view{
+    height: 600px;
 }

@@ -1,0 +1,16 @@
+/* pages/device/device.wxss */
+
+.deviceInfo {
+  display: flex;
+  margin: 40rpx 0;
+}
+
+.cell{
+    flex-basis: 0;
+    flex-grow: 1;
+    padding: 0 20rpx;
+}
+
+.cell-key {
+  text-align: right;
+}
