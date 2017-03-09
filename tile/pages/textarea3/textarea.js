@@ -25,7 +25,9 @@ Page({
       }
     ],
     offsetTop: 0,
+    translateY: 0,
     reviewedCommentIndex: -1,
+    reviewTextareaHidden: true,
     focus: false
   },
 
@@ -49,20 +51,22 @@ Page({
     console.log(e)
     let offsetTop = e.currentTarget.offsetTop
     let offsetLeft = e.currentTarget.offsetLeft
+    let y = e.changedTouches[0].clientY
     var index = e.currentTarget.dataset.index
-    if (index == this.data.reviewedCommentIndex) index = -1
+    // var translateY = 400 - y > 200 ? 200 : 400 - y
     this.setData({
-      focus: true,
       reviewedCommentIndex: index,
+      reviewTextareaHidden: false,
+      // translateY: translateY
     })
     var that = this
-    if (offsetTop > 500) {
-      setTimeout(function () {
-        that.setData({
-          offsetTop: offsetTop - 200
-        })
-      }, 0)
-    }
+    // if (offsetTop > 500) {
+    //   setTimeout(function () {
+    //     that.setData({
+    //       offsetTop: offsetTop - 200
+    //     })
+    //   }, 0)
+    // }
   },
 
   onTextareaConfirm: function (e) {
@@ -77,17 +81,19 @@ Page({
     comments[index].reviews = reviews;
     this.setData({
       comments: comments,
-      reviewedCommentIndex: -1,
+      reviewTextareaHidden: true,
+      translateY: 0
     })
   },
 
   onTextareaBlur: function (e) {
     this.setData({
-      reviewedCommentIndex: -1
+      reviewTextareaHidden: true,
+      translateY: 0
     })
-    if (wx.getSystemInfoSync().platform == 'devtools') {
-      this.onTextareaConfirm(e)
-    }
+    // if (wx.getSystemInfoSync().platform == 'devtools') {
+    //   this.onTextareaConfirm(e)
+    // }
   },
 
   onReady: function () {

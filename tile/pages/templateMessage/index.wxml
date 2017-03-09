@@ -1,0 +1,53 @@
+
+<!--pages/templateMessage/index.wxml-->
+
+<!--<text>pages/templateMessage/index.wxml</text>
+<form name='pushMsgFm' report-submit bindsubmit='orderSign'>
+  enter product:
+  <input type="text" name="product" value='' placeholder="enter your name" /> detail:
+  <input type="text" name='detail' placeholder="enter desc" /> select sex:
+  <switch type="switch" name='sex' />
+  <button form-type="submit">submit</button>
+</form>-->
+<form name="entryFrom" report-submit bindsubmit="onEntrySubmit">
+  <view class="block">
+    <view class="form-head">报名确认</view>
+  </view>
+  <view class="block">
+    <view class="row">
+      <view class="label">报名项目</view>
+      <view class="value">
+        <input type="text" name="name" value="环球雅思" />
+      </view>
+    </view>
+    <view class="row">
+      <view class="label">报名时间</view>
+      <view class="value">
+        <input type="text" name="time" value="2016年8月8日" />
+      </view>
+    </view>
+  </view>
+  <view class="block">
+    <view class="row">
+      <view class="label">活动名称</view>
+      <view class="value">
+        <input type="text" name="desc" value="如何讲一口纯正的口语" />
+      </view>
+    </view>
+    <view class="row">
+      <view class="label">活动地点</view>
+      <view class="value">
+        <input type="text" name="address" value="教育教学与图书馆" />
+      </view>
+    </view>
+    <view class="row">
+      <view class="label">联系方式</view>
+      <view class="value">
+        <input type="text" name="contact" value="13890458888" />
+      </view>
+    </view>
+  </view>
+  <view class="block">
+    <button form-type="submit">确认</button>
+  </view>
+</form>

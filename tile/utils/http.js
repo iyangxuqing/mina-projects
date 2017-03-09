@@ -152,6 +152,7 @@ function upload(option) {
                             errMsg: '文件上传错误',
                             uploadedFiles: uploadedFiles /* 上传成功部分 */
                         }
+                        console.log(result)
                     }
                     if (!result.errNo && option.success) {
                         option.success(result);

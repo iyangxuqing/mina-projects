@@ -9,6 +9,7 @@ function login() {
                 success: function (res) {
                     if (res.data.token) {
                         wx.setStorageSync('token', res.data.token)
+                        wx.setStorageSync('openId', res.data.openId)
                     }
                 }
             })

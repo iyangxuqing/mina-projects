@@ -43,7 +43,7 @@ function onCommentTextInput(e) {
 function onCommentPhotoAdd(e) {
   var that = this;
   wx.chooseImage({
-    sizeType: ['original', 'compressed'],
+    sizeType: ['compressed', 'original'],
     sourceType: ['album', 'camera'],
     success: function (res) {
       var tempFilePaths = res.tempFilePaths;

@@ -1,0 +1,26 @@
+/* pages/templateMessage/index.wxss */
+.block{
+    margin-bottom: 50rpx;
+}
+.form-head{
+    text-align: center;
+    margin-top: 80rpx;
+}
+.row{
+    display: flex;
+    line-height: 100rpx;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    background: #fafbfc;
+}
+.row + .row {
+    border-top: 0;
+}
+.label{
+    width: 200rpx;
+    padding-left: 40rpx;
+}
+.value{
+    display: flex;
+    align-items: center;
+}

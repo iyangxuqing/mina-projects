@@ -1,0 +1,32 @@
+<view class="comments-container">
+  <view class="comments" style="transform:translateY({{translateY}}px)">
+    <block wx:for="{{comments}}" wx:key="" wx:for-item="comment">
+      <view class="comment">
+        <view>{{comment.content}}</view>
+        <block wx:if="{{comment.reviews}}" wx:for="{{comment.reviews}}" wx:key="" wx:for-item="review">
+          <view class="review">
+            <block wx:for="{{review.content}}" wx:key="" wx:for-item="paragraph">
+              <view class="review-text-paragraph">
+                {{paragraph}}
+              </view>
+            </block>
+          </view>
+        </block>
+        <button size="mini" class="review-button" bindtap="onReviewTap" data-index="{{index}}">评论</button>
+
+        <!--回复-->
+        <view class="textarea-container" wx:if="{{!reviewTextareaHidden && reviewedCommentIndex==index}}">
+          <textarea class="review-textarea" value="{{comment.reviewNew}}" placeholder="留下你的评论" focus="{{true}}" cursor-spacing="10" bindinput="onTextareaInput" bindconfirm="onTextareaConfirm" bindblur="onTextareaBlur" bindlinechange="onTextareaLineChange" 
+          />
+          <view class="review-new-btns">
+            <!--<view class="review-new-confirm" catchtap="onReviewNewConfirm">确定</view>-->
+            <view class="review-new-cancal" catchtap="onReviewNewCancal">×</view>
+          </view>
+        </view>
+
+        <!--遮罩-->
+        <view class="comment-mask" hidden="{{commentMaskRelease}}"></view>
+      </view>
+    </block>
+  </view>
+</view>
