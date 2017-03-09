@@ -7,6 +7,8 @@ page {
   font-size: 14px;
   line-height: 1.5;
   color: #404040;
+  width: 100%;
+  height: 100%;
   padding-left: 40rpx;
   padding-right: 40rpx;
   box-sizing: border-box;

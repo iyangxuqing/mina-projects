@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/servicerMessage/index",
     "pages/templateMessage/index",
     "pages/comment-list1/comment-list1",
     "pages/textarea2/textarea",

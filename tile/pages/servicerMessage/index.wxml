@@ -1,0 +1,17 @@
+<view class="page-container">
+  <view class="caption">
+    <text>页面宣传图</text>
+  </view>
+  <view class="block content">
+    <view class="title">页面内标题</view>
+    <view class="desc">相关描述</view>
+    <view class="contact">
+      <contact-button type="default-light" size="20" session-from="weapp">
+      </contact-button>
+    </view>
+  </view>
+  <view class="block other">
+    <view class="title">其他页面内容</view>
+    <view class="desc">相关描述</view>
+  </view>
+</view>
