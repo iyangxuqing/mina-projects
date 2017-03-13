@@ -1,0 +1,76 @@
+/* pages/testmobileverify/index.wxss */
+
+page {
+  box-sizing: border-box;
+  padding: 0 30rpx;
+}
+
+.mobile {
+  margin: 40rpx 0;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+}
+
+.row + .row{
+  border-top: 1px solid #ddd;
+}
+
+.mobileInput, .codeInput {
+  font-size: 16px;
+}
+
+.codeRequest {
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  width: 90px;
+  padding: 10px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  background-color: #4bd4c5;
+}
+
+.mobileVerifyConfirm {
+  color: #666;
+  font-size: 16px;
+}
+
+.row{
+    color: #666;
+    font-size: 16px;
+}
+.row-gap{
+    margin-top: 40px;
+}
+.icon{
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    background: #ccc;
+}
+.mark{
+    width: 90px;
+    height: 32px;
+    flex-shrink: 0;
+    background-color: #ccc;
+}
+.label{
+    display: none;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+.input{
+    flex-grow: 1;
+    margin-left: 10px;
+}
+.notifyMessage{
+    width: 100%;
+    padding: 10px 0;
+    color: red;
+    background-color: yellow
+}

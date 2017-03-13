@@ -43,10 +43,11 @@ function onCommentTextInput(e) {
 function onCommentPhotoAdd(e) {
   var that = this;
   wx.chooseImage({
-    sizeType: ['compressed', 'original'],
+    sizeType: ['compressed'],
     sourceType: ['album', 'camera'],
     success: function (res) {
       var tempFilePaths = res.tempFilePaths;
+      console.log(tempFilePaths);
       var photos = that.data.commentNew.photos;
       photos = photos.concat(tempFilePaths);
       photos = photos.slice(0, 9);
