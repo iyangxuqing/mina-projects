@@ -1,23 +1,23 @@
 <view class="mobile">
-  <view class="row">
-    <input class="mobileInput" catchtap="onMobileInput" value="" placeholder="手机号" />
-    <view class="codeRequest" catchtap="onCodeRequest">{{codeRequestText}}</view>
-  </view>
-  <view class="row">
-    <input class="codeInput" catchtap="onCodeInput" value="" placeholder="验证码" />
-  </view>
-  <button class="mobileVerifyConfirm">确定</button>
+    <view class="row">
+      <input class="mobileInput" bindblur="onMobileInputBlur" placeholder="手机号" />
+      <view class="codeRequest" catchtap="onCodeRequest">{{codeRequestText}}</view>
+    </view>
+    <view class="row">
+      <input class="codeInput" bindblur="onCodeInputBlur" placeholder="验证码" />
+    </view>
+    <button class="mobileVerifyConfirm" catchtap="onMobileVerifyConfirm">确定</button>
 </view>
 <view class="block-gap"></view>
 <view class="row">
   <view class="icon"></view>
   <view class="label">手机号</view>
   <view class="input">
-    <input value="" placeholder="请输入手机号码" type="number" maxlength="11" bindinput="mobileInput" bindconfirm="mobileConfirm" />
+    <input value="" placeholder="请输入手机号码" type="number" maxlength="11" bindblur="onMobileInputBlur" />
   </view>
-  <view class="mark">
+  <view class="mark" catchtap="onCodeRequest">
   </view>
 </view>
-<view class="row">
-    <view class="notifyMessage">{{notifyMessage}}</view>
+<view class="row nmessage" wx:if="{{mobileTestError}}">
+  <view class="notifyMessage">{{notifyMessage}}</view>
 </view>

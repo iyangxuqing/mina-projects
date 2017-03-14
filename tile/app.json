@@ -1,6 +1,6 @@
 {
   "pages":[
-    "pages/canvas/index",
+    "pages/testmobileverify/index",
     "pages/comment-list1/comment-list1",
     "pages/servicerMessage/index",
     "pages/templateMessage/index",
@@ -10,6 +10,7 @@
     "pages/myhome/myhome",
     "pages/review/review",
     "pages/index/index",
+    "pages/canvas/index",
     "pages/device/device"
   ],
   "window":{
