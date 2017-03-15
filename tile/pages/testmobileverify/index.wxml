@@ -1,23 +1,26 @@
 <view class="mobile">
+  <view class="mobile-unverified" wx:if="{{!mobileVerified}}">
     <view class="row">
-      <input class="mobileInput" bindblur="onMobileInputBlur" placeholder="手机号" />
-      <view class="codeRequest" catchtap="onCodeRequest">{{codeRequestText}}</view>
+      <input class="mobileInput" placeholder="手机号" type="number" maxlength="11" bindblur="onMobileInputBlur" bindfocus="onMobileInputFocus" />
+      <view class="notifyMessage">{{notifyMessage}}</view>
+      <view class="codeRequest" catchtap="onCodeRequest">{{reserveSecond?reserveSecond:'发送验证码'}}</view>
     </view>
     <view class="row">
-      <input class="codeInput" bindblur="onCodeInputBlur" placeholder="验证码" />
+      <input class="codeInput" placeholder="验证码" type="number" maxlength="6" value="{{mobileVerifyCode}}" bindinput="onCodeInput" bindblur="onCodeInputBlur" />
+      <view class="codeConfirm" wx:if="{{mobileVerifyCode.length>=6}}" catchtap="onCodeConfirm">确 定</view>
     </view>
-    <button class="mobileVerifyConfirm" catchtap="onMobileVerifyConfirm">确定</button>
-</view>
-<view class="block-gap"></view>
-<view class="row">
-  <view class="icon"></view>
-  <view class="label">手机号</view>
-  <view class="input">
-    <input value="" placeholder="请输入手机号码" type="number" maxlength="11" bindblur="onMobileInputBlur" />
-  </view>
-  <view class="mark" catchtap="onCodeRequest">
   </view>
 </view>
-<view class="row nmessage" wx:if="{{mobileTestError}}">
-  <view class="notifyMessage">{{notifyMessage}}</view>
+<view class="mobile-verified" wx:if="{{mobileVerified}}">
+  <view class="row">
+    <view class="row-left">
+      <image class="icon icon-tele" src="../../images/icon/icon-tele.png" />
+    </view>
+    <view class="row-middle">
+      <view class="mobile-number">15397553789</view>
+    </view>
+    <view class="row-right">
+      <image class="icon icon-ok" src="../../images/icon/ok.png" />
+    </view>
+  </view>
 </view>

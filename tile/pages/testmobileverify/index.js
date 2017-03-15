@@ -3,60 +3,52 @@ let http = require('../../utils/http.js')
 
 Page({
   data: {
-    codeRequestText: '发送验证码',
-    notifyMessage: '手机号码输入有误',
-    verifyMobile: '',
-    mobileTestError: false,
+    mobileVerified: false
   },
   onLoad: function (options) {
   },
 
-  onMobileInputBlur: function(e){
+  onMobileInputBlur: function (e) {
     let mobile = e.detail.value
-    this.data.verifyMobile = mobile
-    this.data.mobileVerifyNumber = mobile
+    this.setData({
+      mobileVerifyNumber: mobile
+    })
   },
-  onCodeInputBlur: function(e){
+
+  onMobileInputFocus: function (e) {
+    this.setData({
+      notifyMessage: ''
+    })
+  },
+
+  onCodeInput: function (e) {
     let code = e.detail.value
-    this.data.mobileVerifyCode = code
+    this.setData({
+      mobileVerifyCode: code
+    })
   },
-  onMobileVerifyConfirm: function(e){
-    let that = this
-    let mobile = that.data.mobileVerifyNumber
-    let code = that.data.mobileVerifyCode
-    console.log(mobile, code)
-    http.get({
-      url: 'sms/codeVerify.php',
-      data: {
-        code: code,
-        mobile, mobile
-      },
-      success: function(res){
-        console.log(res)
-      }
+
+  onCodeInputBlur: function (e) {
+    let code = e.detail.value
+    this.setData({
+      mobileVerifyCode: code
     })
   },
 
   onCodeRequest: function (e) {
-    let that = this;
-    let verifyMobile = that.data.verifyMobile
-    if(verifyMobile == ''){
-      return
-    }
+    let that = this
+    let reserveSecond = that.data.reserveSecond || ''
+    if (reserveSecond != '') return
+    let mobile = that.data.mobileVerifyNumber || ''
+    if (mobile == '') return
 
     var reg = /^1[3|4|5|7|8]\d{9}$/
-    if(!reg.test(verifyMobile)){
+    if (!reg.test(mobile)) {
       that.setData({
-        mobileTestError: true
+        notifyMessage: '手机号码有误'
       })
       return
-    } else {
-      that.setData({
-        mobileTestError: false
-      })
     }
-    let codeRequestText = that.data.codeRequestText;
-    if (codeRequestText != '发送验证码') return;
 
     http.get({
       url: 'sms/codeRequest.php',
@@ -64,59 +56,56 @@ Page({
         tplId: 29922,
         mobile: that.data.mobileVerifyNumber
       },
-      success: function(res){
+      success: function (res) {
         console.log('sms/codeRequest success', res)
       },
-      fail: function(res){
+      fail: function (res) {
         console.log('sms/codeRequest fail', res)
       }
     })
 
-    // wx.request({
-    //   url: 'https://yixing02.applinzi.com/api/sms/sendCode.php',
-    //   data:{
-    //     tplId: 29922,
-    //     mobile: that.data.verifyMobile
-    //   },
-    //   success: function(res){
-    //     if(res.data.code){
-    //       //验证码发送成功后，用户手机接收到还需要一段时间，也可能接收不到
-    //       //所以这里不需要任何处理，只需静等用户输入验证码
-    //     } else {
-    //       console.log('sms send code error')
-    //       console.log(res)
-    //     }
-    //   },
-    //   fail: function(res){
-    //     console.log('sms send code fail')
-    //     //直接静默，用户可以重复验证码或退出到其它页面
-    //   }
-    // })
+    this.setData({
+      reserveSecond: '60秒后重发'
+    })
+    let timer = setInterval(function () {
+      let reserveSecond = parseInt(that.data.reserveSecond)
+      reserveSecond = reserveSecond - 1
+      if (reserveSecond == 0) {
+        that.setData({
+          reserveSecond: 0
+        })
+        clearInterval(timer)
+      } else {
+        if (reserveSecond < 10) reserveSecond = '0' + reserveSecond
+        that.setData({
+          reserveSecond: reserveSecond + '秒后重发'
+        })
+      }
+    }, 1000)
+  },
 
-    if (codeRequestText == '发送验证码') {
-      let reserveSecond = 60;
-      this.setData({
-        codeRequestText: reserveSecond + '秒后重发'
-      })
-
-      let timer = setInterval(function () {
-        let reserveSecond = parseInt(that.data.codeRequestText)
-        reserveSecond = reserveSecond - 1
-        if (reserveSecond == 0) {
+  onCodeConfirm: function (e) {
+    let that = this
+    let mobile = that.data.mobileVerifyNumber || ''
+    let code = that.data.mobileVerifyCode || ''
+    if (code == '') return;
+    http.get({
+      url: 'sms/codeVerify.php',
+      data: {
+        code: code,
+        mobile, mobile
+      },
+      success: function (res) {
+        if (!res.error) {
           that.setData({
-            codeRequestText: '发送验证码'
-          })
-          clearInterval(timer)
-        } else {
-          if(reserveSecond<10) reserveSecond = '0' + reserveSecond
-          that.setData({
-            codeRequestText: reserveSecond + '秒后重发'
+            mobileVerifyCode: '',
+            mobileVerified: true
           })
         }
-      }, 1000)
-
-    }
+      }
+    })
   },
+
   onReady: function () {
     // 页面渲染完成
   },
