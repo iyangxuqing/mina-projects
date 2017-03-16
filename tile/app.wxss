@@ -1,6 +1,7 @@
 /**app.wxss**/
 
-@import "template/wetoast/wetoast.wxss";
+@import "/template/toptips/toptips.wxss";
+@import "/template/wetoast/wetoast.wxss";
 
 page {
   font-family: -apple-system-font, "Helvetica Neue", sans-serif;

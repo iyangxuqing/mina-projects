@@ -1,26 +1,4 @@
-<view class="mobile">
-  <view class="mobile-unverified" wx:if="{{!mobileVerified}}">
-    <view class="row">
-      <input class="mobileInput" placeholder="手机号" type="number" maxlength="11" bindblur="onMobileInputBlur" bindfocus="onMobileInputFocus" />
-      <view class="notifyMessage">{{notifyMessage}}</view>
-      <view class="codeRequest" catchtap="onCodeRequest">{{reserveSecond?reserveSecond:'发送验证码'}}</view>
-    </view>
-    <view class="row">
-      <input class="codeInput" placeholder="验证码" type="number" maxlength="6" value="{{mobileVerifyCode}}" bindinput="onCodeInput" bindblur="onCodeInputBlur" />
-      <view class="codeConfirm" wx:if="{{mobileVerifyCode.length>=6}}" catchtap="onCodeConfirm">确 定</view>
-    </view>
-  </view>
-</view>
-<view class="mobile-verified" wx:if="{{mobileVerified}}">
-  <view class="row">
-    <view class="row-left">
-      <image class="icon icon-tele" src="../../images/icon/icon-tele.png" />
-    </view>
-    <view class="row-middle">
-      <view class="mobile-number">15397553789</view>
-    </view>
-    <view class="row-right">
-      <image class="icon icon-ok" src="../../images/icon/ok.png" />
-    </view>
-  </view>
-</view>
+<import src="/template/toptips/toptips.wxml" />
+<import src="/template/mobile/mobile.wxml" />
+<template is="mobile" data="{{...mobile}}" />
+<template is="toptips" data="{{...toptips}}" />

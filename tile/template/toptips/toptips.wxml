@@ -1,0 +1,4 @@
+<template is="toptips" data="{{...toptips}}" />
+<template name="toptips">
+  <view class="toptips {{'toptips-' + type}} {{animateCss}}" hidden="{{!visible}}">{{text}}</view>
+</template>

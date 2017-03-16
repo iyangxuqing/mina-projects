@@ -1,0 +1,81 @@
+.toptips {
+  position: fixed;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 8px;
+  font-size: 14px;
+  text-align: center;
+  color: #fff;
+  z-index: 5000;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.toptips-info {
+  background-color: #10aefe !important;
+}
+
+.toptips-warn {
+  background-color: #ffbe00 !important;
+}
+
+.toptips-error {
+  background-color: #e64340 !important;
+}
+
+.toptips-success {
+  background-color: #09bb08 !important;
+}
+
+.fadeIn {
+  -webkit-animation: fadeIn ease 0.3s forwards;
+  animation: fadeIn ease 0.3s forwards;
+}
+
+.fadeOut {
+  -webkit-animation: fadeOut ease 0.3s forwards;
+  animation: fadeOut ease 0.3s forwards;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
