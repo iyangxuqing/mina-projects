@@ -1,0 +1,35 @@
+<button bindtap="testtap">test</button>
+<template is="cityPicker" data="{{...cityPicker}}" />
+
+<!--<view></view>-->
+<template name="cityPicker">
+  <view class="city-picker" wx:if="{{ visible }}">
+    <view class="mask {{ maskAnimateCss }}" wx:if="{{ visible }}" bindtap="{{onCancel}}"></view>
+    <view class="picker {{ pickerAnimateCss }}">
+      <view class="picker-header">
+        <view class="picker-header-inner">
+          <view class="picker-button close-picker cancel {{ cancelCss }}" bindtap="onCancel">{{ cancelText }}</view>
+          <view class="title">{{ title }}</view>
+          <view class="picker-button close-picker confirm {{ confirmCss }}" bindtap="{{onConfirm}}">{{ confirmText }}</view>
+        </view>
+      </view>
+      <picker-view class="picker-view" indicator-style="height: 32px;" value="{{ value }}" bindchange="{{onChange}}">
+        <picker-view-column>
+          <view class="picker-view-column" wx:for="{{provinces}}" wx:key="" wx:for-item="province">
+            {{ province.name }}
+          </view>
+        </picker-view-column>
+        <picker-view-column>
+          <view class="picker-view-column" wx:for="{{citys}}" wx:key="" wx:for-item="city">
+            {{ city.name }}
+          </view>
+        </picker-view-column>
+        <picker-view-column>
+          <view class="picker-view-column" wx:for="{{districts}}" wx:key="" wx:for-item="district">
+            {{ district.name }}
+          </view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </view>
+</template>

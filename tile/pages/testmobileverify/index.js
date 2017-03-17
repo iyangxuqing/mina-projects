@@ -9,6 +9,11 @@ Page({
   onLoad: function (options) {
     toptips()
     mobile()
+    wx.login({
+      success: function(res){
+        console.log(res);
+      }
+    })
   },
 
   onReady: function () {
