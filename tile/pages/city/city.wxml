@@ -1,35 +1,21 @@
-<button bindtap="testtap">test</button>
-<template is="cityPicker" data="{{...cityPicker}}" />
-
-<!--<view></view>-->
-<template name="cityPicker">
-  <view class="city-picker" wx:if="{{ visible }}">
-    <view class="mask {{ maskAnimateCss }}" wx:if="{{ visible }}" bindtap="{{onCancel}}"></view>
-    <view class="picker {{ pickerAnimateCss }}">
-      <view class="picker-header">
-        <view class="picker-header-inner">
-          <view class="picker-button close-picker cancel {{ cancelCss }}" bindtap="onCancel">{{ cancelText }}</view>
-          <view class="title">{{ title }}</view>
-          <view class="picker-button close-picker confirm {{ confirmCss }}" bindtap="{{onConfirm}}">{{ confirmText }}</view>
-        </view>
-      </view>
-      <picker-view class="picker-view" indicator-style="height: 32px;" value="{{ value }}" bindchange="{{onChange}}">
-        <picker-view-column>
-          <view class="picker-view-column" wx:for="{{provinces}}" wx:key="" wx:for-item="province">
-            {{ province.name }}
-          </view>
-        </picker-view-column>
-        <picker-view-column>
-          <view class="picker-view-column" wx:for="{{citys}}" wx:key="" wx:for-item="city">
-            {{ city.name }}
-          </view>
-        </picker-view-column>
-        <picker-view-column>
-          <view class="picker-view-column" wx:for="{{districts}}" wx:key="" wx:for-item="district">
-            {{ district.name }}
-          </view>
-        </picker-view-column>
-      </picker-view>
-    </view>
+<import src="/template/citypicker/citypicker.wxml" />
+<view class="address-info">
+  <view class="address-title">
+    <text>输入地址</text>
   </view>
-</template>
+  <view class="address-row address-row-district" bindtap="onDistrictTap">
+    <view class="address-placeholder">省市区县</view>
+  </view>
+
+  <view class="address-row address-row-detail">
+    <input class="address-input" placeholder="详细地址" />
+  </view>
+  <!--<view class="address-row address-row-detail">
+    <textarea placeholder="详细地址" auto-height="{{true}}" />
+  </view>-->
+  <view class="address-btn-area">
+    <button class="address-btn address-btn-confirm" hover-class="address-btn-confirm-hover">保 存</button>
+    <button class="address-btn address-btn-cancel">取 消</button>
+  </view>
+</view>
+<template is="cityPicker" data="{{...cityPicker}}" />

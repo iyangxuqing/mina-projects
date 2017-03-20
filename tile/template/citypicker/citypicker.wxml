@@ -1,0 +1,23 @@
+<template name="cityPicker">
+  <view class="city-picker" wx:if="{{ visible }}">
+    <view class="mask {{ maskAnimateCss }}" wx:if="{{ visible }}" bindtap="{{onCancel}}"></view>
+    <view class="picker {{ pickerAnimateCss }}">
+      <view class="picker-header">
+        <view class="picker-header-inner">
+          <view class="picker-button close-picker cancel {{ cancelCss }}" bindtap="{{onCancel}}">{{ cancelText }}</view>
+          <view class="title">{{ title }}</view>
+          <view class="picker-button close-picker confirm {{ confirmCss }}" bindtap="{{onConfirm}}">{{ confirmText }}</view>
+        </view>
+      </view>
+      <picker-view class="picker-view" indicator-style="height: 32px;" value="{{ value }}" bindchange="{{onChange}}">
+        <block wx:for="{{items}}" wx:key="" wx:for-item="item">
+          <picker-view-column>
+            <view class="picker-view-column" wx:for="{{item}}" wx:key="" wx:for-item="value">
+              {{ value }}
+            </view>
+          </picker-view-column>
+        </block>
+      </picker-view>
+    </view>
+  </view>
+</template>

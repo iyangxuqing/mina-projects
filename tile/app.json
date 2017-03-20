@@ -1,7 +1,6 @@
 {
   "pages":[
     "pages/city/city",
-    "pages/testaddress/testaddress",
     "pages/testmobileverify/index",
     "pages/comment-list1/comment-list1",
     "pages/servicerMessage/index",
