@@ -10,8 +10,8 @@ page {
   color: #404040;
   width: 100%;
   height: 100%;
-  padding-left: 40rpx;
-  padding-right: 40rpx;
+  /*padding-left: 40rpx;
+  padding-right: 40rpx;*/
   box-sizing: border-box;
 }
 
@@ -33,7 +33,7 @@ image{
   display: none;
 }
 
-.container {
+.gcontainer {
   height: 100%;
   display: flex;
   flex-direction: column;

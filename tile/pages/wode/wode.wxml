@@ -1,0 +1,53 @@
+<view class="wode">
+  <view class="container">
+    <view class="head">
+      <view class="avater">
+        <image src="{{wode.avater}}"></image>
+      </view>
+      <view class="name">{{wode.name}}</view>
+    </view>
+    <view class="body">
+    <view class="body-head">
+    <view class="title">{{wode.title}}</view>
+    <view class="icon"><image src="{{wode.bodyIcon}}"></image></view>
+    </view>
+      <view class="lists">
+        <block wx:for="{{wode.lists}}" wx:key="" wx:for-item="list">
+          <view class="list ">
+            <block wx:for="{{list}}" wx:key="" wx:for-item="item">
+              <navigator url="{{item.url}}">
+                <view class="item {{item.type}}">
+                  <view class="label">{{item.label}}</view>
+                  <view class="icon">
+                    <image src="{{item.icon}}"></image>
+                  </view>
+                </view>
+              </navigator>
+            </block>
+          </view>
+        </block>
+
+        <!--<block wx:for="{{wode.lists}}" wx:key="" >
+          <view class="list">
+            <block wx:for="{{item.list}}" wx:for-item="value">
+              <view class="item">
+                <view class="label">{{item.value.label}}</view>
+                <view class="icon">
+                  <image src="{{item.icon}}"></image>
+                </view>
+              </view>
+            </block>
+          </view>
+        </block>-->
+      </view>
+    </view>
+    <navigator url="{{wode.url}}">
+      <view class="foot">
+        <view class="label">{{wode.label}}</view>
+        <view class="icon">
+          <image src="{{wode.icon}}"></image>
+        </view>
+      </view>
+    </navigator>
+  </view>
+</view>
