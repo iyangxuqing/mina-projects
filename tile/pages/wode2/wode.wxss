@@ -1,0 +1,74 @@
+page{
+    background: #eeeff3;
+}
+.container{
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+}
+.head{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 300rpx;
+    background: #fff;
+    margin-left: -30rpx;
+    margin-right: -30rpx;
+    margin-bottom: 40rpx;
+
+}
+.foot{
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    margin-bottom: 40rpx;
+    margin-left: -30rpx;
+    margin-right: -30rpx;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    height: 140rpx;
+    align-items: center;
+}
+.body-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    margin-bottom: 40rpx;
+      margin-left: -30rpx;
+    margin-right: -30rpx;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+}
+
+.avater{
+    width: 120rpx;
+    height: 120rpx;
+    margin-bottom: 40rpx;
+}
+.name{
+    color: #353535;
+}
+.item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100rpx;
+     background: #fff;
+    margin-left: -30rpx;
+    margin-right: -30rpx;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+}
+.icon{
+    width: 60rpx;
+    height: 60rpx;
+}
+.line{
+    border-bottom: 2rpx solid #f9f6f6;
+}
+.list{
+    margin-bottom: 40rpx;
+}

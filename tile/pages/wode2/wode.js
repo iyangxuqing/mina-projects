@@ -1,6 +1,4 @@
 // cizhuang/product/product.js
-let user = require('../../utils/user.js')
-
 Page({
   data: {
     wode: {
@@ -45,30 +43,9 @@ Page({
 
     }
   },
-  
-  onLoginTap: function (e) {
-    user.getUserInfo({
-      from: 'weixin',
-      success: function (res) {
-        this.setData({
-          'wode.avater': res.avatarUrl,
-          'wode.name': res.nickName
-        })
-      }.bind(this)
-    })
-  },
-
   onLoad: function (options) {
-    user.getUserInfo({
-      success: function (res) {
-        this.setData({
-          'wode.avater': res.avatarUrl,
-          'wode.name': res.nickName
-        })
-      }.bind(this)
-    })
+    // 页面初始化 options为页面跳转所带来的参数
   },
-
   onReady: function () {
     // 页面渲染完成
   },

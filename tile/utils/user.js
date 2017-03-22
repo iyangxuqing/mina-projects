@@ -1,3 +1,5 @@
+let http = require('http.js')
+
 const apiBaseUrl = 'https://yixing02.applinzi.com/api/';
 
 function login() {
@@ -9,7 +11,6 @@ function login() {
                 success: function (res) {
                     if (res.data.token) {
                         wx.setStorageSync('token', res.data.token)
-                        wx.setStorageSync('openId', res.data.openId)
                     }
                 }
             })
@@ -51,41 +52,42 @@ function login() {
     可以使用if(res.error){console.log(res.error)}来检测和调试。
 */
 
-function getUserInfo(cb) {
-    if (this.globalData.userInfo) {
-        if (typeof cb == "function") {
-            cb(this.globalData.userInfo)
+function getUserInfo(options) {
+    if (!options.from) {
+        let userInfo = wx.getStorageSync('userInfo')
+        if (userInfo) {
+            options.success && options.success(userInfo)
         }
-    } else {
-        var that = this
+    } else if (options.from && options.from == 'weixin') {
         wx.login({
-            success: function () {
+            success: function (res) {
                 wx.getUserInfo({
                     success: function (res) {
-                        that.globalData.userInfo = res.userInfo
-                        console.log(res.userInfo);
-                        console.log(res.userInfo.avatarUrl.length);
-                        wx.request({
-                            url: apiBaseUrl + 'login/user.php?m=setUserInfo',
-                            header: {
-                                token: wx.getStorageSync('token')
-                            },
-                            data: res.userInfo,
-                            success: function(res){
-                                console.log(res);
+                        let userInfo = res.userInfo
+                        wx.setStorageSync('userInfo', userInfo)
+                        http.post({
+                            url: 'login/setUser.php',
+                            data: userInfo,
+                            success: function (res) {
+                                // console.log(res)
                             }
                         })
-                        if (typeof cb == "function") {
-                            cb(that.globalData.userInfo)
-                        }
+                        options.success && options.success(userInfo)
                     },
-                    fail: function (error) {
-                        console.log('wx.getUserInfo fail: ', error)
+                    fail: function (res) {
+                        if (res.errMsg == "getUserInfo:fail auth deny") {
+                            let lastErrMsg = wx.getStorageSync('getUserInfoErrMsg')
+                            if (lastErrMsg == "getUserInfo:fail auth deny") {
+                                wx.showModal({
+                                    title: '登录提示',
+                                    showCancel: false,
+                                    content: '距离上次拒绝授权时间过短，无法再次获取授权。您可以稍后再试，或删除本程序后再次进入，就可以重新授权了。'
+                                })
+                            }
+                            wx.setStorageSync('getUserInfoErrMsg', res.errMsg)
+                        }
                     }
                 })
-            },
-            fail: function (error) {
-                console.log('wx.login fail: ', error)
             }
         })
     }
@@ -134,8 +136,30 @@ function getCryptUserInfo(cb) {
     }
 }
 
+function getUser(options) {
+    http.get({
+        url: 'login/getUser.php',
+        data: options.data,
+        success: function (res) {
+            options.success && options.success(res)
+        }
+    })
+}
+
+function setUser(options) {
+    http.post({
+        url: 'login/setUser.php',
+        data: options.data,
+        success: function (res) {
+            options.success && options.success(res)
+        }
+    })
+}
+
 module.exports = {
     login,
     getUserInfo,
-    getCryptUserInfo
+    getCryptUserInfo,
+    getUser,
+    setUser,
 }
