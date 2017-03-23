@@ -1,6 +1,8 @@
 {
   "pages":[
     "pages/wode/wode",
+    "pages/myhome/myhome",
+    "pages/index/index",
     "pages/city/city",
     "pages/testmobileverify/index",
     "pages/comment-list1/comment-list1",
@@ -11,7 +13,6 @@
     "pages/test-comment-add/test-comment-add",
     "pages/myhome/myhome",
     "pages/review/review",
-    "pages/index/index",
     "pages/canvas/index",
     "pages/device/device"
   ],

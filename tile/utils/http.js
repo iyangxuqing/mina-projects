@@ -1,8 +1,7 @@
-var config = require('./config.js');
-const HTTP_BASE_URL = "https://yixing02.applinzi.com/api/";
+let config = require('config.js')
+
 const API_BASE_URL = "https://yixing02.applinzi.com/api/";
 
-/* 检查api成功调用后返回的数据，如token过期等 */
 function checkResponse(res) {
     return true;
 }
@@ -12,99 +11,93 @@ function showRequestFailedTip() {
         title: '提示',
         content: '网络错误，请重试...',
         showCancel: false,
-        success: function (res) {
-        }
     })
 }
 
-function get(option) {
+function get(options) {
     wx.showNavigationBarLoading();
     wx.request({
-        url: API_BASE_URL + option.url,
+        url: API_BASE_URL + options.url,
         header: {
             'Content-Type': 'application/json',
             'version': config.version,
             'token': wx.getStorageSync('token')
         },
-        data: option.data,
+        data: options.data,
         success: function (res) {
             checkResponse(res);
-            if (typeof option.success == 'function') {
-                // var data = res.data;
-                // if(typeof data == 'string') data = JSON.parse(data);
-                option.success(res.data);
+            if (typeof options.success == 'function') {
+                options.success(res.data);
             }
         },
         fail: function (error) {
             showRequestFailedTip();
-            console.log("http请求:" + API_BASE_URL + option.url);
-            console.log(err);
-            if (typeof option.fail == 'function') {
-                option.fail(error);
+            if (typeof options.fail == 'function') {
+                options.fail(error);
             }
         },
         complete: function (res) {
             wx.hideNavigationBarLoading();
-            if (typeof option.complete == 'function') {
-                option.complete(res);
+            if (typeof options.complete == 'function') {
+                options.complete(res);
             }
         }
     })
 }
 
-function post(option) {
+function post(options) {
     wx.showNavigationBarLoading();
     wx.request({
-        url: API_BASE_URL + option.url,
+        url: API_BASE_URL + options.url,
         header: {
             'Content-Type': 'application/x-www-form-urlencoded',
             'version': config.version,
             'token': wx.getStorageSync('token')
         },
         method: 'POST',
-        data: option.data,
+        data: options.data,
         success: function (res) {
             checkResponse(res);
-            if (typeof option.success == 'function') {
-                option.success(res.data);
+            if (typeof options.success == 'function') {
+                options.success(res.data);
             }
         },
         fail: function (error) {
             showRequestFailedTip();
-            console.log("http请求:" + API_BASE_URL + option.url);
-            console.log(err);
-            if (typeof option.fail == 'function') {
-                option.fail(error);
+            if (typeof options.fail == 'function') {
+                options.fail(error);
             }
         },
         complete: function (res) {
             wx.hideNavigationBarLoading();
-            if (typeof option.complete == 'function') {
-                option.complete(res);
+            if (typeof options.complete == 'function') {
+                options.complete(res);
             }
         }
     })
 }
 
 /*
-    option = {
+    options = {
+        paths: [],
         uploadUrl,
         uploadDir,
-        paths: [],
         success,
         fail,
         complete
     }
 */
-function upload(option) {
+function upload(options) {
     wx.showNavigationBarLoading();
-    var uploadedNum = 0;
-    var uploadedFiles = [];
-    var paths = option.paths;
+    var uploadedNum = 0
+    var uploadedFiles = []
+    var paths = option.paths
+    var uploadUrl = options.uploadUrl || 'upload/uploadImage.php'
+    var uploadDir = options.uploadDir || 'upload/images'
 
-    if(paths.length == 0){
-        if(option.success && typeof option.success=='function'){
-            option.success({
+    if (paths.length == 0) {
+        if (options.success && typeof options.success == 'function') {
+            options.success({
                 errNo: 0,
                 errMsg: '没有文件需要上传',
                 uploadedFiles: []
@@ -114,9 +107,9 @@ function upload(option) {
     }
 
     for (var i = 0; i < paths.length; i++) {
-        var path = option.paths[i];
+        var path = paths[i]
         wx.uploadFile({
-            url: option.uploadUrl || config.uploadUrl,
+            url: API_BASE_URL + upLoadUrl,
             filePath: path,
             name: 'file',
             header: {
@@ -125,7 +118,7 @@ function upload(option) {
             },
             formData: {
                 source: path,
-                uploadDir: option.uploadDir || config.uploadDir
+                uploadDir: uploadDir
             },
             success: function (res) {
                 var data = JSON.parse(res.data)
@@ -150,18 +143,18 @@ function upload(option) {
                         result = {
                             errNo: 1,
                             errMsg: '文件上传错误',
-                            uploadedFiles: uploadedFiles /* 上传成功部分 */
+                            uploadedFiles: uploadedFiles
                         }
                         console.log(result)
                     }
-                    if (!result.errNo && option.success) {
-                        option.success(result);
+                    if (!result.errNo && options.success) {
+                        options.success(result);
                     }
-                    if (!!result.errNo && option.fail) {
-                        option.fail(result);
+                    if (!!result.errNo && options.fail) {
+                        options.fail(result);
                     }
-                    if (option.complete) {
-                        option.complete(result);
+                    if (options.complete) {
+                        options.complete(result);
                     }
                     wx.hideNavigationBarLoading();
                 }
@@ -173,5 +166,5 @@ function upload(option) {
 module.exports = {
     get: get,
     post: post,
-    upload: upload
+    upload: upload,
 };

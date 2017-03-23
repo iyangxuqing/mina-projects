@@ -1,6 +1,10 @@
+<import src="/template/userinfo/userinfo.wxml" />
+
+<template is="userInfo" data="{{...userInfo}}" />
+
 <view class="wode">
   <view class="container">
-    <view class="head" bindtap="onLoginTap">
+    <view class="head" bindtap="onLoginTap" style="display:none">
       <view class="avater">
         <image src="{{wode.avater}}"></image>
       </view>

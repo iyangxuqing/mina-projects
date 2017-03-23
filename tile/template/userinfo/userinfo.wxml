@@ -1,0 +1,10 @@
+<template name="userInfo">
+  <view class="userInfo" bindtap="{{onUserInfoTap}}">
+    <view class="userInfo-avatar">
+      <image src="{{avatarUrl}}"></image>
+    </view>
+    <view class="userInfo-nickName">
+      <text>{{nickName}}</text>
+    </view>
+  </view>
+</template>

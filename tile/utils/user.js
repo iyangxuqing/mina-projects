@@ -1,4 +1,5 @@
 let http = require('http.js')
+import { Promise } from 'bluebird.min.js'
 
 const apiBaseUrl = 'https://yixing02.applinzi.com/api/';
 
@@ -18,6 +19,96 @@ function login() {
     })
 }
 
+function wxRequest(options) {
+    let p = new Promise(function (resolve, reject) {
+        wx.request({
+            url: apiBaseUrl + options.url,
+            data: options.data,
+            success: function (res) {
+                resolve(res.data)
+            },
+            fail: function (res) {
+                reject(res)
+            }
+        })
+    })
+    return p
+}
+
+function wxLogin() {
+    let p = new Promise(function (resolve, reject) {
+        wx.login({
+            success: function (res) {
+                resolve(res.code)
+            },
+            fail: function (res) {
+                reject(res)
+            }
+        })
+    })
+    return p
+}
+
+function login2() {
+    wxLogin().then(function (code) {
+        return http.get2({
+            url: 'login/login.php',
+            data: { code: code }
+        })
+    }).then(function (res) {
+        console.log(res)
+    })
+}
+
+function wxGetUserInfo() {
+    return new Promise(function (resolve, reject) {
+        wxLogin().then(function (code) {
+            wx.getUserInfo({
+                success: function (res) {
+                    let userInfo = res.userInfo
+                    wx.setStorageSync('userInfo', userInfo)
+                    http.get2({
+                        url: 'login/setUser.php',
+                        data: userInfo
+                    })
+                    resolve(userInfo)
+                },
+                fail: function (res) {
+                    reject(res)
+                }
+            })
+        }).catch(function (res) {
+            reject(res)
+        })
+    })
+}
+
+function getUserInfo2(options) {
+    return new Promise(function (resolve, reject) {
+        if (!options.from) {
+            let userInfo = wx.getStorageSync('userInfo')
+            if (userInfo) {
+                resolve(userInfo)
+            }
+        } else if (options.from && options.from == 'weixin') {
+            wxGetUserInfo().then(function (userInfo) {
+                resolve(userInfo)
+            }).catch(function (res) {
+                if (res.errMsg == "getUserInfo:fail auth deny") {
+                    let lastErrMsg = wx.getStorageSync('getUserInfoErrMsg')
+                    if (lastErrMsg == "getUserInfo:fail auth deny") {
+                        wx.showModal({
+                            title: '登录提示',
+                            showCancel: false,
+                            content: '距离上次拒绝授权时间过短，无法再次获取授权。您可以稍后再试，或删除本程序后再次进入，就可以重新授权了。'
+                        })
+                    }
+                    wx.setStorageSync('getUserInfoErrMsg', res.errMsg)
+                }
+            })
+        }
+    })
+}
 /*
     对于login，它的目的就是取得openId或与其对应的token。
     在获取上述信息过程中，有可能在wx.login阶段出现fail，这是微信服务器出错。
@@ -158,7 +249,9 @@ function setUser(options) {
 
 module.exports = {
     login,
+    login2,
     getUserInfo,
+    getUserInfo2,
     getCryptUserInfo,
     getUser,
     setUser,
