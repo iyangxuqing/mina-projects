@@ -1,46 +1,30 @@
-<import src="/template/userinfo/userinfo.wxml" />
 
+<!-- -->
+<import src="/template/toptips/toptips.wxml" />
+<template is="topTips" data="{{...topTips}}" />
+
+<!-- -->
+<import src="/template/userinfo/userinfo.wxml" />
 <template is="userInfo" data="{{...userInfo}}" />
 
-<view class="wode">
-  <view class="container">
-    <view class="head" bindtap="onLoginTap" style="display:none">
-      <view class="avater">
-        <image src="{{wode.avater}}"></image>
-      </view>
-      <view class="name">{{wode.name}}</view>
+<!-- -->
+<template is="navbar" data="{{...navbars[0], marginBottom:40}}" />
+<template is="navbar" data="{{...navbars[1]}}" />
+<template is="navbar" data="{{...navbars[2], marginBottom:40}}" />
+<template is="navbar" data="{{...navbars[3]}}" />
+<template is="navbar" data="{{...navbars[4], marginBottom:40}}" />
+<template is="navbar" data="{{...navbars[5]}}" />
+
+<!-- -->
+<template name="navbar">
+  <navigator class="navbar" style="margin-bottom:{{marginBottom}}rpx" url="{{url}}">
+    <view class="navbar-icon" wx:if="{{icon}}">
+      <image src="{{icon}}"></image>
     </view>
-    <view class="body">
-      <view class="body-head">
-        <view class="title">{{wode.title}}</view>
-        <view class="icon">
-          <image src="{{wode.bodyIcon}}"></image>
-        </view>
-      </view>
-      <view class="lists">
-        <block wx:for="{{wode.lists}}" wx:key="" wx:for-item="list">
-          <view class="list ">
-            <block wx:for="{{list}}" wx:key="" wx:for-item="item">
-              <navigator url="{{item.url}}">
-                <view class="item {{item.type}}">
-                  <view class="label">{{item.label}}</view>
-                  <view class="icon">
-                    <image src="{{item.icon}}"></image>
-                  </view>
-                </view>
-              </navigator>
-            </block>
-          </view>
-        </block>
-      </view>
+    <view class="navbar-label">{{label}}</view>
+    <view class="navbar-mark">
+      <image src="{{mark}}"></image>
     </view>
-    <navigator url="{{wode.url}}">
-      <view class="foot">
-        <view class="label">{{wode.label}}</view>
-        <view class="icon">
-          <image src="{{wode.icon}}"></image>
-        </view>
-      </view>
-    </navigator>
-  </view>
-</view>
+  </navigator>
+</template>
+<!-- -->

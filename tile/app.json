@@ -1,7 +1,6 @@
 {
   "pages":[
     "pages/wode/wode",
-    "pages/myhome/myhome",
     "pages/index/index",
     "pages/city/city",
     "pages/testmobileverify/index",

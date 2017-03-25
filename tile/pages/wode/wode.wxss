@@ -1,3 +1,4 @@
+@import "/template/toptips/toptips.wxss";
 @import "/template/userinfo/userinfo.wxss";
 
 page{
@@ -73,4 +74,30 @@ page{
 }
 .list{
     margin-bottom: 40rpx;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100rpx;
+    padding: 0 30rpx;
+    background-color: #fff;
+    margin-bottom: 1px;
+}
+.navbar-label{
+    flex-grow: 1;
+}
+.navbar-icon{
+    width: 48rpx;
+    height: 48rpx;
+    margin-right: 20rpx;
+}
+.navbar-mark{
+    width: 48rpx;
+    height: 48rpx;
+}
+.navbar-separate{
+    height: 40rpx;
+    background-color: transparent;
 }

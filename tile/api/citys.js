@@ -2,7 +2,6 @@ const http = require("../utils/http.js")
 
 export function getCitys(options = {}) {
     let citys = wx.getStorageSync('citys');
-    console.log('a', citys)
     if (citys) {
         options.success && options.success(citys)
     } else {

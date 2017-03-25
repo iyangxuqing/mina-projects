@@ -1,6 +1,5 @@
 /**app.wxss**/
 
-@import "/template/toptips/toptips.wxss";
 @import "/template/wetoast/wetoast.wxss";
 
 page {

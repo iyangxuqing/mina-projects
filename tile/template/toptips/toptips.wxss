@@ -1,41 +1,77 @@
-.toptips {
+.topTips {
   position: fixed;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   top: 0;
   left: 0;
   right: 0;
-  padding: 8px;
-  font-size: 14px;
-  text-align: center;
-  color: #fff;
   z-index: 5000;
+  display: flex;
+  justify-content: space-between;
+}
+
+.topTips-icon {
+  width: 90rpx;
+  height: 90rpx;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.topTips-text {
+  flex-grow: 1;
+  color: #fff;
+  font-size: 28rpx;
   word-wrap: break-word;
   word-break: break-all;
+  padding: 20rpx;
+  padding-left: 30rpx;
+  padding-right: 0rpx;
 }
 
-.toptips-info {
-  background-color: #10aefe !important;
+.topTips-mask {
+  position: fixed;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4999;
+  background-color: transparent;
 }
 
-.toptips-warn {
-  background-color: #ffbe00 !important;
+.topTips-text-align-left {
+  text-align: left;
 }
 
-.toptips-error {
-  background-color: #e64340 !important;
+.topTips-text-align-center {
+  text-align: center;
 }
 
-.toptips-success {
-  background-color: #09bb08 !important;
+.topTips-info {
+  background-color: rgba(16, 174, 254, 0.68);
 }
 
-.fadeIn {
+.topTips-warn {
+  background-color: rgba(255, 190, 0, 0.78);
+}
+
+.topTips-error {
+  background-color: rgba(230, 67, 64, 0.78);
+}
+
+.topTips-success {
+  background-color: rgba(9, 187, 8, 0.58);
+}
+
+.animate-fade-in {
   -webkit-animation: fadeIn ease 0.3s forwards;
   animation: fadeIn ease 0.3s forwards;
 }
 
-.fadeOut {
+.animate-fade-out {
   -webkit-animation: fadeOut ease 0.3s forwards;
   animation: fadeOut ease 0.3s forwards;
 }

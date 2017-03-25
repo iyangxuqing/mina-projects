@@ -2,51 +2,46 @@ let config = require('config.js')
 
 const API_BASE_URL = "https://yixing02.applinzi.com/api/";
 
-function checkResponse(res) {
-    return true;
+function checkResponse(options, res) {
+    if (res.data.error) {
+        getApp().debug.set(options, res)
+    }
 }
 
 function showRequestFailedTip() {
-    wx.showModal({
-        title: '提示',
-        content: '网络错误，请重试...',
-        showCancel: false,
+    let page = getCurrentPages().pop()
+    page.tipTops.show({
+        text: '提示：网络错误，请重试...'
     })
 }
 
 function get(options) {
-    wx.showNavigationBarLoading();
+    if (!options.silent) wx.showNavigationBarLoading();
     wx.request({
         url: API_BASE_URL + options.url,
         header: {
             'Content-Type': 'application/json',
             'version': config.version,
-            'token': wx.getStorageSync('token')
+            'token': wx.getStorageSync('token'),
         },
         data: options.data,
         success: function (res) {
-            checkResponse(res);
-            if (typeof options.success == 'function') {
-                options.success(res.data);
-            }
+            checkResponse(options, res)
+            options.success && options.success(res.data)
         },
         fail: function (error) {
-            showRequestFailedTip();
-            if (typeof options.fail == 'function') {
-                options.fail(error);
-            }
+            if (!options.silent) showRequestFailedTip()
+            options.fail && options.fail(error)
         },
         complete: function (res) {
-            wx.hideNavigationBarLoading();
-            if (typeof options.complete == 'function') {
-                options.complete(res);
-            }
+            if (!options.silent) wx.hideNavigationBarLoading();
+            options.complete && options.complete(res);
         }
     })
 }
 
 function post(options) {
-    wx.showNavigationBarLoading();
+    if (!options.silent) wx.showNavigationBarLoading();
     wx.request({
         url: API_BASE_URL + options.url,
         header: {
@@ -57,22 +52,16 @@ function post(options) {
         method: 'POST',
         data: options.data,
         success: function (res) {
-            checkResponse(res);
-            if (typeof options.success == 'function') {
-                options.success(res.data);
-            }
+            checkResponse(options, res);
+            options.success && options.success(res.data);
         },
         fail: function (error) {
             showRequestFailedTip();
-            if (typeof options.fail == 'function') {
-                options.fail(error);
-            }
+            options.fail && options.fail(error);
         },
         complete: function (res) {
-            wx.hideNavigationBarLoading();
-            if (typeof options.complete == 'function') {
-                options.complete(res);
-            }
+            if (!options.silent) wx.hideNavigationBarLoading();
+            options.complete && options.complete(res);
         }
     })
 }
