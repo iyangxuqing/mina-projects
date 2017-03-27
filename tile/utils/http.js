@@ -4,7 +4,10 @@ const API_BASE_URL = "https://yixing02.applinzi.com/api/";
 
 function checkResponse(options, res) {
     if (res.data.error) {
-        getApp().debug.set(options, res)
+        getApp().debug.set(options.url, {
+            data: options.data,
+            error: res.data.error
+        })
     }
 }
 
@@ -56,7 +59,7 @@ function post(options) {
             options.success && options.success(res.data);
         },
         fail: function (error) {
-            showRequestFailedTip();
+            if (!options.silent) showRequestFailedTip();
             options.fail && options.fail(error);
         },
         complete: function (res) {

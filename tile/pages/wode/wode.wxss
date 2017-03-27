@@ -1,10 +1,11 @@
 @import "/template/toptips/toptips.wxss";
 @import "/template/userinfo/userinfo.wxss";
+@import "/template/mobile/mobile.wxss";
 
 page{
     background: #eeeff3;
 }
-.container{
+/*.container{
     padding-left: 30rpx;
     padding-right: 30rpx;
 }
@@ -74,7 +75,7 @@ page{
 }
 .list{
     margin-bottom: 40rpx;
-}
+}*/
 
 .navbar{
     display: flex;

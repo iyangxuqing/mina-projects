@@ -13,25 +13,17 @@ let data = {
     textStyle: 'tips-text-align-center'
 }
 
+let timer = null
+
 let methods = {
     onClose(e) {
-        page.setData({
-            'topTips.animateCss': 'animate-fade-out'
-        })
-        setTimeout(function () {
-            page.setData({
-                'topTips.visible': false
-            })
-        }, 300)
-        this.callback && this.callback()
+        this.hide()
     }
 }
 
 export class TopTips {
     constructor() {
         page = getCurrentPages().pop()
-        this.timer = null
-        this.callback = null
         this.init()
     }
 
@@ -48,7 +40,6 @@ export class TopTips {
     }
 
     show(options = {}) {
-        this.remove()
         options = Object.assign({}, data, options)
         this.callback = options.callback
         page.setData({
@@ -60,39 +51,34 @@ export class TopTips {
         })
         if (options.multiLine) {
             page.setData({
-                'topTips.textStyle': 'tips-text-align-left'
+                'topTips.textStyle': 'topTips-text-align-left'
             })
         } else {
             page.setData({
-                'topTips.textStyle': 'tips-text-align-cenger'
+                'topTips.textStyle': 'topTips-text-align-center'
             })
         }
+        
+        clearTimeout(this.timer)
         page.setData({
             'topTips.visible': true,
             'topTips.animateCss': 'animate-fade-in'
         })
         if (options.duration > 0) {
-            this.timer = setTimeout(function () {
-                page.setData({
-                    'topTips.animateCss': 'animate-fade-out'
-                })
-                setTimeout(function () {
-                    page.setData({
-                        'topTips.visible': false
-                    })
-                    if (typeof options.success == 'function') {
-                        options.success()
-                    }
-                }, 300)
-            }, options.duration)
+            this.timer = setTimeout(this.hide, options.duration)
         }
     }
 
-    remove() {
-        this.timer = null
+    hide() {
         page.setData({
-            'topTips.animateCss': 'animate-fade-out',
-            'topTips.visible': true
+            'topTips.animateCss': 'animate-fade-out'
         })
+        setTimeout(function () {
+            page.setData({
+                'topTips.visible': false
+            })
+        }, 300)
+        this.callback && this.callback()
     }
+
 }

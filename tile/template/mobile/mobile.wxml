@@ -2,26 +2,35 @@
   <view class="mobile">
     <view class="mobile-unverified" wx:if="{{!verified}}">
       <view class="mobile-row">
-        <input class="mobile-number-input {{numberError?'notify-message-error':''}}" value="{{number}}" placeholder="手机号" type="number" maxlength="11" bindblur="onMobileNumberInputBlur" bindfocus="onMobileNumberInputFocus" />
-        <view class="mobile-code-request" catchtap="onMobileCodeRequest">{{second?second:'发送验证码'}}</view>
+        <view class="row-icon mobile-icon" wx:if="{{icon}}">
+          <image src="{{icon}}"></image>
+        </view>
+        <view class="row-label mobile-label" wx:if="{{label}}">{{label}}</view>
+        <input class="mobile-number-input {{numberError?'notify-message-error':''}}" value="{{number}}" placeholder="输入手机号" type="number" maxlength="11" bindblur="{{onNumberInputBlur}}" bindfocus="{{onNumberInputFocus}}" />
+        <view class="mobile-code-request" catchtap="{{onCodeRequest}}">{{codeRequestText}}</view>
       </view>
       <view class="mobile-row">
-        <input class="mobile-code-input {{codeError?'notify-message-error':''}}" value="{{code}}" placeholder="验证码" type="number" maxlength="6" bindinput="onMobileCodeInput" bindfocus="onMobileCodeInputFocus" />
-        <view class="mobile-code-confirm" wx:if="{{code.length>=6}}" catchtap="onMobileCodeConfirm">确 定</view>
+        <view class="row-icon mobile-code-icon" wx:if="{{true}}">
+          <image src="{{codeIcon}}"></image>
+        </view>
+        <view class="row-label mobile-code-label" wx:if="{{codeLabel}}">{{codeLabel}}</view>
+        <input class="mobile-code-input {{codeError?'notify-message-error':''}}" value="{{code}}" placeholder="输入验证码" type="number" maxlength="6" bindinput="{{onCodeInput}}" bindfocus="{{onCodeInputFocus}}" />
+        <view class="mobile-code-confirm" wx:if="{{code.length>=6}}" catchtap="{{onCodeConfirm}}">确 定</view>
       </view>
     </view>
-  </view>
-  <view class="mobile-verified" wx:if="{{verified}}">
-    <view class="mobile-row">
-      <view class="mobile-row-left">
-        <view class="mobile-icon"></view>
-      </view>
-      <view class="mobile-row-middle">
-        <view class="mobile-number">{{number}}</view>
-      </view>
-      <view class="mobile-row-right">
-        <icon type="success" size="28" color="#09bb08"/>
+    <view class="mobile-verified" wx:if="{{verified}}">
+      <view class="mobile-row">
+        <view class="row-icon mobile-verified-icon" wx:if="{{verifiedIcon}}">
+          <image src="{{verifiedIcon}}"></image>
+        </view>
+        <view class="row-label mobile-verified-label" wx:if="{{verifiedLabel}}">{{verifiedLabel}}</view>
+        <view class="row-value verified-number">{{number}}</view>
+        <view class="row-mark verified-mark">
+          <icon type="success" size="24" color="#09bb08" />
+        </view>
       </view>
     </view>
+
+    <!-- -->
   </view>
 </template>

@@ -100,7 +100,7 @@ function getUserInfoFromWeixin(options) {
             })
         },
         fail: function (res) {
-            debug.set('wx.login fail', res)
+            getApp().debug.set('wx.login fail', res)
             page.topTips.show({
                 text: '登录服务器出错，请稍后重试。'
             })

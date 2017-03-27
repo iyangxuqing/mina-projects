@@ -3,18 +3,8 @@ let http = require("../../utils/http.js")
 let page = {}
 
 let data = {
-    icon: '/images/icon/mobile.png',
-    label: '',
-    codeIcon: '',
-    codeLabel: '',
-    verifiedIcon: '/images/icon/mobile.png',
-    verifiedLabel: '手机号码',
-    codeRequestText: '发送验证码',
-    number: '',
-    code: '',
-    numberError: false,
-    codeError: false,
-    verified: false,
+    version: 'version 1.0',
+    icon: '/images/icon/address.png',
 }
 
 let methods = {
@@ -23,6 +13,8 @@ let methods = {
         page.setData({
             'mobile.number': e.detail.value
         })
+        // fixed
+        this.number = e.detail.value
     },
 
     onNumberInputFocus: function (e) {
@@ -44,11 +36,10 @@ let methods = {
     },
 
     onCodeRequest: function (e) {
-        let number = page.data.mobile.number
+        let second = page.data.mobile.second || ''
+        if (second != '') return
+        let number = page.data.mobile.number || ''
         if (number == '') return
-        let codeRequestText = page.data.mobile.codeRequestText
-        if (codeRequestText != '发送验证码') return
-
         var reg = /^1[3|4|5|7|8]\d{9}$/
         if (!reg.test(number)) {
             page.setData({
@@ -64,7 +55,7 @@ let methods = {
             url: 'sms/codeRequest.php',
             data: {
                 tplId: 29922,
-                mobile: number
+                mobile: page.data.mobile.number
             },
             success: function (res) {
                 // 手机号码已被其他微信账号绑定提示
@@ -82,28 +73,29 @@ let methods = {
             }
         })
 
-        let second = 60
+        page.setData({
+            'mobile.second': '60秒后重发'
+        })
         let timer = setInterval(function () {
-            second--
-            if (second == 0) {
-                let codeRequestText = '发送验证码'
+            let nSecond = parseInt(that.data.mobile.second)
+            nSecond = nSecond - 1
+            if (nSecond == 0) {
                 page.setData({
-                    'mobile.codeRequestText': codeRequestText
+                    'mobile.second': ''
                 })
                 clearInterval(timer)
             } else {
-                let codeRequestText = second + '秒后重发'
-                if (second < 10) codeRequestText = '0' + codeRequestText
+                if (nSecond < 10) nSecond = '0' + nSecond
                 page.setData({
-                    'mobile.codeRequestText': codeRequestText
+                    'mobile.second': nSecond + '秒后重发'
                 })
             }
         }, 1000)
     },
 
     onCodeConfirm: function (e) {
-        let code = page.data.mobile.code
-        let number = page.data.mobile.number
+        let code = page.data.mobile.code || ''
+        let number = page.data.mobile.number || ''
         if (code == '') return;
         http.post({
             url: 'sms/codeVerify.php',
@@ -115,7 +107,6 @@ let methods = {
                 if (!res.error) {
                     page.setData({
                         'mobile.code': '',
-                        'mobile.number': res.mobile,
                         'mobile.verified': true
                     })
                 } else {
@@ -147,9 +138,5 @@ export class Mobile {
                 ['mobile.' + key]: 'mobile.' + key
             })
         }
-    }
-
-    getMobile() {
-
     }
 }

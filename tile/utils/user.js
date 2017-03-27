@@ -10,8 +10,8 @@ function login() {
                 silent: true,
                 url: 'login/login.php',
                 data: { code: res.code },
-                success: function(res){
-                    if(res.token){
+                success: function (res) {
+                    if (res.token) {
                         wx.setStorageSync('token', res.token)
                     } else {
                         getApp().debug('login/login.php error', res)
@@ -28,6 +28,19 @@ function login() {
     })
 }
 
+/*
+    wx.getUserInfo在用户拒绝信息授权时，在不同平台上返回的错误信息有差别
+    在android平台，在弹出授权对话框时拒绝授权，返回的是
+    {"errMsg": "getUserInfo:fail auth deny"}
+    在应已拒绝授权而不再弹出授权对话框时，返回的是
+    {"errMsg":"getUserInfo:fail"}
+    在iOS平台，在弹出授权对话框时拒绝授权，返回的是
+    {"errMsg": "getUserInfo:fail auth deny"}
+    在应已拒绝授权而不再弹出授权对话框时，返回的是
+    {"errMsg":"getUserInfo:fail auth deny","err_code":"-12006"}
+    在开发平台，则是无论弹出对话框还是静默拒绝，返回的都是
+    {"errMsg": "getUserInfo:fail auth deny"}
+*/
 function getUserInfo(options) {
     wx.login({
         success: function (res) {
@@ -85,7 +98,7 @@ function getUserInfo(options) {
             })
         },
         fail: function (res) {
-            debug.set('wx.login fail', res)
+            getApp().debug.set('wx.login fail', res)
             page.topTips.show({
                 text: '登录服务器出错，请稍后重试。'
             })
@@ -109,13 +122,13 @@ function getCryptUserInfo(cb) {
                     http.post({
                         url: 'decrypt/wx_decrypt2.php',
                         data: data,
-                        success: function(res){
+                        success: function (res) {
                             console.log(res)
                         }
                     })
                     options.success && options.success(userInfo)
                 },
-                fail: function(res){
+                fail: function (res) {
                     options.fail && options.fail(res)
                 }
             })
@@ -123,7 +136,7 @@ function getCryptUserInfo(cb) {
     })
 }
 
-function getUser(options) {
+function getUser(options = {}) {
     http.get({
         url: 'login/getUser.php',
         data: options.data,
@@ -133,7 +146,7 @@ function getUser(options) {
     })
 }
 
-function setUser(options) {
+function setUser(options = {}) {
     http.post({
         url: 'login/setUser.php',
         data: options.data,
@@ -143,10 +156,8 @@ function setUser(options) {
     })
 }
 
-module.exports = {
-    login,
-    getUserInfo,
-    getCryptUserInfo,
-    getUser,
-    setUser,
+export var user = {
+    login: login,
+    getUser: getUser,
+    setUser: setUser,
 }

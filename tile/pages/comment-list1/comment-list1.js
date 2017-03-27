@@ -1,5 +1,4 @@
 // pages/comment-list/comment-list.js
-var util = require("../../utils/util.js");
 var http = require("../../utils/http.js");
 var db = require("../../utils/db.js");
 var WeToast = require("../../template/wetoast/wetoast.js");

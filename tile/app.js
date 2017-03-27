@@ -1,7 +1,7 @@
 //app.js
-var user = require("utils/user.js")
-import { device } from 'utils/util.js'
+import { user } from 'utils/user.js'
 import { debug } from 'utils/debug.js'
+import { device } from 'utils/device.js'
 
 App({
 

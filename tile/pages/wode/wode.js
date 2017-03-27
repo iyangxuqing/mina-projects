@@ -1,5 +1,7 @@
 import { TopTips } from '../../template/toptips/toptips.js'
 import { UserInfo } from '../../template/userinfo/userinfo.js'
+import { Mobile } from '../../template/mobile/mobile.js'
+import { user } from '../../utils/user.js'
 
 Page({
   data: {
@@ -46,8 +48,19 @@ Page({
   },
 
   onLoad: function (options) {
+    let page = this
     this.topTips = new TopTips()
     this.userInfo = new UserInfo()
+    this.mobile = new Mobile()
+    this.user = user.getUser({
+      success: function(res){
+        console.log(res)
+        page.setData({
+          'mobile.number': res.mobile,
+          'mobile.verified': res.mobileVerified
+        })
+      }
+    })
   },
 
 })
