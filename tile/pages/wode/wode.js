@@ -1,10 +1,19 @@
 import { TopTips } from '../../template/toptips/toptips.js'
 import { UserInfo } from '../../template/userinfo/userinfo.js'
 import { Mobile } from '../../template/mobile/mobile.js'
+import { CityPicker } from '../../template/citypicker/citypicker.js'
+
 import { user } from '../../utils/user.js'
+
+let app = getApp()
 
 Page({
   data: {
+
+    user: {
+      gender: false,
+      age: 23
+    },
 
     navbars: [
       {
@@ -47,20 +56,21 @@ Page({
 
   },
 
+  updateData: function (scope, data) {
+    let page = getCurrentPages().pop()
+    for (let key in data) {
+      page.setData({
+        [`${scope}.${key}`]: data[key]
+      })
+    }
+  },
+
   onLoad: function (options) {
-    let page = this
     this.topTips = new TopTips()
-    this.userInfo = new UserInfo()
-    this.mobile = new Mobile()
-    this.user = user.getUser({
-      success: function(res){
-        console.log(res)
-        page.setData({
-          'mobile.number': res.mobile,
-          'mobile.verified': res.mobileVerified
-        })
-      }
-    })
+    this.userInfo = new UserInfo(app.user)
+    this.mobile = new Mobile(app.user)
+
+    console.log(getApp())
   },
 
 })

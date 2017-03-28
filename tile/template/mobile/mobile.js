@@ -3,18 +3,20 @@ let http = require("../../utils/http.js")
 let page = {}
 
 let data = {
-    icon: '/images/icon/mobile.png',
-    label: '',
-    codeIcon: '',
-    codeLabel: '',
-    verifiedIcon: '/images/icon/mobile.png',
-    verifiedLabel: '手机号码',
-    codeRequestText: '发送验证码',
-    number: '',
-    code: '',
-    numberError: false,
-    codeError: false,
-    verified: false,
+    mobile: {
+        icon: '/images/icon/mobile.png',
+        label: '',
+        codeIcon: '',
+        codeLabel: '',
+        verifiedIcon: '/images/icon/mobile.png',
+        verifiedLabel: '手机号码',
+        codeRequestText: '发送验证码',
+        number: '',
+        code: '',
+        numberError: false,
+        codeError: false,
+        verified: false
+    }
 }
 
 let methods = {
@@ -132,14 +134,20 @@ let methods = {
 }
 
 export class Mobile {
-    constructor() {
+    constructor(options) {
         page = getCurrentPages().pop()
-        this.init()
+        this.init(options)
     }
 
-    init() {
+    init(options) {
+        if (options.mobile) {
+            data.mobile.number = options.mobile
+        }
+        if (options.mobileVerified) {
+            data.mobile.verified = options.mobileVerified
+        }
         page.setData({
-            mobile: data
+            mobile: data.mobile
         })
         for (let key in methods) {
             page['mobile.' + key] = methods[key].bind(this)

@@ -6,7 +6,7 @@
           <image src="{{icon}}"></image>
         </view>
         <view class="row-label mobile-label" wx:if="{{label}}">{{label}}</view>
-        <input class="mobile-number-input {{numberError?'notify-message-error':''}}" value="{{number}}" placeholder="输入手机号" type="number" maxlength="11" bindblur="{{onNumberInputBlur}}" bindfocus="{{onNumberInputFocus}}" />
+        <input class="mobile-number-input {{numberError?'notify-message-error':''}}" value="{{number}}" placeholder="输入手机号" placeholder-class="placeholder-class" type="number" maxlength="11" bindblur="{{onNumberInputBlur}}" bindfocus="{{onNumberInputFocus}}" />
         <view class="mobile-code-request" catchtap="{{onCodeRequest}}">{{codeRequestText}}</view>
       </view>
       <view class="mobile-row">
@@ -14,7 +14,7 @@
           <image src="{{codeIcon}}"></image>
         </view>
         <view class="row-label mobile-code-label" wx:if="{{codeLabel}}">{{codeLabel}}</view>
-        <input class="mobile-code-input {{codeError?'notify-message-error':''}}" value="{{code}}" placeholder="输入验证码" type="number" maxlength="6" bindinput="{{onCodeInput}}" bindfocus="{{onCodeInputFocus}}" />
+        <input class="mobile-code-input {{codeError?'notify-message-error':''}}" value="{{code}}" placeholder="输入验证码" placeholder-class="placeholder-class" type="number" maxlength="6" bindinput="{{onCodeInput}}" bindfocus="{{onCodeInputFocus}}" />
         <view class="mobile-code-confirm" wx:if="{{code.length>=6}}" catchtap="{{onCodeConfirm}}">确 定</view>
       </view>
     </view>

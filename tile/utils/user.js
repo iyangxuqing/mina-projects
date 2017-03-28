@@ -3,7 +3,7 @@ let http = require('http.js')
 let authDenyTimes = 0
 const authDenyMessage = "因为距离上次拒绝授权的时间过短，无法再次获取授权。您可以稍后再试，也可以在删除本程序后重新进入，即可再次进行授权。"
 
-function login() {
+function login(cb) {
     wx.login({
         success: function (res) {
             http.get({
@@ -12,18 +12,21 @@ function login() {
                 data: { code: res.code },
                 success: function (res) {
                     if (res.token) {
+                        if (res.gender) {
+                            res.gender = res.gender == "1"
+                        }
+                        if (res.mobileVerified) {
+                            res.mobileVerified = res.mobileVerified == "1"
+                        }
                         wx.setStorageSync('token', res.token)
-                    } else {
-                        getApp().debug('login/login.php error', res)
+                        wx.setStorageSync('user', res)
+                        cb && cb(res)
                     }
                 },
-                fail: function (res) {
-                    getApp().debug('login/login.php fail', res)
-                }
             })
         },
         fail: function (res) {
-            getApp().debug('wx.login fail', res)
+            getApp().debug.set('wx.login fail', res)
         }
     })
 }
@@ -141,6 +144,12 @@ function getUser(options = {}) {
         url: 'login/getUser.php',
         data: options.data,
         success: function (res) {
+            if (res.gender) {
+                res.gender = res.gender == "1"
+            }
+            if (res.mobileVerified) {
+                res.mobileVerified = res.mobileVerified == "1"
+            }
             options.success && options.success(res)
         }
     })

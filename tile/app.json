@@ -1,9 +1,11 @@
 {
-  "pages":[
+  "pages": [
+    "pages/home/home2",
+    "pages/fengge/fengge",
+    "pages/anli/anli",
     "pages/wode/wode",
     "pages/index/index",
     "pages/city/city",
-    "pages/testmobileverify/index",
     "pages/comment-list1/comment-list1",
     "pages/servicerMessage/index",
     "pages/templateMessage/index",
@@ -15,10 +17,42 @@
     "pages/canvas/index",
     "pages/device/device"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#333333",
+    "selectedColor": "#ccc",
+    "backgroundColor": "#eee",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home2",
+        "text": "首页",
+        "iconPath": "images/tab/home1.png",
+        "selectedIconPath": "images/tab/home.png"
+      },
+      {
+        "pagePath": "pages/fengge/fengge",
+        "text": "样板间",
+        "iconPath": "images/tab/model.png",
+        "selectedIconPath": "images/tab/model1.png"
+      },
+      {
+        "pagePath": "pages/anli/anli",
+        "text": "身边案例",
+        "iconPath": "images/tab/case.png",
+        "selectedIconPath": "images/tab/case1.png"
+      },
+      {
+        "pagePath": "pages/wode/wode",
+        "text": "我的信息",
+        "iconPath": "images/tab/my2.png",
+        "selectedIconPath": "images/tab/my3.png"
+      }
+    ]
   }
 }

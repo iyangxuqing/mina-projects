@@ -12,6 +12,10 @@
 <template is="mobile" data="{{...mobile}}" />
 
 <!-- -->
+<import src="/template/citypicker/citypicker" />
+<template is="cityPicker" data="{{...citypicker}}" />
+
+<!-- -->
 <template is="navbar" data="{{...navbars[0], marginBottom:40}}" />
 <template is="navbar" data="{{...navbars[1]}}" />
 <template is="navbar" data="{{...navbars[2], marginBottom:40}}" />

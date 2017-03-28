@@ -1,7 +1,0 @@
-/* pages/testmobileverify/index.wxss */
-@import "/template/mobile/mobile.wxss";
-
-page {
-  box-sizing: border-box;
-  padding: 200rpx 30rpx;
-}

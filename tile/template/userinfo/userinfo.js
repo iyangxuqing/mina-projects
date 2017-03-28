@@ -16,8 +16,12 @@ let methods = {
     onUserInfoTap: function (e) {
         getUserInfoFromWeixin({
             success: function (userInfo) {
+                console.log(getApp())
+                Object.assign(getApp().user, userInfo)
+                console.log(getApp())
                 page.setData({
-                    userInfo: userInfo
+                    'userInfo.nickName': userInfo.nickName,
+                    'userInfo.avatarUrl': userInfo.avatarUrl
                 })
             }
         })
@@ -109,14 +113,21 @@ function getUserInfoFromWeixin(options) {
 }
 
 export class UserInfo {
-    constructor() {
+    constructor(options) {
         page = getCurrentPages().pop()
-        this.init()
+        this.init(options)
     }
 
-    init() {
+    init(options) {
+        let userInfo = data.userInfo
+        if (options.nickName) {
+            userInfo.nickName = options.nickName
+        }
+        if (options.avatarUrl) {
+            userInfo.avatarUrl = options.avatarUrl
+        }
         page.setData({
-            userInfo: data.userInfo
+            userInfo: userInfo
         })
         for (let key in methods) {
             page['userInfo.' + key] = methods[key].bind(this)

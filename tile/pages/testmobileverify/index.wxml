@@ -1,4 +1,0 @@
-<import src="/template/toptips/toptips.wxml" />
-<import src="/template/mobile/mobile.wxml" />
-<template is="mobile" data="{{...mobile}}" />
-<template is="toptips" data="{{...toptips}}" />

@@ -27,6 +27,6 @@ image {
 }
 
 .userInfo-nickName {
-  color: #aaa;
+  color: #888;
   margin: 20rpx;
 }

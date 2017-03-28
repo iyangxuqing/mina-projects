@@ -41,7 +41,7 @@
 
 .mobile-number-input, .mobile-code-input {
   flex-grow: 1;
-  font-size: 28rpx;
+  font-size: 40rpx;
   margin-right: 40rpx;
 }
 
@@ -67,4 +67,12 @@
   box-sizing: border-box;
   color: #666;
   border: 1px solid #4bd4c5;
+}
+
+.placeholder-class{
+  font-size: 28rpx;
+}
+
+.verified-number{
+  font-size: 40rpx;
 }
