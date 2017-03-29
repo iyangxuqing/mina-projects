@@ -1,21 +1,21 @@
-<import src="/template/citypicker/citypicker.wxml" />
-<view class="address-info">
-  <view class="address-title">
-    <text>输入地址</text>
-  </view>
-  <view class="address-row address-row-district" bindtap="onDistrictTap">
-    <view class="address-placeholder">省市区县</view>
-  </view>
+<import src="/template/address/address.wxml" />
+<template is="address" data="{{...address}}" />
 
-  <view class="address-row address-row-detail">
-    <input class="address-input" placeholder="详细地址" />
+<!--<view class="address">
+  <view class="address-row address-title">输入地址</view>
+  <view class="address-row address-row-district" bindtap="onDistrictTap">
+    <view class="address-district-label">选择地区</view>
+    <view class="address-district-value">浙江省 金华市 义乌市</view>
+    <view class="address-district-mark"></view>
   </view>
-  <!--<view class="address-row address-row-detail">
-    <textarea placeholder="详细地址" auto-height="{{true}}" />
-  </view>-->
-  <view class="address-btn-area">
+  <view class="address-row address-row-detail">
+    <view class="address-detail-label">详细地址</view>
+    <input class="address-detail-input" placeholder="街道门牌信息" />
+    <view class="address-detail-mark"></view>
+  </view>
+  <view class="address-row address-row-btn">
     <button class="address-btn address-btn-confirm" hover-class="address-btn-confirm-hover">保 存</button>
     <button class="address-btn address-btn-cancel">取 消</button>
   </view>
 </view>
-<template is="cityPicker" data="{{...cityPicker}}" />
+<template is="cityPicker" data="{{...cityPicker}}" />-->

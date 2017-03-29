@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/city/city",
     "pages/home/home2",
     "pages/fengge/fengge",
     "pages/anli/anli",
     "pages/wode/wode",
     "pages/index/index",
-    "pages/city/city",
     "pages/comment-list1/comment-list1",
     "pages/servicerMessage/index",
     "pages/templateMessage/index",

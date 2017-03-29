@@ -3,6 +3,8 @@ import { user } from 'utils/user.js'
 import { debug } from 'utils/debug.js'
 import { device } from 'utils/device.js'
 
+import { getCitys } from 'utils/citys.js'
+
 App({
 
   globalData: {
@@ -17,10 +19,11 @@ App({
   getCryptUserInfo: user.getCryptUserInfo,
 
   onLaunch: function () {
-    wx.clearStorage()
+    // wx.clearStorage()
     let app = this
-    user.login(function(user){
+    user.login(function (user) {
       app.user = user
+      getCitys()
     })
     device.getDeviceInfo(this)
   }

@@ -1,20 +1,23 @@
 // pages/city/city.js
-import { CityPicker } from "../../template/citypicker/citypicker.js"
+import { Address } from "../../template/address/address.js"
 
 Page({
   data: {
   },
 
-  onDistrictTap: function (e) {
-    this.cityPicker.show({
-      success: function (res) {
-        console.log(res)
-      }
-    })
-  },
+  onLoad: function (e) {
 
-  onLoad: function (options) {
-    this.cityPicker = new CityPicker()
+    let options = {
+      address: {
+        province: '浙江省',
+        city: '金华市',
+        district: '东阳市',
+        detail: '江东南路750号'
+      }
+    }
+
+    this.address = new Address(options)
+    let system = wx.getSystemInfoSync()
   }
 
 })
