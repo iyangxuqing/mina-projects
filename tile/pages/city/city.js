@@ -1,4 +1,5 @@
 // pages/city/city.js
+import { TopTips } from "../../template/toptips/toptips.js"
 import { Address } from "../../template/address/address.js"
 
 Page({
@@ -7,17 +8,24 @@ Page({
 
   onLoad: function (e) {
 
-    let options = {
-      address: {
-        province: '浙江省',
-        city: '金华市',
-        district: '东阳市',
-        detail: '江东南路750号'
-      }
-    }
+    setTimeout(function () {
 
-    this.address = new Address(options)
-    let system = wx.getSystemInfoSync()
+      let user = getApp().user
+      let address = {
+        address: {
+          province: user.address_province || '浙江省',
+          city: user.address_city || '金华市',
+          district: user.address_district || '义乌市',
+          detail: user.address_detail || ''
+        }
+      }
+
+      this.topTips = new TopTips()
+      this.address = new Address(address)
+      let system = wx.getSystemInfoSync()
+
+    }.bind(this), 1000)
+
   }
 
 })

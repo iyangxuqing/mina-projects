@@ -10,10 +10,7 @@ let data = {
     confirmText: '确定',
     confirmCss: '',
     items: [],
-    value: [10, 6, 7],
-    province: '浙江省',
-    city: '金华市',
-    district: '义乌市',
+    value: [0, 0, 0],
     maskAnimateCss: 'animate-fade-out',
     pickerAnimateCss: 'animate-slide-down'
 }
@@ -30,27 +27,21 @@ let methods = {
         let province = items[0][value[0]]
         let city = items[1][value[1]]
         let district = items[2][value[2]]
-        if (this.success) {
-            this.success({
-                province,
-                city,
-                district
-            })
+        let address = {
+            province: province,
+            city: city,
+            district: district
         }
+        this.success && this.success(address)
     },
 
     onChange: function (e) {
         this.value = e.detail.value
         this.items = this.getItems(this.value)
         this.set({
-            items: this.items
+            items: this.items,
+            value: this.value
         })
-        let self = this
-        setTimeout(function () {
-            self.set({
-                value: this.value
-            })
-        }, 100)
     },
 }
 
@@ -59,6 +50,8 @@ export class CityPicker {
     constructor(options = {}) {
         page = getCurrentPages().pop()
         this.scope = options.parentScope + '.cityPicker'
+        this.address = options.address
+        this.success = options.success
         this.set(data)
         for (let key in methods) {
             page[this.scope + '.' + key] = methods[key].bind(this)
@@ -66,33 +59,29 @@ export class CityPicker {
                 [key]: this.scope + '.' + key
             })
         }
-        this.init(options)
+        this.init()
     }
 
-    init(options) {
-        let districts = {
-            province: options.province || data.province,
-            city: options.city || data.city,
-            districts: options.district || data.district
-        }
-        let value = this.getValues(districts)
-        let items = this.getItems(value)
+    init() {
+        this.value = this.getValues(this.address)
+        this.items = this.getItems(this.value)
         this.set({
-            value: value,
-            items: items
+            value: this.value,
+            items: this.items
         })
     }
 
     show(options = {}) {
-        // if (options.value) {
-        //     page.setData({
-        //         'cityPicker.value': options.value,
-        //         'cityPicker.items': this.getItems(options.value)
-        //     })
-        // }
-        // if (options.success) {
-        //     this.success = options.success
-        // }
+        let address = options.address
+        this.value = this.getValues(address)
+        this.items = this.getItems(this.value)
+        this.set({
+            value: this.value,
+            items: this.items
+        })
+        if (options.success) {
+            this.success = options.success
+        }
         this.set({
             maskAnimateCss: 'animate-fade-in',
             pickerAnimateCss: 'animate-slide-up',
@@ -105,12 +94,11 @@ export class CityPicker {
             maskAnimateCss: 'animate-fade-out',
             pickerAnimateCss: 'animate-slide-down'
         })
-        let self = this
         setTimeout(function () {
-            self.set({
+            this.set({
                 visible: false
             })
-        }, 300)
+        }.bind(this), 300)
     }
 
     set(options) {
@@ -148,7 +136,7 @@ export class CityPicker {
     }
 
     getValues(address) {
-        let iProvince = -1
+        let iProvince = 0
         let provinces = wx.getStorageSync('citys')
         for (let i in provinces) {
             if (provinces[i].name == address.province) {
@@ -156,7 +144,7 @@ export class CityPicker {
                 break
             }
         }
-        let iCity = -1
+        let iCity = 0
         let citys = provinces[iProvince].sub
         for (let i in citys) {
             if (citys[i].name == address.city) {
@@ -164,7 +152,7 @@ export class CityPicker {
                 break
             }
         }
-        let iDistrict = -1
+        let iDistrict = 0
         let districts = citys[iCity].sub
         for (let i in districts) {
             if (districts[i].name == address.district) {

@@ -1,5 +1,4 @@
 let config = require('config.js')
-import { Promise } from 'bluebird.min.js'
 
 const API_BASE_URL = "https://yixing02.applinzi.com/api/";
 

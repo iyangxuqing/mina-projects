@@ -8,7 +8,7 @@ let data = {
     iconColor: '#fff',
     mulitLine: false,
     showClose: false,
-    callback: function () { },
+    success: function () { },
     animateCss: 'animate-fade-out',
     textStyle: 'tips-text-align-center'
 }
@@ -41,7 +41,7 @@ export class TopTips {
 
     show(options = {}) {
         options = Object.assign({}, data, options)
-        this.callback = options.callback
+        this.success = options.success
         page.setData({
             'topTips.type': options.type,
             'topTips.text': options.text,
@@ -58,14 +58,16 @@ export class TopTips {
                 'topTips.textStyle': 'topTips-text-align-center'
             })
         }
-        
+
         clearTimeout(this.timer)
         page.setData({
             'topTips.visible': true,
             'topTips.animateCss': 'animate-fade-in'
         })
         if (options.duration > 0) {
-            this.timer = setTimeout(this.hide, options.duration)
+            this.timer = setTimeout(function () {
+                this.hide()
+            }.bind(this), options.duration)
         }
     }
 
@@ -78,7 +80,7 @@ export class TopTips {
                 'topTips.visible': false
             })
         }, 300)
-        this.callback && this.callback()
+        this.success && this.success()
     }
 
 }
