@@ -10,28 +10,41 @@
 <!-- -->
 <import src="/template/mobile/mobile" />
 <template is="mobile" data="{{...mobile}}" />
+<template is="addressBar" data="{{...user.address}}" />
 
 <!-- -->
-<import src="/template/citypicker/citypicker" />
-<template is="cityPicker" data="{{...citypicker}}" />
-
-<!-- -->
-<template is="navbar" data="{{...navbars[0], marginBottom:40}}" />
-<template is="navbar" data="{{...navbars[1]}}" />
-<template is="navbar" data="{{...navbars[2], marginBottom:40}}" />
-<template is="navbar" data="{{...navbars[3]}}" />
-<template is="navbar" data="{{...navbars[4], marginBottom:40}}" />
-<template is="navbar" data="{{...navbars[5]}}" />
-
-<!-- -->
-<template name="navbar">
-  <navigator class="navbar" style="margin-bottom:{{marginBottom}}rpx" url="{{url}}">
-    <view class="navbar-icon" wx:if="{{icon}}">
-      <image src="{{icon}}"></image>
+<template name="addressBar">
+  <navigator class="bar" url="/pages/addressEdit/addressEdit">
+    <view class=" bar-icon" wx:if="{{true}}">
+      <image src="/images/icon/address.png"></image>
     </view>
-    <view class="navbar-label">{{label}}</view>
-    <view class="navbar-mark">
-      <image src="{{mark}}"></image>
+    <view class="bar-label">装修地址</view>
+    <view class="bar-value ">
+      <view class="bar-value">{{longAddress}}</view>
+    </view>
+    <view class="bar-mark " wx:if="{{true}}">
+      <image src="/images/icon/arrow-right.png"></image>
+    </view>
+  </navigator>
+</template>
+
+<!-- -->
+<template is="navbar " data="{{...navbars[0], marginBottom:40}} " />
+<template is="navbar " data="{{...navbars[1]}} " />
+<template is="navbar " data="{{...navbars[2], marginBottom:40}} " />
+<template is="navbar " data="{{...navbars[3]}} " />
+<template is="navbar " data="{{...navbars[4], marginBottom:40}} " />
+<template is="navbar " data="{{...navbars[5]}} " />
+
+<!-- -->
+<template name="navbar ">
+  <navigator class="navbar " style="margin-bottom:{{marginBottom}}rpx " url="{{url}} ">
+    <view class="navbar-icon " wx:if="{{icon}} ">
+      <image src="{{icon}} "></image>
+    </view>
+    <view class="navbar-label ">{{label}}</view>
+    <view class="navbar-mark ">
+      <image src="{{mark}} "></image>
     </view>
   </navigator>
 </template>

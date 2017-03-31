@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/city/city",
     "pages/home/home2",
+    "pages/addressEdit/addressEdit",
     "pages/fengge/fengge",
     "pages/anli/anli",
     "pages/wode/wode",

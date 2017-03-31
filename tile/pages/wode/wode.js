@@ -9,16 +9,12 @@ let app = getApp()
 
 Page({
   data: {
-
-    user: {
-      gender: false,
-      age: 23
-    },
+    user: {},
 
     navbars: [
       {
         url: '',
-        label: '我的信息',
+        label: '装修地址',
         icon: '/images/icon/address.png',
         mark: '/images/icon/arrow-right.png',
       },
@@ -56,21 +52,21 @@ Page({
 
   },
 
-  updateData: function (scope, data) {
-    let page = getCurrentPages().pop()
-    for (let key in data) {
-      page.setData({
-        [`${scope}.${key}`]: data[key]
-      })
-    }
-  },
-
   onLoad: function (options) {
     this.topTips = new TopTips()
     this.userInfo = new UserInfo(app.user)
     this.mobile = new Mobile(app.user)
-
-    console.log(getApp())
   },
+
+  onShow: function () {
+    if (app.user) {
+      let a = app.user.address
+      console.log(app.user, a)
+      let longAddress = a.province + a.city + a.district + a.detail
+      this.setData({
+        'user.address.longAddress': longAddress
+      })
+    }
+  }
 
 })

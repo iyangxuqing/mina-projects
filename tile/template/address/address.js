@@ -37,21 +37,35 @@ let methods = {
             success: function (res) {
                 if (!res.error) {
                     getApp().user.address = this.address
-                    page.topTips.show({
-                        type: 'success',
-                        text: '编辑的地址已经保存',
+                    wx.showToast({
+                        title: '地址已保存',
+                        icon: 'success',
+                        mask: true,
                         success: function () {
-                            wx.navigateBack()
+                            setTimeout(function () {
+                                wx.navigateBack()
+                            }, 1500)
                         }
                     })
+                    // page.topTips.show({
+                    //     type: 'success',
+                    //     text: '编辑的地址已经保存',
+                    //     success: function () {
+                    //         wx.navigateBack()
+                    //     }
+                    // })
                 } else {
-                    page.topTips.show({
-                        text: '保存地址出错，请重试'
+                    wx.showModal({
+                        title: '保存地址',
+                        content: '在保存地址的过程中出错了，请重试...',
+                        showCancel: false
                     })
+                    // page.topTips.show({
+                    //     text: '保存地址出错，请重试'
+                    // })
                 }
-            }
+            }.bind(this)
         })
-        wx.navigateBack()
     },
 
     onCancel: function (e) {
@@ -60,9 +74,9 @@ let methods = {
 }
 
 export class Address {
-    constructor(options={}) {
+    constructor(options = {}) {
         page = getCurrentPages().pop()
-        this.address = options.address
+        this.address = JSON.parse(JSON.stringify(options));
         this.init()
     }
 

@@ -21,9 +21,11 @@ App({
   onLaunch: function () {
     // wx.clearStorage()
     let app = this
-    user.login(function (user) {
-      app.user = user
-      getCitys()
+    user.login({
+      success: function (user) {
+        app.user = user
+        getCitys()
+      }
     })
     device.getDeviceInfo(this)
   }

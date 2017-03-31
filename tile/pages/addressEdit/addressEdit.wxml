@@ -1,0 +1,6 @@
+<import src="/template/toptips/toptips.wxml" />
+<import src="/template/address/address.wxml" />
+<view class="page-container">
+  <template is="topTips" data="{{...topTips}}" />
+  <template is="address" data="{{...address}}" />
+</view>

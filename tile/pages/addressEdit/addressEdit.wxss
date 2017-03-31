@@ -1,0 +1,6 @@
+@import '/template/toptips/toptips.wxss';
+@import '/template/address/address.wxss';
+
+.page-container {
+  margin-top: 0rpx;
+}
