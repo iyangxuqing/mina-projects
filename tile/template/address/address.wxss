@@ -40,6 +40,8 @@
 }
 
 .address-detail-input {
+  height: 100rpx;
+  line-height: 100rpx;
   flex-grow: 1;
 }
 

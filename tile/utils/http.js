@@ -44,7 +44,7 @@ function get(options) {
 }
 
 function post(options) {
-    if (!options.silent) wx.showNavigationBarLoading();
+    wx.showNavigationBarLoading();
     wx.request({
         url: API_BASE_URL + options.url,
         header: {
@@ -55,15 +55,17 @@ function post(options) {
         method: 'POST',
         data: options.data,
         success: function (res) {
+            wx.hideNavigationBarLoading();
             checkResponse(options, res);
             options.success && options.success(res.data);
         },
         fail: function (error) {
-            if (!options.silent) showRequestFailedTip();
+            wx.hideNavigationBarLoading();
+            showRequestFailedTip();
             options.fail && options.fail(error);
         },
         complete: function (res) {
-            if (!options.silent) wx.hideNavigationBarLoading();
+            wx.hideNavigationBarLoading();
             options.complete && options.complete(res);
         }
     })

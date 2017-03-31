@@ -16,9 +16,7 @@ let methods = {
     onUserInfoTap: function (e) {
         getUserInfoFromWeixin({
             success: function (userInfo) {
-                console.log(getApp())
                 Object.assign(getApp().user, userInfo)
-                console.log(getApp())
                 page.setData({
                     'userInfo.nickName': userInfo.nickName,
                     'userInfo.avatarUrl': userInfo.avatarUrl

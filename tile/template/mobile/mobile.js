@@ -121,6 +121,7 @@ let methods = {
                         'mobile.verified': true
                     })
                 } else {
+                    page = getCurrentPages().pop()
                     page.setData({
                         'mobile.codeError': true
                     })
@@ -128,7 +129,7 @@ let methods = {
                         text: '验证码错误'
                     })
                 }
-            }
+            }.bind(this)
         })
     }
 }

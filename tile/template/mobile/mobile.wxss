@@ -13,6 +13,7 @@
 }
 
 .row-icon {
+  flex-shrink: 0;
   width: 48rpx;
   height: 48rpx;
   margin-right: 20rpx;
@@ -23,6 +24,7 @@
 }
 
 .row-label {
+  flex-shrink: 0;
   margin-right: 40rpx;
 }
 
@@ -35,14 +37,21 @@
 }
 
 .row-mark {
+  flex-shrink: 0;
   width: 48rpx;
   height: 48rpx;
 }
 
 .mobile-number-input, .mobile-code-input {
   flex-grow: 1;
+  height: 100rpx;
+  line-height: 100rpx;
   font-size: 40rpx;
   margin-right: 40rpx;
+}
+
+.notify-message-error{
+  color: red;
 }
 
 .mobile-code-request {
@@ -65,7 +74,7 @@
   text-align: center;
   border-radius: 6rpx;
   box-sizing: border-box;
-  color: #666;
+  color: #4bd4c5;
   border: 1px solid #4bd4c5;
 }
 
