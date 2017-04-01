@@ -2,7 +2,7 @@
 import { user } from 'utils/user.js'
 import { debug } from 'utils/debug.js'
 import { device } from 'utils/device.js'
-
+import { Listener } from 'utils/event.js'
 import { getCitys } from 'utils/citys.js'
 
 App({
@@ -20,13 +20,20 @@ App({
 
   onLaunch: function () {
     // wx.clearStorage()
+    this.listener = new Listener()
+
     let app = this
-    user.login({
-      success: function (user) {
-        app.user = user
-        getCitys()
-      }
-    })
+    setTimeout(function () {
+      user.login({
+        success: function (user) {
+
+          app.listener.trigger('user', user)
+
+          app.user = user
+          getCitys()
+        }
+      })
+    }, 20000)
     device.getDeviceInfo(this)
   }
 

@@ -117,28 +117,25 @@ export class UserInfo {
     }
 
     init(options) {
-        let userInfo = data.userInfo
-        if (options.nickName) {
-            userInfo.nickName = options.nickName
-        }
-        if (options.avatarUrl) {
-            userInfo.avatarUrl = options.avatarUrl
-        }
-        page.setData({
-            userInfo: userInfo
-        })
+        this.update(options)
         for (let key in methods) {
             page['userInfo.' + key] = methods[key].bind(this)
             page.setData({
                 ['userInfo.' + key]: 'userInfo.' + key
             })
         }
-        getUserInfoFromLocal({
-            success: function (userInfo) {
-                page.setData({
-                    userInfo: userInfo
-                })
-            }
+    }
+
+    update(options){
+        let userInfo = data.userInfo
+        if(options && options.nickName){
+            userInfo.nickName = options.nickName
+        }
+        if(options && options.avatarUrl){
+            userInfo.avatarUrl = options.avatarUrl
+        }
+        page.setData({
+            userInfo: userInfo
         })
     }
 }

@@ -45,8 +45,6 @@
 .mobile-number-input, .mobile-code-input {
   flex-grow: 1;
   height: 100rpx;
-  line-height: 100rpx;
-  font-size: 40rpx;
   margin-right: 40rpx;
 }
 

@@ -1,7 +1,6 @@
 import { TopTips } from '../../template/toptips/toptips.js'
 import { UserInfo } from '../../template/userinfo/userinfo.js'
 import { Mobile } from '../../template/mobile/mobile.js'
-import { CityPicker } from '../../template/citypicker/citypicker.js'
 
 import { user } from '../../utils/user.js'
 
@@ -52,10 +51,21 @@ Page({
 
   },
 
+  hide: function(e){
+    console.log(e)
+    wx.hideNavigationBarLoading();
+  },
+
   onLoad: function (options) {
+    app.listener.on('user', this.onUserNotify)
     this.topTips = new TopTips()
     this.userInfo = new UserInfo(app.user)
     this.mobile = new Mobile(app.user)
+    console.log(this)
+  },
+
+  onUserNotify: function(user){
+    this.userInfo.update(user)
   },
 
   onShow: function () {

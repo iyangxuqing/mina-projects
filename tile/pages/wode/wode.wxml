@@ -7,6 +7,8 @@
 <import src="/template/userinfo/userinfo.wxml" />
 <template is="userInfo" data="{{...userInfo}}" />
 
+<button bindtap="hide">hide</button>
+
 <!-- -->
 <import src="/template/mobile/mobile" />
 <template is="mobile" data="{{...mobile}}" />
