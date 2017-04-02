@@ -1,23 +1,22 @@
 let http = require("../../utils/http.js")
 import { CityPicker } from "../../template/citypicker/citypicker.js"
 
-let page = null
-
-let data = {}
+let data = {
+    address: {
+        province: '浙江省',
+        city: '金华市',
+        district: '义乌市',
+        detail: ''
+    }
+}
 
 let methods = {
     onDistrictSelect: function (e) {
+        let page = getCurrentPages().pop()
         this.cityPicker.show({
             address: this.address,
             success: function (address) {
-                Object.assign(this.address, address)
-                let province = address.province
-                let city = address.city
-                let district = address.district
-                let districts = province + ' ' + city + ' ' + district
-                page.setData({
-                    'address.districts': districts,
-                })
+                this.update(address)
             }.bind(this)
         })
     },
@@ -25,28 +24,32 @@ let methods = {
     onDetailInputBlur: function (e) {
         let detail = e.detail.value
         this.address.detail = detail
-        page.setData({
-            'address.detail': detail
-        })
+        // page.setData({
+        //     'address.detail': detail
+        // })
     },
 
     onConfirm: function (e) {
+        // wx.showToast({
+        //     title: '地址已保存',
+        //     icon: 'success',
+        //     mask: true,
+        // })
+        // return;
+
         http.post({
             url: 'user/setAddress.php',
             data: this.address,
             success: function (res) {
                 if (!res.error) {
-                    getApp().user.address = this.address
-                    wx.showToast({
-                        title: '地址已保存',
-                        icon: 'success',
-                        mask: true,
-                        success: function () {
-                            setTimeout(function () {
-                                wx.navigateBack()
-                            }, 1500)
-                        }
-                    })
+                    let app = getApp()
+                    app.listener.trigger('addressUpdated', this.address)
+                    // getApp().user.address = this.address
+                    // wx.showToast({
+                    //     title: '地址已保存',
+                    //     icon: 'success',
+                    //     mask: true,
+                    // })
                     // page.topTips.show({
                     //     type: 'success',
                     //     text: '编辑的地址已经保存',
@@ -69,27 +72,26 @@ let methods = {
     },
 
     onCancel: function (e) {
-        wx.navigateBack()
+        // wx.navigateBack()
+        let app = getApp()
+        app.listener.trigger('addressEditCancel')
     }
 }
 
 export class Address {
     constructor(options = {}) {
-        page = getCurrentPages().pop()
-        this.address = JSON.parse(JSON.stringify(options));
+        this.address = {
+            province: options.province || data.address.province,
+            city: options.city || data.address.city,
+            district: options.district || data.address.district,
+            detail: options.detail || data.address.detail
+        }
         this.init()
     }
 
     init() {
-        let province = this.address.province
-        let city = this.address.city
-        let district = this.address.district
-        let detail = this.address.detail
-        let districts = province + ' ' + city + ' ' + district
-        page.setData({
-            'address.districts': districts,
-            'address.detail': detail
-        })
+        let page = getCurrentPages().pop()
+        this.update(this.address)
         for (let key in methods) {
             page['address.' + key] = methods[key].bind(this)
             page.setData({
@@ -101,5 +103,24 @@ export class Address {
             address: this.address
         }
         this.cityPicker = new CityPicker(options)
+    }
+
+    update(options = {}) {
+        let page = getCurrentPages().pop()
+        this.address = {
+            province: options.province || data.address.province,
+            city: options.city || data.address.city,
+            district: options.district || data.address.district,
+            detail: options.detail || data.address.detail
+        }
+        let province = this.address.province
+        let city = this.address.city
+        let district = this.address.district
+        let detail = this.address.detail
+        let districts = province + ' ' + city + ' ' + district
+        page.setData({
+            'address.districts': districts,
+            'address.detail': detail
+        })
     }
 }

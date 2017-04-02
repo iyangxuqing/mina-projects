@@ -1,10 +1,8 @@
-let page = {}
-
 let data = {
-    mask: true,
+    mask: false,
     type: 'error',
     visible: false,
-    duration: 2000,
+    duration: 1500,
     iconColor: '#fff',
     mulitLine: false,
     showClose: false,
@@ -12,8 +10,6 @@ let data = {
     animateCss: 'animate-fade-out',
     textStyle: 'tips-text-align-center'
 }
-
-let timer = null
 
 let methods = {
     onClose(e) {
@@ -23,11 +19,14 @@ let methods = {
 
 export class TopTips {
     constructor() {
-        page = getCurrentPages().pop()
+        this.timer = null
         this.init()
     }
 
     init() {
+        console.log(getCurrentPages())
+        let page = getCurrentPages().pop()
+        console.log(getCurrentPages())
         page.setData({
             topTips: data
         })
@@ -42,6 +41,8 @@ export class TopTips {
     show(options = {}) {
         options = Object.assign({}, data, options)
         this.success = options.success
+        let page = getCurrentPages().pop()
+        console.log(options)
         page.setData({
             'topTips.type': options.type,
             'topTips.text': options.text,
@@ -72,6 +73,7 @@ export class TopTips {
     }
 
     hide() {
+        let page = getCurrentPages().pop()
         page.setData({
             'topTips.animateCss': 'animate-fade-out'
         })
@@ -79,8 +81,9 @@ export class TopTips {
             page.setData({
                 'topTips.visible': false
             })
-        }, 300)
-        this.success && this.success()
+            this.success && this.success()
+
+        }.bind(this), 300)
     }
 
 }

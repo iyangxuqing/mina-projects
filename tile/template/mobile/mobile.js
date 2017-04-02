@@ -1,7 +1,5 @@
 let http = require("../../utils/http.js")
 
-let page = {}
-
 let data = {
     mobile: {
         icon: '/images/icon/mobile.png',
@@ -22,30 +20,35 @@ let data = {
 let methods = {
 
     onNumberInputBlur: function (e) {
+        let page = getCurrentPages().pop()
         page.setData({
             'mobile.number': e.detail.value
         })
     },
 
     onNumberInputFocus: function (e) {
+        let page = getCurrentPages().pop()
         page.setData({
             'mobile.numberError': false
         })
     },
 
     onCodeInput: function (e) {
+        let page = getCurrentPages().pop()
         page.setData({
             'mobile.code': e.detail.value
         })
     },
 
     onCodeInputFocus: function (e) {
+        let page = getCurrentPages().pop()
         page.setData({
             'mobile.codeError': false
         })
     },
 
     onCodeRequest: function (e) {
+        let page = getCurrentPages().pop()
         let number = page.data.mobile.number
         if (number == '') return
         let codeRequestText = page.data.mobile.codeRequestText
@@ -104,9 +107,11 @@ let methods = {
     },
 
     onCodeConfirm: function (e) {
-        let code = page.data.mobile.code
+        let page = getCurrentPages().pop()
         let number = page.data.mobile.number
+        let code = page.data.mobile.code
         if (code == '') return;
+
         http.post({
             url: 'sms/codeVerify.php',
             data: {
@@ -121,7 +126,6 @@ let methods = {
                         'mobile.verified': true
                     })
                 } else {
-                    page = getCurrentPages().pop()
                     page.setData({
                         'mobile.codeError': true
                     })
@@ -136,19 +140,18 @@ let methods = {
 
 export class Mobile {
     constructor(options) {
-        page = getCurrentPages().pop()
         this.init(options)
     }
 
-    init(options) {
-        if (options.mobile) {
-            data.mobile.number = options.mobile
+    init(options={}) {
+        let page = getCurrentPages().pop()
+        let mobile = {
+            number: options.mobile,
+            verified: options.mobileVerified
         }
-        if (options.mobileVerified) {
-            data.mobile.verified = options.mobileVerified
-        }
+        mobile = Object.assign({}, data.mobile, mobile)
         page.setData({
-            mobile: data.mobile
+            mobile: mobile
         })
         for (let key in methods) {
             page['mobile.' + key] = methods[key].bind(this)
@@ -158,7 +161,15 @@ export class Mobile {
         }
     }
 
-    getMobile() {
-
+    update(options={}) {
+        let page = getCurrentPages().pop()
+        let mobile = {
+            number: options.mobile,
+            verified: options.mobileVerified
+        }
+        page.setData({
+            'mobile.number': mobile.number,
+            'mobile.verified': mobile.verified
+        })
     }
 }

@@ -1,6 +1,2 @@
-
-<!--pages/test/test.wxml-->
-<text>pages/test/test.wxml</text>
-<view class="box">
-  <input placeholder="String"></input>
-</view>
+<view class="box" bindtap="open"></view>
+<view class="box" bindtap="open2"></view>

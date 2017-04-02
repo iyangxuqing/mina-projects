@@ -76,10 +76,6 @@
   border: 1px solid #4bd4c5;
 }
 
-.placeholder-class{
-  font-size: 28rpx;
-}
-
 .verified-number{
   font-size: 40rpx;
 }

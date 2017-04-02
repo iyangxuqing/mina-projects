@@ -3,8 +3,6 @@ let http = require('../../utils/http.js')
 let authDenyTimes = 0
 const authDenyMessage = "因为距离上次拒绝授权的时间过短，无法再次获取授权。您可以稍后再试，也可以在删除本程序后重新进入，即可再次进行授权。"
 
-let page = {}
-
 let data = {
     userInfo: {
         avatarUrl: '/images/icon/user.png',
@@ -26,12 +24,12 @@ let methods = {
     }
 }
 
-function getUserInfoFromLocal(options) {
-    let userInfo = wx.getStorageSync('userInfo')
-    if (userInfo) {
-        options.success && options.success(userInfo)
-    }
-}
+// function getUserInfoFromLocal(options) {
+//     let userInfo = wx.getStorageSync('userInfo')
+//     if (userInfo) {
+//         options.success && options.success(userInfo)
+//     }
+// }
 /*
     wx.getUserInfo在用户拒绝信息授权时，在不同平台上返回的错误信息有差别
     在android平台，在弹出授权对话框时拒绝授权，返回的是
@@ -112,12 +110,12 @@ function getUserInfoFromWeixin(options) {
 
 export class UserInfo {
     constructor(options) {
-        page = getCurrentPages().pop()
         this.init(options)
     }
 
     init(options) {
         this.update(options)
+        let page = getCurrentPages().pop()
         for (let key in methods) {
             page['userInfo.' + key] = methods[key].bind(this)
             page.setData({
@@ -134,6 +132,7 @@ export class UserInfo {
         if(options && options.avatarUrl){
             userInfo.avatarUrl = options.avatarUrl
         }
+        let page = getCurrentPages().pop()
         page.setData({
             userInfo: userInfo
         })

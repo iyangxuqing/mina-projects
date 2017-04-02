@@ -2,13 +2,10 @@ import { TopTips } from '../../template/toptips/toptips.js'
 import { UserInfo } from '../../template/userinfo/userinfo.js'
 import { Mobile } from '../../template/mobile/mobile.js'
 
-import { user } from '../../utils/user.js'
-
 let app = getApp()
 
 Page({
   data: {
-    user: {},
 
     navbars: [
       {
@@ -51,27 +48,28 @@ Page({
 
   },
 
-  hide: function(e){
-    console.log(e)
-    wx.hideNavigationBarLoading();
-  },
-
   onLoad: function (options) {
     app.listener.on('user', this.onUserNotify)
     this.topTips = new TopTips()
     this.userInfo = new UserInfo(app.user)
     this.mobile = new Mobile(app.user)
-    console.log(this)
   },
 
-  onUserNotify: function(user){
+  onUserNotify: function (user) {
     this.userInfo.update(user)
+    this.mobile.update(user)
+    let a = user.address
+    let longAddress = a.province + a.city + a.district + a.detail
+    this.setData({
+      'user.address.longAddress': longAddress
+    })
   },
 
   onShow: function () {
+    this.userInfo.update(app.user)
+    this.mobile.update(app.user)
     if (app.user) {
       let a = app.user.address
-      console.log(app.user, a)
       let longAddress = a.province + a.city + a.district + a.detail
       this.setData({
         'user.address.longAddress': longAddress

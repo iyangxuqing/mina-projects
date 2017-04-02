@@ -6,7 +6,7 @@
           <image src="{{icon}}"></image>
         </view>
         <view class="row-label mobile-label" wx:if="{{label}}">{{label}}</view>
-        <input class="mobile-number-input {{numberError?'notify-message-error':''}}" value="{{number}}" placeholder="输入手机号" placeholder-class="placeholder-class" type="number" maxlength="11" bindblur="{{onNumberInputBlur}}" bindfocus="{{onNumberInputFocus}}" />
+        <input class="mobile-number-input {{numberError?'notify-message-error':''}}" value="{{number}}" placeholder="输入手机号" type="number" maxlength="11" bindblur="{{onNumberInputBlur}}" bindfocus="{{onNumberInputFocus}}" />
         <view class="mobile-code-request" catchtap="{{onCodeRequest}}">{{codeRequestText}}</view>
       </view>
       <view class="mobile-row">

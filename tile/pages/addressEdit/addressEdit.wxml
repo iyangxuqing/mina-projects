@@ -4,3 +4,5 @@
   <template is="topTips" data="{{...topTips}}" />
   <template is="address" data="{{...address}}" />
 </view>
+
+<button bindtap="testtap">testtap</button>
