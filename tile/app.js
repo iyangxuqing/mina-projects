@@ -21,6 +21,7 @@ App({
   onLaunch: function () {
     // wx.clearStorage()
     this.listener = new Listener()
+    wx.n = new Listener()
 
     let app = this
     setTimeout(function () {
@@ -33,7 +34,7 @@ App({
           getCitys()
         }
       })
-    }, 20000)
+    }, 0)
     device.getDeviceInfo(this)
   }
 
