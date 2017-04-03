@@ -1,43 +1,34 @@
 <import src="/template/toptips/toptips.wxml" />
-<import src="/template/address/address.wxml" />
-<view class="page-container">
-  <template is="topTips" data="{{...topTips}}" />
-</view>
+<template is="topTips" data="{{...topTips}}" />
 <view class="address-edit">
   <view class="address-row address-title">输入地址</view>
-  <view class="address-row address-district" bindtap="onAddressCityPicker">
-    <view class="address-district-label">选择地区</view>
-    <view class="address-district-value">{{address.province + address.city + address.district}}</view>
-    <view class="address-district-mark"></view>
+  <view class="address-row address-citys" bindtap="onAddressCityPicker">
+    <view class="address-citys-label">选择地区</view>
+    <view class="address-citys-value">{{address.province + address.city + address.district}}</view>
+    <view class="address-citys-mark"></view>
   </view>
   <view class="address-row address-detail">
     <view class="address-detail-label">详细地址</view>
     <input class="address-detail-input" value="{{address.detail}}" placeholder="街道门牌信息" bindblur="onAddressDetailInputBlur" />
     <view class="address-detail-mark"></view>
   </view>
-  <view class="address-row address-row-btn">
-    <button class="address-btn address-btn-confirm" hover-class="address-btn-confirm-hover" catchtap="onAddressConfirm">保 存</button>
-    <button class="address-btn address-btn-cancel" catchtap="onAddressCancel">取 消</button>
+  <view class="address-row address-buttons">
+    <button class="address-button address-button-confirm" hover-class="address-button-confirm-hover" catchtap="onAddressConfirm">保 存</button>
+    <button class="address-button address-button-cancel" catchtap="onAddressCancel">取 消</button>
   </view>
 </view>
-<view class="city-picker" wx:if="{{ cityPicker.visible }}">
-  <view class="mask {{ cityPicker.maskAnimateCss }}" wx:if="{{ cityPicker.visible }}" bindtap="onCityPickerCancel"></view>
-  <view class="picker {{ cityPicker.pickerAnimateCss }}">
-    <view class="picker-header">
-      <view class="picker-header-inner">
-        <view class="picker-button close-picker cancel" bindtap="onCityPickerCancel">{{ cityPicker.cancelText }}</view>
-        <view class="title">{{ cityPicker.title }}</view>
-        <view class="picker-button close-picker confirm" bindtap="onCityPickerConfirm">{{ cityPicker.confirmText }}</view>
+<view class="picker {{cityPicker.pickerAnimateCss}}" wx:if="{{ cityPicker.visible }}">
+  <view class="picker-header">
+    <view class="button" bindtap="onCityPickerCancel">{{ cityPicker.cancelText }}</view>
+    <view class="title">{{ cityPicker.title }}</view>
+    <view class="button" bindtap="onCityPickerConfirm">{{ cityPicker.confirmText }}</view>
+  </view>
+  <picker-view indicator-style="height:32px" value="{{ cityPicker.value }}" bindchange="onCityPickerChange">
+    <picker-view-column class="picker-items" wx:for="{{cityPicker.items}}" wx:key="" wx:for-item="item">
+      <view class="picker-item" wx:for="{{item}}" wx:key="" wx:for-item="value">
+        {{ value }}
       </view>
-    </view>
-    <picker-view class="picker-view" indicator-style="height: 32px;" value="{{ cityPicker.value }}" bindchange="onCityPickerChange">
-      <block wx:for="{{cityPicker.items}}" wx:key="" wx:for-item="item">
-        <picker-view-column>
-          <view class="picker-view-column" wx:for="{{item}}" wx:key="" wx:for-item="value">
-            {{ value }}
-          </view>
-        </picker-view-column>
-      </block>
-    </picker-view>
-  </view>
+    </picker-view-column>
+  </picker-view>
 </view>
+<view class="mask {{ cityPicker.maskAnimateCss }}" wx:if="{{ cityPicker.visible }}" bindtap="onCityPickerCancel"></view>

@@ -1,5 +1,5 @@
+let http = require("../../utils/http.js")
 import { TopTips } from "../../template/toptips/toptips.js"
-import { Address } from "../../template/address/address.js"
 
 let app = getApp()
 
@@ -25,23 +25,29 @@ Page({
   },
 
   onLoad: function (e) {
-    console.log('onLoad')
-    app.listener.on('user', this.onUserNotify)
     this.topTips = new TopTips()
-    if (app.user) {
-      let address = app.user.address
-      if (!address.province) address = data.address
-      this.cityPickerInit(address)
-      this.setData({
-        'address.province': address.province,
-        'address.city': address.city,
-        'address.district': address.district
-      })
+    app.listener.on('user', this.onUserNotify)
+
+    let address = this.data.address
+    if (app.user && app.user.address.province) {
+      address = app.user.address
     }
+    this.setData({
+      address: address
+    })
+    this.cityPickerInit(address)
   },
 
-  onShow: function () {
-    console.log('onShow')
+  onUserNotify: function (user) {
+    let address = user.address
+    if (!address.province) {
+      address = this.data.address
+    }
+    this.setData({
+      address: address
+    })
+    this.cityPickerInit(address)
+    console.log(address)
   },
 
   onAddressCityPicker: function (e) {
@@ -61,8 +67,27 @@ Page({
 
   onAddressConfirm: function (e) {
     let address = this.data.address
-    console.log(address)
-    wx.navigateBack()
+    http.post({
+      url: 'user/setAddress.php',
+      data: address,
+      success: function (res) {
+        if (!res.error) {
+          app.user.address = address
+          app.listener.trigger('user', app.user)
+          this.topTips.show({
+            type: 'success',
+            text: '编辑的地址已经保存',
+            success: function () {
+              wx.navigateBack()
+            }
+          })
+        } else {
+          this.topTips.show({
+            text: '保存地址出错，请重试'
+          })
+        }
+      }.bind(this)
+    })
   },
 
   onCityPickerChange: function (e) {
@@ -177,6 +202,5 @@ Page({
     let value = [iProvince, iCity, iDistrict]
     return value
   }
-
 
 })

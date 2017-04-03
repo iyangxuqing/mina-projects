@@ -24,9 +24,7 @@ export class TopTips {
     }
 
     init() {
-        console.log(getCurrentPages())
         let page = getCurrentPages().pop()
-        console.log(getCurrentPages())
         page.setData({
             topTips: data
         })
@@ -42,7 +40,6 @@ export class TopTips {
         options = Object.assign({}, data, options)
         this.success = options.success
         let page = getCurrentPages().pop()
-        console.log(options)
         page.setData({
             'topTips.type': options.type,
             'topTips.text': options.text,
