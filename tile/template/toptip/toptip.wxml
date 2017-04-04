@@ -1,0 +1,9 @@
+<template name="topTip">
+  <view class="topTip-mask" wx:if="{{visible && mask}}"></view>
+  <view class="topTip {{type}} {{animateCss}}" wx:if="{{visible}}">
+    <view class="topTip-title {{mulitLine}}">{{title}}</view>
+    <view class="topTip-icon" wx:if="{{showClose}}" bindtap="{{onClose}}">
+      <icon type="cancel" size="24" color="{{iconColor}}" />
+    </view>
+  </view>
+</template>

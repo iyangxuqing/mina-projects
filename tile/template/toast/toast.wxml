@@ -1,0 +1,9 @@
+<template name="toast">
+  <view class="toast" wx:if="{{visible}}">
+    <view class="toast-mask" wx:if="{{visible && mask}}"></view>
+    <view class="toast-body {{animateCss}}">
+      <icon type="{{icon}}" size="50" color="#fff" wx:if="{{icon}}" />
+      <view class="toast-title" wx:if="{{title}}">{{title}}</view>
+    </view>
+  </view>
+</template>

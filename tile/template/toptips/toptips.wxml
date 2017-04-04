@@ -1,9 +1,0 @@
-<template name="topTips">
-  <view class="topTips-mask" wx:if="{{mask && visible}}"></view>
-  <view class="topTips {{'topTips-' + type}} {{animateCss}}" hidden="{{!visible}}">
-    <view class="topTips-text {{textStyle}}">{{text}}</view>
-    <view class="topTips-icon" wx:if="{{showClose}}" bindtap="{{onClose}}">
-      <icon type="cancel" size="24" color="{{iconColor}}" />
-    </view>
-  </view>
-</template>

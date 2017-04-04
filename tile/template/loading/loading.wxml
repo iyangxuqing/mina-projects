@@ -1,0 +1,5 @@
+<template name="loading">
+  <view class="loading {{animateCss}}" wx:if="{{visible}}">
+    <view class="loading-icon"></view>
+  </view>
+</template>
