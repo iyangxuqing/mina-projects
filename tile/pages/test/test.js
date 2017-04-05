@@ -25,26 +25,33 @@ Page({
     // 页面关闭
   },
   show: function (e) {
-    // this.toast.show({
-    //   title: '地址已保存',
-    //   icon: 'success',
-    //   success: function () {
-    //     console.log('abc')
-    //   }
-    // })
-    // this.loading.show()
-    console.log(e)
-    this.topTip.show({
-      title: 'abc我是很多文章，文章学习， 内容多汉的了吧就看到',
-      showClose: true,
-      mulitLine: true,
-      success: function(){
-        console.log('success')
+    wx.getUserInfo({
+      // withCredentials: false,
+      success: function(res){
+        console.log(res)
       }
     })
-  },
-  hide: function (e) {
-    this.loading.hide()
-    console.log(e)
+    
+    // wx.openSetting({
+    //   success: function(res){
+    //     console.log(res)
+    //   }
+    // })
+
+    // wx.getLocation({
+    //   success: function(res){
+    //     console.log(res)
+    //   }
+    // })
+    // wx.chooseLocation({
+    //   success: function(res){
+    //     console.log(res)
+    //   }
+    // })
+    // wx.startRecord({
+    //   success: function(res){
+    //     console.log(res)
+    //   }
+    // })
   }
 })

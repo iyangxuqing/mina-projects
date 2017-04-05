@@ -1,5 +1,11 @@
-<import src="/template/toptips/toptips.wxml" />
-<template is="topTips" data="{{...topTips}}" />
+<import src="/template/toast/toast.wxml" />
+<import src="/template/toptip/toptip.wxml" />
+<import src="/template/loading/loading.wxml" />
+<template is="toast" data="{{...toast}}" />
+<template is="topTip" data="{{...topTip}}" />
+<template is="loading" data="{{...loading}}" />
+
+<!-- -->
 <view class="address-edit">
   <view class="address-row address-title">输入地址</view>
   <view class="address-row address-citys" bindtap="onAddressCityPicker">
@@ -17,6 +23,8 @@
     <button class="address-button address-button-cancel" catchtap="onAddressCancel">取 消</button>
   </view>
 </view>
+
+<!-- -->
 <view class="picker {{cityPicker.pickerAnimateCss}}" wx:if="{{ cityPicker.visible }}">
   <view class="picker-header">
     <view class="button" bindtap="onCityPickerCancel">{{ cityPicker.cancelText }}</view>
@@ -31,4 +39,6 @@
     </picker-view-column>
   </picker-view>
 </view>
-<view class="mask {{ cityPicker.maskAnimateCss }}" wx:if="{{ cityPicker.visible }}" bindtap="onCityPickerCancel"></view>
+
+<!-- -->
+<view class="picker-mask {{ cityPicker.maskAnimateCss }}" wx:if="{{ cityPicker.visible }}" bindtap="onCityPickerCancel"></view>

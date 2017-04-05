@@ -16,7 +16,6 @@ function showRequestFailedTip() {
 
 function get(options) {
     return new Promise(function (resolve, reject) {
-        wx.showNavigationBarLoading();
         wx.request({
             url: API_BASE_URL + options.url,
             header: {
@@ -32,9 +31,6 @@ function get(options) {
             fail: function (error) {
                 showRequestFailedTip();
                 reject(error)
-            },
-            complete: function (res) {
-                wx.hideNavigationBarLoading();
             }
         })
     })
@@ -42,7 +38,6 @@ function get(options) {
 
 function post(options) {
     return new Promise(function (resolve, reject) {
-        wx.showNavigationBarLoading();
         wx.request({
             url: API_BASE_URL + options.url,
             header: {
@@ -59,9 +54,6 @@ function post(options) {
             fail: function (res) {
                 showRequestFailedTip();
                 reject(res)
-            },
-            complete: function (res) {
-                wx.hideNavigationBarLoading();
             }
         })
     })
@@ -75,7 +67,6 @@ function post(options) {
     }
 */
 function upload(options) {
-    wx.showNavigationBarLoading()
     var uploadedNum = 0
     var uploadedFiles = []
     var paths = option.paths
@@ -133,7 +124,6 @@ function upload(options) {
                             }
                             reject(result)
                         }
-                        wx.hideNavigationBarLoading();
                     }
                 }
             })
@@ -141,7 +131,7 @@ function upload(options) {
     })
 }
 
-export var http2 = {
+export var http = {
     get: get,
     post: post,
     upload: upload

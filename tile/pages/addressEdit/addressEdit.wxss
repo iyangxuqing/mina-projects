@@ -1,4 +1,6 @@
-@import '/template/toptips/toptips.wxss';
+@import '/template/toast/toast.wxss';
+@import '/template/toptip/toptip.wxss';
+@import '/template/loading/loading.wxss';
 
 .address-edit {
   margin: 0;
@@ -116,7 +118,7 @@ picker-view {
 
 .picker-item {
   width: 100%;
-  height:32px;
+  height: 32px;
   line-height: 32px;
   font-size: 16px;
   padding: 0 10px;
@@ -127,7 +129,7 @@ picker-view {
   color: #5b5b5b;
 }
 
-.mask {
+.picker-mask {
   position: fixed;
   top: 0;
   right: 0;

@@ -1,7 +1,7 @@
 
 <!-- -->
-<import src="/template/toptips/toptips.wxml" />
-<template is="topTips" data="{{...topTips}}" />
+<import src="/template/toptip/toptip.wxml" />
+<template is="topTip" data="{{...topTip}}" />
 
 <!-- -->
 <import src="/template/userinfo/userinfo.wxml" />

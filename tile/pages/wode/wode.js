@@ -1,4 +1,7 @@
-import { TopTips } from '../../template/toptips/toptips.js'
+let http = require('../../utils/http.js')
+
+import { user } from '../../utils/user.js'
+import { TopTip } from '../../template/toptip/toptip.js'
 import { UserInfo } from '../../template/userinfo/userinfo.js'
 import { Mobile } from '../../template/mobile/mobile.js'
 
@@ -6,6 +9,11 @@ let app = getApp()
 
 Page({
   data: {
+    user:{
+      address:{
+        longAddress: ''
+      }
+    },
 
     navbars: [
       {
@@ -50,7 +58,8 @@ Page({
 
   onLoad: function (options) {
     app.listener.on('user', this.onUserNotify)
-    this.topTips = new TopTips()
+    app.listener.on('userInfo', this.onUserInfoNotify)
+    this.topTip = new TopTip()
     this.userInfo = new UserInfo(app.user)
     this.mobile = new Mobile(app.user)
   },
@@ -62,6 +71,12 @@ Page({
     let longAddress = a.province + a.city + a.district + a.detail
     this.setData({
       'user.address.longAddress': longAddress
+    })
+  },
+
+  onUserInfoNotify: function (userInfo) {
+    user.setUser({
+      data: userInfo,
     })
   },
 

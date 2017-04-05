@@ -1,5 +1,7 @@
 let http = require('../../utils/http.js')
 
+let app = getApp()
+
 let authDenyTimes = 0
 const authDenyMessage = "因为距离上次拒绝授权的时间过短，无法再次获取授权。您可以稍后再试，也可以在删除本程序后重新进入，即可再次进行授权。"
 
@@ -12,9 +14,12 @@ let data = {
 
 let methods = {
     onUserInfoTap: function (e) {
-        getUserInfoFromWeixin({
+        getUserInfo({
             success: function (userInfo) {
-                Object.assign(getApp().user, userInfo)
+                app.listener.trigger('userInfo', userInfo)
+                if (!app.user) app.user = {}
+                Object.assign(app.user, userInfo)
+                let page = getCurrentPages().pop()
                 page.setData({
                     'userInfo.nickName': userInfo.nickName,
                     'userInfo.avatarUrl': userInfo.avatarUrl
@@ -43,67 +48,38 @@ let methods = {
     在开发平台，则是无论弹出对话框还是静默拒绝，返回的都是
     {"errMsg": "getUserInfo:fail auth deny"}
 */
-function getUserInfoFromWeixin(options) {
-    wx.login({
+function getUserInfo(options) {
+    wx.getUserInfo({
+        withCredentials: false,
         success: function (res) {
-            wx.getUserInfo({
-                success: function (res) {
-                    let userInfo = res.userInfo
-                    wx.setStorageSync('userInfo', userInfo)
-                    http.post({
-                        url: 'login/setUser.php',
-                        data: userInfo,
-                    })
-                    options.success && options.success(userInfo)
-                },
-                fail: function (res) {
-                    getApp().debug.set('wx.getUserInfo fail', res)
-                    if (res.errMsg == 'getUserInfo:fail auth deny') {
-                        // ios静默拒绝
-                        if (res.err_code == '-12006') {
-                            page.topTips.show({
-                                text: authDenyMessage,
-                                multiLine: true,
-                                duration: 15000,
-                                showClose: true
-                            })
-                        }
-                        // 开发平台静默拒绝
-                        else {
-                            authDenyTimes++
-                            if (authDenyTimes > 1) {
-                                page.topTips.show({
-                                    text: authDenyMessage,
-                                    multiLine: true,
-                                    duration: 15000,
-                                    showClose: true
-                                })
-                            }
-                        }
-                    }
-                    // android静默拒绝
-                    else if (res.errMsg == 'getUserInfo:fail') {
-                        page.topTips.show({
-                            text: authDenyMessage,
-                            multiLine: true,
-                            duration: 15000,
-                            showClose: true
-                        })
-                    } else {
-                        page.topTips.show({
-                            text: '登录进行信息授权遇未知错误',
-                            duration: 3000
-                        })
-                    }
-                    options.fail && options.fail(res)
-                }
-            })
+            options.success && options.success(res.userInfo)
         },
         fail: function (res) {
-            getApp().debug.set('wx.login fail', res)
-            page.topTips.show({
-                text: '登录服务器出错，请稍后重试。'
-            })
+            console.log(res)
+            let denyAgain = false
+            if (res.errMsg == 'getUserInfo:fail auth deny') {
+                if (res.err_code == '-12006') {
+                    denyAgain = true //ios静默拒绝
+                } else {
+                    authDenyTimes++
+                    console.log(authDenyTimes)
+                    if (authDenyTimes > 1) {
+                        denyAgain = true //开发平台静默拒绝
+                    }
+                }
+            } else if (res.errMsg == 'getUserInfo:fail') {
+                denyAgain = true //android静默拒绝
+            }
+            if (denyAgain) {
+                wx.openSetting({
+                    success: function (res) {
+                        if (res.authSetting['scope.userInfo']) {
+                            getUserInfo(options)
+                        }
+                    }
+                })
+            }
+            options.fail && options.fail(res)
         }
     })
 }
@@ -124,12 +100,12 @@ export class UserInfo {
         }
     }
 
-    update(options){
+    update(options) {
         let userInfo = data.userInfo
-        if(options && options.nickName){
+        if (options && options.nickName) {
             userInfo.nickName = options.nickName
         }
-        if(options && options.avatarUrl){
+        if (options && options.avatarUrl) {
             userInfo.avatarUrl = options.avatarUrl
         }
         let page = getCurrentPages().pop()

@@ -13,8 +13,8 @@ function checkResponse(options, res) {
 
 function showRequestFailedTip() {
     let page = getCurrentPages().pop()
-    page.tipTops.show({
-        text: '提示：网络错误，请重试...'
+    page.tipTop.show({
+        title: '提示：网络错误，请重试...'
     })
 }
 
@@ -37,19 +37,14 @@ function get(options) {
             options.fail && options.fail(error)
         },
         complete: function (res) {
-            if (!options.silent) wx.hideNavigationBarLoading();
             options.complete && options.complete(res);
+            if (!options.silent) wx.hideNavigationBarLoading();
         }
     })
 }
 
 function post(options) {
-    let timer = setTimeout(function () {
-        wx.showLoading({
-            title: 'loading',
-            mask: true
-        })
-    }, 1500)
+    if (!options.silent) wx.showNavigationBarLoading();
     wx.request({
         url: API_BASE_URL + options.url,
         header: {
@@ -64,14 +59,13 @@ function post(options) {
             options.success && options.success(res.data);
         },
         fail: function (error) {
-            showRequestFailedTip();
+            if (!options.silent) showRequestFailedTip();
             options.fail && options.fail(error);
         },
         complete: function (res) {
-            wx.hideLoading()
-            clearTimeout(timer)
             options.complete && options.complete(res);
-        }.bind(this)
+            if (!options.silent) wx.hideNavigationBarLoading();
+        }
     })
 }
 

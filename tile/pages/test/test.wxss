@@ -1,7 +1,7 @@
 /* pages/test/test.wxss */
 @import "/template/toast/toast.wxss";
+@import "/template/toptip/toptip.wxss";
 @import "/template/loading/loading.wxss";
-@import "/template/topTip/topTip.wxss";
 
 .box {
   min-height: 100rpx;

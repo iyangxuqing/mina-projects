@@ -1,5 +1,7 @@
 let http = require("../../utils/http.js")
-import { TopTips } from "../../template/toptips/toptips.js"
+import { Toast } from "../../template/toast/toast.js"
+import { TopTip } from "../../template/toptip/toptip.js"
+import { Loading } from "../../template/loading/loading.js"
 
 let app = getApp()
 
@@ -25,7 +27,9 @@ Page({
   },
 
   onLoad: function (e) {
-    this.topTips = new TopTips()
+    this.toast = new Toast()
+    this.topTip = new TopTip()
+    this.loading = new Loading()
     app.listener.on('user', this.onUserNotify)
 
     let address = this.data.address
@@ -47,7 +51,6 @@ Page({
       address: address
     })
     this.cityPickerInit(address)
-    console.log(address)
   },
 
   onAddressCityPicker: function (e) {
@@ -67,26 +70,17 @@ Page({
 
   onAddressConfirm: function (e) {
     let address = this.data.address
+    app.user.address = address
     http.post({
       url: 'user/setAddress.php',
-      data: address,
-      success: function (res) {
-        if (!res.error) {
-          app.user.address = address
-          app.listener.trigger('user', app.user)
-          this.topTips.show({
-            type: 'success',
-            text: '编辑的地址已经保存',
-            success: function () {
-              wx.navigateBack()
-            }
-          })
-        } else {
-          this.topTips.show({
-            text: '保存地址出错，请重试'
-          })
-        }
-      }.bind(this)
+      data: address
+    })
+    this.toast.show({
+      icon: 'success',
+      title: '地址已保存',
+      success: function(){
+        wx.navigateBack()
+      }
     })
   },
 
