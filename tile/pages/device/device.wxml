@@ -1,7 +1,0 @@
-<!--pages/device/device.wxml-->
-<block wx:for="{{deviceInfo}}" wx:key="">
-  <view class="deviceInfo">
-    <view class="cell cell-key">{{item.key}}</view>
-    <view class="cell cell-value">{{item.value}}</view>
-  </view>
-</block>

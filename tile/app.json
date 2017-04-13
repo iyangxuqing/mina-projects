@@ -6,16 +6,11 @@
     "pages/anli/anli",
     "pages/wode/wode",
     "pages/index/index",
-    "pages/comment-list1/comment-list1",
     "pages/servicerMessage/index",
     "pages/templateMessage/index",
-    "pages/textarea2/textarea",
     "pages/addReview/addReview",
-    "pages/test-comment-add/test-comment-add",
     "pages/myhome/myhome",
-    "pages/review/review",
-    "pages/canvas/index",
-    "pages/device/device"
+    "pages/review/review"
   ],
   "window": {
     "backgroundTextStyle": "light",

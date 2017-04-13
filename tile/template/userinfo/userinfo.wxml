@@ -1,5 +1,5 @@
 <template name="userInfo">
-  <view class="userInfo" bindtap="{{onUserInfoTap}}">
+  <view class="userInfo" bindtap="{{onUserInfoRequest}}">
     <view class="userInfo-avatar">
       <image src="{{avatarUrl}}"></image>
     </view>

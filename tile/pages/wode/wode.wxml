@@ -4,49 +4,51 @@
 <template is="topTip" data="{{...topTip}}" />
 
 <!-- -->
+<view class="page-loading" wx:if="{{pageLoading}}"></view>
+
+<!-- -->
 <import src="/template/userinfo/userinfo.wxml" />
 <template is="userInfo" data="{{...userInfo}}" />
 
 <!-- -->
 <import src="/template/mobile/mobile" />
 <template is="mobile" data="{{...mobile}}" />
-<template is="addressBar" data="{{...user.address}}" />
 
 <!-- -->
-<template name="addressBar">
-  <navigator class="bar" url="/pages/addressEdit/addressEdit">
-    <view class=" bar-icon" wx:if="{{true}}">
+<template is="address" data="{{...address}}" />
+
+<!-- -->
+<template is="navbars" data="{{navbars}}" />
+
+<!-- -->
+<template name="address">
+  <navigator class="navbar" url="/pages/addressEdit/addressEdit">
+    <view class=" navbar-icon" wx:if="{{true}}">
       <image src="/images/icon/address.png"></image>
     </view>
-    <view class="bar-label">装修地址</view>
-    <view class="bar-value ">
-      <view class="bar-value">{{longAddress}}</view>
-    </view>
-    <view class="bar-mark " wx:if="{{true}}">
+    <view class="navbar-label">装修地址</view>
+    <view class="navbar-value">{{lAddress}}</view>
+    <view class="navbar-mark" wx:if="{{true}}">
       <image src="/images/icon/arrow-right.png"></image>
     </view>
   </navigator>
 </template>
 
 <!-- -->
-<template is="navbar " data="{{...navbars[0], marginBottom:40}} " />
-<template is="navbar " data="{{...navbars[1]}} " />
-<template is="navbar " data="{{...navbars[2], marginBottom:40}} " />
-<template is="navbar " data="{{...navbars[3]}} " />
-<template is="navbar " data="{{...navbars[4], marginBottom:40}} " />
-<template is="navbar " data="{{...navbars[5]}} " />
-
-<!-- -->
-<template name="navbar ">
-  <navigator class="navbar " style="margin-bottom:{{marginBottom}}rpx " url="{{url}} ">
-    <view class="navbar-icon " wx:if="{{icon}} ">
-      <image src="{{icon}} "></image>
-    </view>
-    <view class="navbar-label ">{{label}}</view>
-    <view class="navbar-mark ">
-      <image src="{{mark}} "></image>
-    </view>
-  </navigator>
+<template name="navbars">
+  <block wx:for="{{navbars}}" wx:key="" wx:for-item="navbar">
+    <view class="navbar-separater" wx:if="{{!navbar.url}}"></view>
+    <navigator class="navbar" url="{{navbar.url}}" wx:if="{{navbar.url}}">
+      <view class=" navbar-icon" wx:if="{{navbar.icon}}">
+        <image src="{{navbar.icon}}"></image>
+      </view>
+      <view class="navbar-label">{{navbar.label}}</view>
+      <view class="navbar-value">
+        <view class="navbar-value">{{navbar.value}}</view>
+      </view>
+      <view class="navbar-mark" wx:if="{{true}}">
+        <image src="/images/icon/arrow-right.png"></image>
+      </view>
+    </navigator>
+  </block>
 </template>
-
-<!-- -->

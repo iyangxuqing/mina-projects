@@ -1,27 +1,25 @@
 <import src="/template/toast/toast.wxml" />
-<import src="/template/toptip/toptip.wxml" />
-<import src="/template/loading/loading.wxml" />
 <template is="toast" data="{{...toast}}" />
-<template is="topTip" data="{{...topTip}}" />
-<template is="loading" data="{{...loading}}" />
 
 <!-- -->
 <view class="address-edit">
-  <view class="address-row address-title">输入地址</view>
-  <view class="address-row address-citys" bindtap="onAddressCityPicker">
-    <view class="address-citys-label">选择地区</view>
-    <view class="address-citys-value">{{address.province + address.city + address.district}}</view>
-    <view class="address-citys-mark"></view>
-  </view>
-  <view class="address-row address-detail">
-    <view class="address-detail-label">详细地址</view>
-    <input class="address-detail-input" value="{{address.detail}}" placeholder="街道门牌信息" bindblur="onAddressDetailInputBlur" />
-    <view class="address-detail-mark"></view>
-  </view>
-  <view class="address-row address-buttons">
-    <button class="address-button address-button-confirm" hover-class="address-button-confirm-hover" catchtap="onAddressConfirm">保 存</button>
-    <button class="address-button address-button-cancel" catchtap="onAddressCancel">取 消</button>
-  </view>
+  <form bindsubmit="onAddressSubmit">
+    <view class="address-row address-title">输入地址</view>
+    <view class="address-row address-citys" bindtap="onAddressCityPicker">
+      <view class="address-citys-label">选择地区</view>
+      <view class="address-citys-value">{{address.province + address.city + address.district}}</view>
+      <view class="address-citys-mark"></view>
+    </view>
+    <view class="address-row address-detail">
+      <view class="address-detail-label">详细地址</view>
+      <input class="address-detail-input" name="addressDetail" value="{{address.detail}}" placeholder="街道门牌信息" />
+      <view class="address-detail-mark"></view>
+    </view>
+    <view class="address-row address-buttons">
+      <button class="address-button address-button-confirm" hover-class="address-button-confirm-hover" formType="submit">保 存</button>
+      <button class="address-button address-button-cancel" catchtap="onAddressCancel">取 消</button>
+    </view>
+  </form>
 </view>
 
 <!-- -->

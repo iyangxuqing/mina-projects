@@ -1,4 +1,0 @@
-<!--pages/canvas/index.wxml-->
-<canvas canvas-id="myCanvas"/>
-<image src="{{savedImage}}"/>
-<button bindtap="save">save</button>

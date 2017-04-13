@@ -6,6 +6,7 @@
 */
 
 function setDebug(label, error) {
+    let systemInfo = wx.getStorageSync('systemInfo')
     wx.request({
         url: "https://yixing02.applinzi.com/api/debug.php",
         method: 'POST',
@@ -17,7 +18,7 @@ function setDebug(label, error) {
         data: {
             label: JSON.stringify(label),
             error: JSON.stringify(error),
-            device: JSON.stringify(getApp().globalData.deviceInfo)
+            device: JSON.stringify(systemInfo)
         },
         success: function (res) {
             if (!res.data.error) {

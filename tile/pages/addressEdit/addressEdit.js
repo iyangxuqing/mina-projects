@@ -1,7 +1,5 @@
-let http = require("../../utils/http.js")
 import { Toast } from "../../template/toast/toast.js"
-import { TopTip } from "../../template/toptip/toptip.js"
-import { Loading } from "../../template/loading/loading.js"
+import { User } from "../../utils/user.js"
 
 let app = getApp()
 
@@ -28,25 +26,14 @@ Page({
 
   onLoad: function (e) {
     this.toast = new Toast()
-    this.topTip = new TopTip()
-    this.loading = new Loading()
-    app.listener.on('user', this.onUserNotify)
-
-    let address = this.data.address
-    if (app.user && app.user.address.province) {
-      address = app.user.address
-    }
-    this.setData({
-      address: address
-    })
-    this.cityPickerInit(address)
+    app.listener.on('userUpdate', this.onUserUpdate)
+    this.onUserUpdate()
   },
 
-  onUserNotify: function (user) {
-    let address = user.address
-    if (!address.province) {
-      address = this.data.address
-    }
+  onUserUpdate: function () {
+    let user = wx.getStorageSync('user') || {}
+    let address = user.address || {}
+    if (!address.province) address = this.data.address
     this.setData({
       address: address
     })
@@ -57,28 +44,18 @@ Page({
     this.cityPickerShow()
   },
 
-  onAddressDetailInputBlur: function (e) {
-    let detail = e.detail.value
-    this.setData({
-      'address.detail': detail
-    })
-  },
-
   onAddressCancel: function (e) {
     wx.navigateBack()
   },
 
-  onAddressConfirm: function (e) {
+  onAddressSubmit: function (e) {
     let address = this.data.address
-    app.user.address = address
-    http.post({
-      url: 'user/setAddress.php',
-      data: address
-    })
+    address.detail = e.detail.value.addressDetail
+    User.setUser({ address: address })
     this.toast.show({
       icon: 'success',
       title: '地址已保存',
-      success: function(){
+      success: function () {
         wx.navigateBack()
       }
     })
@@ -171,6 +148,8 @@ Page({
   getCityPickerValue: function (address) {
     let iProvince = 0
     let provinces = wx.getStorageSync('citys')
+    if (!provinces) return
+
     for (let i in provinces) {
       if (provinces[i].name == address.province) {
         iProvince = i

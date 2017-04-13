@@ -1,6 +1,7 @@
 .topTip {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
@@ -27,9 +28,11 @@
   text-align: center;
   word-wrap: break-word;
   word-break: break-all;
-  padding: 12rpx;
-  padding-left: 30rpx;
-  padding-right: 0rpx;
+  padding: 12rpx 30rpx;
+}
+
+.showClose .topTip-title {
+  padding-right: 0;
 }
 
 .topTip-title.mulitLine {

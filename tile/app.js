@@ -1,24 +1,17 @@
 //app.js
-import { user } from 'utils/user.js'
-import { debug } from 'utils/debug.js'
 import { Listener } from 'utils/event.js'
-import { getCitys } from 'utils/citys.js'
+import { User } from 'utils/user.js'
+import { Citys } from 'utils/citys.js'
 
 App({
 
-  debug: debug,
-
   onLaunch: function () {
     this.listener = new Listener()
-    this.listener.on('userUpdate', this.onUserUpdate)
     setTimeout(function () {
-      user.login()
-      user.getSystemInfo()
+      User.login()
+      User.getSystemInfo()
+      Citys.getCitys()      
     }, 0)
-  },
-
-  onUserUpdate: function () {
-    console.log('abc')
   },
 
 })

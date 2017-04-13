@@ -1,13 +1,32 @@
-import { http } from 'http2.js'
+import { http } from 'http.js'
 
 let authDenyTimes = 0
 
-function updateUser(options) {
+function updateLocalUser(options) {
     let user = wx.getStorageSync('user') || {}
     Object.assign(user, options)
     wx.setStorageSync('user', user)
-    let app = getApp()
-    app.listener.trigger('userUpdate')
+    getApp().listener.trigger('userUpdate')
+}
+
+function updateRemoteUser(options) {
+    if (options.address) {
+        options.address_province = options.address.province || ''
+        options.address_city = options.address.city || ''
+        options.address_district = options.address.district || ''
+        options.address_detail = options.address.detail || ''
+    }
+    delete options.address
+    return new Promise(function (resolve, reject) {
+        http.post({
+            url: 'user/setUser.php',
+            data: options
+        }).then(function (res) {
+            resolve(res)
+        }).catch(function (res) {
+            reject(res)
+        })
+    })
 }
 
 function login() {
@@ -20,7 +39,7 @@ function login() {
                 if (res.token) {
                     wx.setStorageSync('token', res.token)
                     delete res.token
-                    updateUser(res)
+                    updateLocalUser(res)
                 }
             })
         }
@@ -44,7 +63,7 @@ function getUserInfo() {
     wx.getUserInfo({
         withCredentials: false,
         success: function (res) {
-            updateUser(res.userInfo)
+            setUser(res.userInfo)
         },
         fail: function (res) {
             let denyAgain = false
@@ -104,39 +123,14 @@ function getUser() {
         if (!res.error) {
             res.gender = res.gender == "1"
             res.mobileVerified = res.mobileVerified == "1"
-            let address = {
-                province: res.address_province,
-                city: res.address_city,
-                district: res.address_district,
-                detail: res.address_detail
-            }
-            res.address = address
-            delete res.address_province
-            delete res.address_city
-            delete res.address_district
-            delete res.address_detail
-            updateUser(res)
+            updateLocalUser(res)
         }
     })
 }
 
-function setUser(options) {
-    http.post({
-        url: 'user/setUser.php',
-        data: options
-    }).then(function (res) {
-        return new Promise(function (resolve, reject) {
-            if (!res.error) {
-                resolve(res)
-            } else {
-                reject(res)
-            }
-        })
-    }, function (res) {
-        return new Promise(function (resolve, reject) {
-            reject(res)
-        })
-    })
+function setUser(options, updateRemote = true) {
+    updateLocalUser(options)
+    if (updateRemote) updateRemoteUser(options)
 }
 
 function getSystemInfo() {
@@ -144,9 +138,41 @@ function getSystemInfo() {
     wx.setStorageSync('systemInfo', systemInfo)
 }
 
-export var user = {
+function mobileCodeRequest(number) {
+    return new Promise(function (resolve, reject) {
+        http.post({
+            url: 'sms/codeRequest.php',
+            data: {
+                tplId: 29922,
+                mobile: number
+            }
+        }).then(function (res) {
+            resolve(res)
+        }).catch(function (res) {
+            reject(res)
+        })
+    })
+}
+
+function mobileCodeVerify(number, code) {
+    return new Promise(function (resolve, reject) {
+        http.post({
+            url: 'sms/codeVerify.php',
+            data: { code, number },
+        }).then(function (res) {
+            resolve(res)
+        }).catch(function (res) {
+            reject(res)
+        })
+    })
+}
+
+export var User = {
     login: login,
     getUser: getUser,
     setUser: setUser,
-    getSystemInfo: getSystemInfo
+    getUserInfo: getUserInfo,
+    getSystemInfo: getSystemInfo,
+    mobileCodeRequest: mobileCodeRequest,
+    mobileCodeVerify: mobileCodeVerify,
 }
