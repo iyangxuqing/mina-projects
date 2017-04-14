@@ -1,0 +1,21 @@
+<view class="container">
+  <view class="head">
+    <view class="head-image">
+      <image src="{{hImage}}"></image>
+    </view>
+    <view class="head-title">{{title}}</view>
+    <view class="head-logo">
+      <image src="{{logo}}" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="list">
+    <block wx:for="{{items}}" wx:key="" wx:for-item="item">
+      <view class="item" data-id="{{item.id}}" catchtap="onItemTap">
+        <view class="thumb">
+          <image src="{{item.thumb}}"></image>
+        </view>
+        <view class="title">{{item.title}}</view>
+      </view>
+    </block>
+  </view>
+</view>

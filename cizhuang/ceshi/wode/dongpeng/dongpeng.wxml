@@ -1,0 +1,10 @@
+<view class="container">
+  <view class="dongpeng">
+  <view class="title">{{dongpeng.title}}</view>
+  <view class="paragraphs">
+  <block wx:for="{{dongpeng.paragraphs}}">
+  <view class="paragraph">{{item}}</view>
+  </block>
+  </view>
+  </view>
+</view>

@@ -1,0 +1,19 @@
+<view class="Search">
+  <view class="container">
+    <view class="head">
+      <view class="SearchBox">
+        <input class="input" placeholder="喜欢什么装修风格？↓↓↓" focus="true"  />
+        <!--<view class="button">搜索</view>-->
+      </view>
+    </view>
+    <view class="body">
+      <view class="body-head">推荐</view>
+      <view class="style">
+        <block wx:for="{{search.style}}">
+        <navigator url="{{item.url}}">
+          <view class="key">{{item.key}}</view></navigator>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

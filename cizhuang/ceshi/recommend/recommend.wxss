@@ -1,0 +1,93 @@
+.shangpinlist-container{
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    margin-bottom: 40rpx;   
+}
+.head{
+    margin-left: -30rpx;
+    margin-right: -30rpx;
+    margin-bottom: 40rpx;
+}
+.head-image{
+    height: 400rpx;
+    overflow: hidden;
+}
+.head-text{
+    position: absolute;
+    top: 140rpx;
+    left: 40rpx;
+    color: #fff;
+    border: 1rpx solid #fff;
+    padding: 20rpx
+
+}
+.head-title{
+    font-size: 40rpx;
+    letter-spacing: 20rpx;
+    font-weight: 600;
+    padding-left: 40rpx
+}
+.head-paragraphs{
+    font-size: 24rpx;   
+}
+.body{
+    margin-bottom: 40rpx;
+}
+.body-head{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #353535;
+    font-weight: 600;
+    margin-bottom: 20rpx;
+}
+.body-subTitle{
+    font-size: 40rpx;
+    /*letter-spacing: 10rpx;*/
+    padding-bottom: 20rpx;
+    border-bottom: 2rpx solid #ccc;
+    margin: 20rpx 120rpx; 
+}
+.body-head-paragraph{
+    font-size: 40rpx;
+    letter-spacing: 10rpx;
+    padding-bottom: 20rpx;
+    border-bottom: 2rpx solid #ccc;
+    margin: 20rpx 120rpx; 
+}
+.body-head-box{
+    width: 300rpx;
+    height: 2rpx;
+    background: #ccc; 
+}
+
+.products{
+    display: flex;
+    margin-bottom: 40rpx;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.item{
+    width: 210rpx;
+    /*margin-right: 10rpx;*/
+    /*box-shadow: 5rpx 5rpx 5rpx #888888;*/
+    margin-bottom: 40rpx;
+    border: 2rpx solid #ccc;
+    border-radius: 4rpx;
+    overflow: hidden;
+}
+.item .image{
+    overflow: hidden;
+    height: 210rpx;
+}
+.item .text{
+    text-align: center; 
+    font-size: 28rpx;
+}
+.item .title{
+    line-height: 2;
+}
+.item .paragraph{
+    font-size: 28rpx;
+    color: #888;
+}

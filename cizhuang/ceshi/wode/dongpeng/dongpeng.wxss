@@ -1,0 +1,21 @@
+page{
+     background-image: url(http://122.226.60.90:8092/images/cizhuang/images/s12.jpg);
+  background-attachment: fixed;
+}
+.container{
+    padding: 30rpx;
+
+}
+.title{
+    font-size: 40rpx;
+    font-weight: 700;
+    color: #353535;
+    text-align: center;
+    line-height: 2;
+}
+.paragraph{
+    text-indent: 2em;
+    margin-bottom: 20rpx;
+    font-size: 30rpx;
+    line-height: 2;
+}

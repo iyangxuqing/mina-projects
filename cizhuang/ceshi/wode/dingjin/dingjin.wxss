@@ -1,0 +1,74 @@
+page{
+    /*background-image: url(http://122.226.60.90:8092/images/cizhuang/dongpeng/anli/s01xiangqing/s02.gif)*/
+}
+.container{
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+}
+.head{
+    margin-bottom: 60rpx;
+}
+.body{
+    margin-bottom: 40rpx;
+}
+.swiper{
+    margin-left: -30rpx;
+    margin-right: -30rpx;
+    height: 600rpx;
+
+}
+.Price{
+    font-size: 40rpx;
+    color: red;
+    line-height: 1.4;
+}
+.title{
+    color: 353535;
+    font-weight: 600;
+}
+.content{
+    font-size: 28rpx;
+    color: #666;
+    line-height: 1.2;
+
+}
+.row{
+    display: flex;
+    justify-content: space-around;
+    color: #fff;
+    background: #edb400;
+    height: 160rpx;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    font-size: 40rpx;
+
+}
+.key{
+     text-align: center;
+    height: 160rpx;
+    width: 100%;
+    line-height: 160rpx;
+
+}
+.hide{
+    display: flex;
+    justify-content: center;
+    width: 375rpx;
+    height: 160rpx;
+     position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+}
+.contact{ 
+    display: flex;
+    flex-wrap: wrap;
+    width: 120rpx;
+    height: 160rpx;
+    align-items: center;
+
+}

@@ -1,0 +1,22 @@
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 300rpx;
+  padding: 40rpx;
+  margin-bottom: 40rpx;
+  background-color: #fff;
+}
+
+.userInfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #eee;
+}
+
+.userInfo-nickName {
+  color: #888;
+}

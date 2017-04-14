@@ -1,0 +1,2 @@
+<import src="../../template/recommend-danpin/recommend-danpin.wxml" />
+<template is="recommend-danpin" data="{{...danpin}}" />

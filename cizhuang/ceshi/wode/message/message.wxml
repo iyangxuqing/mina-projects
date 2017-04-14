@@ -1,0 +1,18 @@
+<view class="message-container">
+<view class="message">
+  <input class="Verification number" placeholder="您的手机号码" type="number" maxlength="11" />
+  <view class="Verification box">
+    <input placeholder="验证码" placeholder-class="Verification" type="number" />
+    <button class=" text" type="primary">验证码</button>
+  </view>
+  <view class="Verification address">
+    <picker bindchange="bindPickerChange" value="1" range="{{array}}">
+      <view class="Verification picker">
+        所在地：{{array}}
+      </view>
+    </picker>
+    </view>
+  </view>
+  <button class="Verification button" type="primary">确定</button>
+  <button class="Verification button" type="default">取消</button>
+</view>

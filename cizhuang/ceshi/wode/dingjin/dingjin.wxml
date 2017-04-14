@@ -1,0 +1,34 @@
+ <view class="dingjin">
+    <view class="container">
+      <view class="head">
+        <swiper class="swiper" indicator-dots="true">
+          <block wx:for="{{dingjin.image}}">
+            <swiper-item>
+              <image src="{{item}}" ></image>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+      <view class="body">
+      <view class="title">{{dingjin.title}}</view>
+     
+        <view class="Price">{{dingjin.Price}}</view>
+        <view class="content">{{dingjin.content}}</view>
+      </view>
+      <view class="foot">
+      <view class="row">
+        <view class="key">{{dingjin.key[0]}}
+        </view>
+        <view class="key">{{dingjin.key[1]}}</view>
+      </view>
+    </view>
+    <view class="hide">
+      <view class="contact">
+            <contact-button class="button" size="40" session-session-from="dingjin"></contact-button>
+            <contact-button class="button" size="40" session-session-from="dingjin"></contact-button>
+            <contact-button class="button" size="40" session-session-from="dingjin"></contact-button>
+            <contact-button class="button" size="40" session-session-from="dingjin"></contact-button>
+          </view>
+  </view>
+    </view>
+  </view>

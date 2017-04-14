@@ -1,0 +1,2 @@
+<import src="../../../template/beijingqiang-danpin/beijingqiang-danpin.wxml" />
+<template is="danpin" data="{{...s4}}" />

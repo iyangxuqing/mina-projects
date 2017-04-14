@@ -1,0 +1,42 @@
+page{
+    background: url(http://122.226.60.90:8092/images/cizhuang/dongpeng/service/s01.jpg);
+    background-attachment: fixed;
+}
+.container{
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+}
+.head{
+    margin-bottom: 40rpx;
+
+}
+.item{
+    padding-bottom: 40rpx;
+}
+.value{
+   padding-bottom: 30rpx;
+}
+.title{
+    text-align: center;
+    font-size: 40rpx;
+    line-height: 2;
+    color: #d7000f;
+}
+.body-title{
+    color: #d533e5;
+    font-size: 36rpx;
+    line-height: 1.8;
+    margin-bottom: 30rpx;
+}
+.subTitle{
+    color: #333;
+    line-height: 1.6;
+    font-size: 32rpx;
+    margin-bottom: 30rpx;
+}
+.paragraph{
+    color: #666;
+    font-size: 32rpx;
+    line-height: 1.6;
+    margin-bottom: 30rpx;
+}

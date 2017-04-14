@@ -1,0 +1,94 @@
+.container{
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+}
+.head{
+    margin-bottom: 40rpx;
+}
+.logo{
+    margin-left: -30rpx;
+    margin-right: -30rpx;
+    height: 480rpx;
+    overflow: hidden;
+    margin-bottom: 40rpx;
+}
+.text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.follow{
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    font-size: 36rpx;
+    color: #fff;
+    border-radius: 32rpx;
+    width: 200rpx;
+    background: #BEB8BA;
+
+
+}
+.desc{
+    color: #353535;
+    line-height: 1.4;
+    font-size: 28rpx;
+    margin-top: 20rpx;
+}
+.body{
+   
+    margin-bottom: 20rpx;
+}
+.body-head{
+    margin-bottom: 40rpx;
+}
+.body-head-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ccc; 
+    height: 100rpx;
+      margin-left: -30rpx;
+    margin-right: -30rpx;
+   
+}
+.icon-image{
+    width: 400rpx;
+    height: 70rpx;
+}
+
+.list{
+    margin-bottom: 40rpx;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.item{
+    padding: 10rpx;
+    margin-bottom: 20rpx;
+}
+.image{
+    width: 310rpx;
+    height: 270rpx;
+    border-radius: 18rpx;
+    overflow: hidden;
+    margin-bottom: 10rpx;
+}
+.title{
+    text-align: center;
+    color: #c19408;
+    font-size: 28rpx;
+
+
+}
+.foot-title{
+    font-size: 24rpx;
+    color: #888888;
+    text-align: center;
+    padding: 20rpx 0;
+    border-top: 2rpx solid #ccc;
+    margin-left: -30rpx;
+    margin-right: -30rpx;
+}

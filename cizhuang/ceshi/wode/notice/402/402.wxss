@@ -1,0 +1,50 @@
+.notice402-container{
+  padding: 30rpx 30rpx;
+  margin-bottom: 20rpx;  
+}
+.head{
+    margin-bottom: 60rpx;
+}
+.title{
+    font-size: 20px;
+    font-weight: 700;
+    color: #353535;
+    margin-bottom: 40rpx
+}
+.createtime{
+    
+}
+.contents{
+
+}
+.content{
+    margin-bottom: 60rpx;
+}
+.content-title{
+    font-size: 20px;
+    text-align: center;
+    background: khaki;
+    line-height: 2;
+}
+.item{
+    margin-bottom: 60rpx;
+}
+.content-title{
+    margin-bottom: 40rpx;
+}
+.image{
+    height: 400rpx;
+    width: 100%;
+    border: 1rpx solid #d5d5d5;
+}
+.paragraph{
+    text-indent: 2em;
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 20rpx;
+    letter-spacing: 2rpx;
+}
+.foot-text{
+    padding-top: 20rpx;
+    border-top: 1rpx solid #888;
+}

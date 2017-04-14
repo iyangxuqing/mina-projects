@@ -1,0 +1,40 @@
+ <view class="shangpinlist-container">
+    <view class="head">
+      <view class="head-image">
+        <image src="{{shangpinlist.headImage}}"></image>
+      </view>
+      <view class="head-text">
+        <view class="head-title">{{shangpinlist.headTitle}}</view>
+        <view class="head-paragraphs">
+          <block wx:for="{{shangpinlist.headParagraphs}}">
+            <view class="head-paragraph">{{item}}</view>
+          </block>
+        </view>
+      </view>
+    </view>
+    <view class="body">
+      <view class="body-head">
+        <view class="body-title">{{shangpinlist.bodyTitle}}</view>
+        <view class="body-subTitle">{{shangpinlist.bodySubTitle}}</view>
+      </view>
+      <view class="products">
+        <block wx:for="{{shangpinlist.products}}">
+         <navigator url="{{item.url}}" hover-class="other-navigator-hover">
+            <view class="item">
+              <view class="image">
+                <image src="{{item.image}}" ></image>
+              </view>
+              <view class="text">
+                <view class="title">{{item.text.title}}</view>
+                <view class="paragraphs">
+                  <block wx:for="{{item.text.paragraphs}}" wx:for-item="paragraph">
+                    <view class="paragraph">{{paragraph}}</view>
+                  </block>
+                </view>
+              </view>
+            </view>
+          </navigator>
+        </block>
+      </view>
+    </view>
+  </view>

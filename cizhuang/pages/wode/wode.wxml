@@ -1,0 +1,74 @@
+
+<!-- -->
+<import src="/template/toptip/toptip.wxml" />
+<template is="topTip" data="{{...topTip}}" />
+
+<!-- -->
+<view class="page-loading" wx:if="{{pageLoading}}"></view>
+
+<!-- -->
+<import src="/template/userinfo/userinfo.wxml" />
+<template is="userInfo" data="{{...userInfo}}" />
+
+<!-- -->
+<import src="/template/mobile/mobile" />
+<template is="mobile" data="{{...mobile}}" />
+
+<!-- -->
+<template is="address" data="{{...address}}" />
+
+<!-- -->
+<template is="navbars" data="{{navbars}}" />
+
+<!-- -->
+<template is="contact" data="{{contact}}" />
+
+<!-- -->
+<template name="address">
+  <navigator class="navbar" url="/pages/addressEdit/addressEdit">
+    <view class=" navbar-icon" wx:if="{{true}}">
+      <image src="/images/icon/address.png"></image>
+    </view>
+    <view class="navbar-label">装修地址</view>
+    <view class="navbar-value">{{lAddress}}</view>
+    <view class="navbar-mark" wx:if="{{true}}">
+      <image src="/images/icon/arrow-right.png"></image>
+    </view>
+  </navigator>
+</template>
+
+<!-- -->
+<template name="navbars">
+  <block wx:for="{{navbars}}" wx:key="" wx:for-item="navbar">
+    <view class="navbar-separater" wx:if="{{!navbar.url}}"></view>
+    <navigator class="navbar" url="{{navbar.url}}" wx:if="{{navbar.url}}">
+      <view class=" navbar-icon" wx:if="{{navbar.icon}}">
+        <image src="{{navbar.icon}}"></image>
+      </view>
+      <view class="navbar-label">{{navbar.label}}</view>
+      <view class="navbar-value">
+        <view class="navbar-value">{{navbar.value}}</view>
+      </view>
+      <view class="navbar-mark" wx:if="{{true}}">
+        <image src="/images/icon/arrow-right.png"></image>
+      </view>
+    </navigator>
+  </block>
+</template>
+
+<!-- -->
+<template name="contact">
+  <view class="navbar">
+    <view class="navbar-icon" wx:if="{{contact.icon}}">
+      <image src="{{contact.icon}}"></image>
+    </view>
+    <view class="navbar-label">{{contact.label}}</view>
+     <view class="navbar-value">
+        <view class="navbar-value">{{navbar.value}}</view>
+      </view>
+    <view class="contact">
+      <contact-button type="default-light" size="27" session-from="weapp">
+      </contact-button>
+    </view>
+  </view>
+</template>

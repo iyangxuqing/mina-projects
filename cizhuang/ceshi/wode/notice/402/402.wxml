@@ -1,0 +1,28 @@
+<view class="notice402-container">
+  <view class="head">
+    <view class="title ">{{n402.title}}</view>
+    <view class="createtime">{{n402.createtime}}</view>
+  </view>
+  <view class="body ">
+    <view class="contents ">
+      <block wx:for="{{n402.contents}}" wx:for-item="content">
+        <view class="content">
+          <view class="content-title">{{content.title}}</view>
+          <view class="image-text">
+            <block wx:for="{{content.imageText}}">
+              <view class="item ">
+                <view class="paragraph">{{item.paragraph}}</view>
+                <view class="image">
+                  <image src="{{item.scr}} "></image>
+                </view>
+              </view>
+            </block>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="foot">
+  <view class="foot-text">{{n402.footText}}</view>
+  </view>
+</view>

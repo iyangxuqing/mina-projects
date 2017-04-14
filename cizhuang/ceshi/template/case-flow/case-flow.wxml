@@ -1,0 +1,41 @@
+<template name="case-flow">
+  <view class="container">
+    <view class="head">
+      <view class="title">{{title}}</view>
+    </view>
+    <view class="body">
+      <view class="list">
+        <block wx:for="{{list}}">
+          <navigator url="{{item.url}}" hover-class="other-navigator-hover">
+            <view class="item">
+              <view class="row">
+                <view class="text">
+                  <view class="time">{{item.time}}</view>
+                  <view class="desc">{{item.desc}}</view>
+                </view>
+                <view class="image">
+                  <image src="{{item.image}}"></image>
+                </view>
+              </view>
+            </view>
+          </navigator>
+        </block>
+      </view>
+    </view>
+    <view class="foot">
+      <view class="foot-row">
+        <view class="key">{{key[0]}}
+        </view>
+        <view class="key">{{key[1]}}</view>
+      </view>
+      <view class="hide">
+        <view class="contact">
+          <contact-button class="button" size="40"></contact-button>
+          <contact-button class="button" size="40"></contact-button>
+          <contact-button class="button" size="40"></contact-button>
+          <contact-button class="button" size="40"></contact-button>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

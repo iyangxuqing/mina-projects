@@ -1,0 +1,19 @@
+.contact{
+   
+    display: block;
+    flex-wrap: wrap;
+    width: 120rpx;
+    height: 160rpx;
+    /*background-color: orangered;*/
+}
+.zixun{
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    width: 120rpx;
+    height: 160rpx;
+    background: orangered;
+}
+.button{
+    opacity: 0;
+}

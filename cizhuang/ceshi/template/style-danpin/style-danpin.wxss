@@ -1,0 +1,85 @@
+page{
+    /*background-image: url(http://122.226.60.90:8092/images/cizhuang/dongpeng/anli/s01xiangqing/s02.gif)*/
+}
+.container{
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    margin-bottom: 40rpx;
+}
+.head{
+    margin-bottom: 40rpx;
+}
+.body{
+    margin-bottom: 40rpx;
+}
+.swiper{
+    margin-left: -30rpx;
+    margin-right: -30rpx;
+    height: 600rpx;
+}
+.body-head{
+    display: flex;
+    justify-content: center;
+    color: #353535;
+    font-size: 32rpx;
+    margin-bottom: 40rpx;
+    align-items: center;
+}
+.line{
+    background: #ccc;
+    height: 2rpx;
+    width: 100%;
+}
+.title{
+   flex-shrink: 0;
+  padding: 0 20rpx;
+  font-size: 36rpx;
+}
+.content{
+    font-size: 32rpx;
+    color: #333;
+    line-height: 1.6;
+   text-indent: 2em;
+   margin-bottom: 200rpx;
+
+}
+.row{
+    display: flex;
+    justify-content: space-around;
+    color: #fff;
+    background: #edb400;
+    height: 140rpx;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    font-size: 40rpx;
+
+}
+.key{
+     text-align: center;
+    height: 140rpx;
+    width: 100%;
+    line-height: 140rpx;
+
+}
+.hide{
+    display: flex;
+    justify-content: center;
+    width: 375rpx;
+    height: 140rpx;
+     position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+}
+.contact{ 
+    display: flex;
+    flex-wrap: wrap;
+    width: 120rpx;
+    height: 140rpx;
+    align-items: center;
+
+}

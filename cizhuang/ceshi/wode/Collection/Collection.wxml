@@ -1,0 +1,19 @@
+<view class="Collection">
+  <view class="container">
+    <view class="list">
+      <block wx:for="{{list}}">
+      <navigator url="{{item.url}}" hover-class="other-navigator-hover">
+        <view class="item">
+          <view class="image">
+            <image src="{{item.image}}"></image>
+          </view>
+          <view class="text">
+            <view class="title">{{item.text.title}}</view>
+            <view class="paragraph">{{item.text.paragraph}}</view>
+          </view>
+        </view>
+        </navigator>
+      </block>
+    </view>
+  </view>
+</view>

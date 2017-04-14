@@ -1,0 +1,45 @@
+page{
+  background: url(http://122.226.60.90:8092/images/cizhuang/dongpeng/wode/s02.jpg?t=1);
+  background-attachment: fixed;
+}
+.container {
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+
+.item {
+  display: flex;
+  margin-left: -30rpx;
+  margin-right: -30rpx;
+  padding: 20rpx 30rpx;
+  border-bottom: 2rpx solid #ccc;
+  height: 200rpx;
+  overflow: hidden;
+}
+
+.image {
+  width: 200rpx;
+  height: 100%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.text {
+  padding-left: 20rpx;
+}
+
+.title {
+  color: #353535;
+  line-height: 1.6;
+  font-size: 36rpx;
+}
+
+.paragraph {
+  font-size: 28rpx;
+  color: #888;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

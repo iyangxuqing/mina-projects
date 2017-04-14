@@ -1,0 +1,32 @@
+<view class="container">
+  <view class="notice">
+    <navigator url="{{notice.url}}">
+      <view class="head">
+        <view class="head-image">
+          <image src="{{notice.image}}"></image>
+        </view>
+        <view class="head-title">{{notice.title}}</view>
+      </view>
+    </navigator>
+    <view class="list">
+      <block wx:for="{{notice.list}}">
+        <navigator url="{{item.url}}">
+          <view class="item">
+            <view class="list-title">{{item.title}}</view>
+            <view class="list-image">
+              <image src="{{item.image}}"></image>
+            </view>
+          </view>
+        </navigator>
+      </block>
+    </view>
+  </view>
+  <view class="notice-two">
+    <view class="title">{{noticeTwo.title}}</view>
+    <view class="createtime">{{noticeTwo.createtime}}</view>
+    <navigator url="402/402" hover-class="none">
+    <view class="image"><image src="{{noticeTwo.image}}"></image></view>
+    <view class="paragraph">{{noticeTwo.paragraph}}</view>
+    <view class="key">{{noticeTwo.key}}</view></navigator>
+  </view>
+</view>

@@ -1,0 +1,2 @@
+<import src="../../../template/case-danpin/case-danpin.wxml" />
+<template is="case-danpin" data="{{...danpin}}" />

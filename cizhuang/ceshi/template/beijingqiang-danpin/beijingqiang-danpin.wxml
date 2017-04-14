@@ -1,0 +1,39 @@
+<template name="danpin">
+  <view class="danpin">
+    <view class="container">
+      <view class="head">
+        <swiper class="swiper" indicator-dots="true">
+          <block wx:for="{{image}}">
+            <swiper-item>
+              <image src="{{item}}" ></image>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+      <view class="body">
+        <view class="body-head">
+          <view class="line"></view>
+          <view class="title">{{title}}</view>
+          <view class="line"></view>
+        </view>
+        <view class="label">{{label}}</view>
+        <view class="content">{{content}}</view>
+      </view>
+   <view class="foot">
+      <view class="row">
+        <view class="key">{{key[0]}}
+        </view>
+        <view class="key">{{key[1]}}</view>
+      </view>
+    </view>
+    <view class="hide">
+      <view class="contact">
+            <contact-button class="button" size="40"></contact-button>
+            <contact-button class="button" size="40"></contact-button>
+            <contact-button class="button" size="40"></contact-button>
+            <contact-button class="button" size="40"></contact-button>
+          </view>
+  </view>
+  </view>
+</view>
+</template>

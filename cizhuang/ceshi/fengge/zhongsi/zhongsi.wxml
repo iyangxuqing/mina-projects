@@ -1,0 +1,50 @@
+<!--<view class="container">
+  <view class="header">
+    <view class="head-image">
+      <image src="{{headimage}}" mode="widthFix"></image>
+    </view>
+    <view class="head-titles">
+      <view class="head-title">{{headtitle}}</view>
+      <view class="head-subtitle">{{headsubtitle}}</view>
+      <view class="head-title">{{headtitleafter}}</view>
+    </view>
+  </view>
+  <view class="body">
+    <view class="body-head">
+      <view class="body-head-title">{{bodyheatitle}}</view>
+      <view class="body-head-image">
+        <image src="{{bodyheadimage}}" mode="widthFix"></image>
+      </view>
+      <view class="bodyheadparagraphs">
+        <block wx:for="{{bodyheadparagraphs}}" wx:key="" wx:for-item="bodyheadparagraph">
+          <view class="body-head-paragraph">{{bodyheadparagraph}}</view>
+        </block>
+      </view>
+    </view>
+    <view class="list">
+      <block wx:for="{{list}}" wx:key="">
+        <navigator url="{{item.url}}">
+          <view class="item {{item.type}}">
+            <view class="text">
+              <view class="title">{{item.text.title}}</view>
+              <view class="subtitle">{{item.text.subTitle}}</view>
+              <view class="paragraphs">
+                <block wx:for="{{item.text.paragraphs}}" wx:key="" wx:for-item="paragraph">
+                  <view class="paragraph">{{paragraph}}</view>
+                </block>
+              </view>
+            </view>
+            <view class="image">
+              <image src="{{item.image}}"></image>
+            </view>
+          </view>
+        </navigator>
+      </block>
+    </view>
+  </view>
+  <view class="foot">
+    <view class="foot-title">{{footTitle}}</view>
+  </view>
+</view>-->
+<import src="../../template/style/style.wxml" />
+<template is="style" data="{{...zhongsi}}" />

@@ -1,0 +1,67 @@
+.topTip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  min-height: 90rpx;
+  z-index: 5000;
+  transform: translateZ(0);
+}
+
+.topTip-icon {
+  width: 90rpx;
+  height: 90rpx;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.topTip-title {
+  flex-grow: 1;
+  color: #fff;
+  font-size: 0.9rem;
+  text-align: center;
+  word-wrap: break-word;
+  word-break: break-all;
+  padding: 12rpx 30rpx;
+}
+
+.showClose .topTip-title {
+  padding-right: 0;
+}
+
+.topTip-title.mulitLine {
+  text-align: left;
+}
+
+.topTip-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4999;
+  background-color: transparent;
+  transform: translateZ(0);
+}
+
+.topTip.info {
+  background-color: rgba(16, 174, 254, 0.68);
+}
+
+.topTip.warn {
+  background-color: rgba(255, 190, 0, 0.78);
+}
+
+.topTip.error {
+  background-color: rgba(230, 80, 64, 0.88);
+}
+
+.topTip.success {
+  background-color: rgba(9, 187, 8, 0.68);
+}

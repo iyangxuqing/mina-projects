@@ -1,0 +1,22 @@
+<swiper class="section-swiper" indicator-dots="true">
+  <block wx:for="{{brand}}" wx:key="">
+    <swiper-item>
+      <block wx:if="{{item.title}}">
+        <view class="slide-image" style="height:51%">
+          <image src="{{item.image}}" mode="aspectFit" />
+        </view>
+      </block>
+      <block wx:if="{{!item.title}}">
+        <view class="slide-image" style="height:82%">
+          <image src="{{item.image}}" />
+        </view>
+      </block>
+      <view class="slide-sub-title">{{item.title}}</view>
+      <view class="slide-content">
+        <block wx:for="{{item.contents}}" wx:for-item="content" wx:key="">
+          <view class="paragraph">{{content}}</view>
+        </block>
+      </view>
+    </swiper-item>
+  </block>
+</swiper>

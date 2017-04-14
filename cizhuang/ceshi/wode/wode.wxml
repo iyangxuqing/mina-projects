@@ -1,0 +1,39 @@
+
+<!-- -->
+<import src="/template/toptip/toptip.wxml" />
+<template is="topTip" data="{{...topTip}}" />
+
+<!-- -->
+<import src="/template/userinfo/userinfo.wxml" />
+<template is="userInfo" data="{{...userInfo}}" />
+
+<!-- -->
+<template is="navbar" data="{{...navbars[0], marginBottom:40}}" />
+<template is="navbar" data="{{...navbars[1]}}" />
+<template is="navbar" data="{{...navbars[2], marginBottom:40}}" />
+<template is="navbar" data="{{...navbars[3]}}" />
+<template is="navbar" data="{{...navbars[4], marginBottom:40}}" />
+<view class="navbar" style="margin-bottom:40rpx">
+  <view class="navbar-icon" wx:if="{{icon}}">
+  </view>
+  <view class="navbar-label">{{label}}</view>
+  <view class="contact">
+    <contact-button type="default-light" size="27" session-from="weapp">
+    </contact-button>
+  </view>
+</view>
+
+<!-- -->
+<template name="navbar">
+  <navigator class="navbar" style="margin-bottom:{{marginBottom}}rpx" url="{{url}}">
+    <view class="navbar-icon" wx:if="{{icon}}">
+      <image src="{{icon}}"></image>
+    </view>
+    <view class="navbar-label">{{label}}</view>
+    <view class="navbar-mark">
+      <image src="{{mark}}"></image>
+    </view>
+  </navigator>
+</template>
+
+<!-- -->

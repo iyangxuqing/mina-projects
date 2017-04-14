@@ -1,0 +1,25 @@
+
+<!--<import src="../../../cizhuang/template/danpin/danpin.wxml" />
+<template is="danpin" data="{{danpin}}"/>-->
+<view class="danpin">
+  <view class="container">
+  <view class="head">
+    <swiper class="swiper" indicator-dots="true">
+      <block wx:for="{{danpin.swiper}}">
+        <swiper-item>
+          <image src="{{item}}"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    </view>
+    <view class="body">
+      <view class="body-head">
+        <view class="line"></view>
+        <view class="title">{{danpin.title}}</view>
+        <view class="line"></view>
+      </view>
+      <view class="time">{{danpin.time}}</view>
+      <view class="content">{{danpin.content}}</view>
+    </view>
+  </view>
+</view>

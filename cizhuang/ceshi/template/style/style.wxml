@@ -1,0 +1,37 @@
+<template name="style">
+  <view class="container">
+    <view class="head">
+      <view class="logo">
+        <image src="{{logo}}" ></image>
+      </view>
+      <view class="text">
+        <view class="follow">{{follow}}</view>
+        <view class="desc">{{desc}}</view>
+      </view>
+    </view>
+    <view class="body">
+      <view class="body-head">
+      <view class="body-head-icon">
+          <view class="icon-image">
+            <image src="{{icon}}"></image>
+          </view>
+        </view>
+      </view>
+      <view class="list">
+        <block wx:for="{{list}}" wx:key="">
+          <navigator url="{{item.url}}" hover-class="other-navigator-hover">
+            <view class="item">
+              <view class="image">
+                <image src="{{item.image}}"></image>
+              </view>
+              <view class="title">{{item.title}}</view>
+            </view>
+          </navigator>
+        </block>
+      </view>
+    </view>
+    <view class="foot">
+      <view class="foot-title">{{footTitle}}</view>
+    </view>
+  </view>
+</template>

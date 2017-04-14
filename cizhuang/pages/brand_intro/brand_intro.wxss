@@ -1,0 +1,32 @@
+/* pages/brand_intro/brand_intro.wxss */
+page{
+  height: 100%;
+}
+.section-swiper {
+  width: 100%;
+  height: 90%;
+  padding: 0;
+  color: #797e99;
+}
+
+.slide-image {
+  width: 100%;
+  margin-top: 96rpx;
+}
+
+.slide-sub-title {
+  position: relative;
+  font-weight: bold;
+  text-align: center;
+  font-size: 29rpx;
+  border-bottom: 1px solid rgba(228, 229, 235, 0.5);
+  margin: 80rpx 100rpx 40rpx;
+  line-height: 60rpx;
+}
+
+.slide-content {
+  text-align: center;
+  line-height: 40rpx;
+  color: #797e99;
+  font-size: 29rpx;
+}

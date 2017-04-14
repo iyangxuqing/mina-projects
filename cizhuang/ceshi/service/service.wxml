@@ -1,0 +1,28 @@
+<view class="service">
+  <view class="container">
+    <view class="head">
+      <view class="title">{{service.title}}</view>
+    </view>
+    <view class="body">
+      <view class="list">
+        <block wx:for="{{service.list}}">
+        <view class="item">
+          <view class="body-title">{{item.bodyTitle}}</view>
+          <view class="texts">
+            <block wx:for="{{item.texts}}" wx:key="" wx:for-item="text">
+            <view class="value">
+              <view class="subTitle">{{text.subTitle}}</view>
+              <view class="paragraphs">
+                <block wx:for="{{text.paragraphs}}" wx:key="" wx:for-item="paragraph">
+                  <view class="paragraph">{{paragraph}}</view>
+                </block>
+              </view>
+              </view>
+            </block>
+          </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

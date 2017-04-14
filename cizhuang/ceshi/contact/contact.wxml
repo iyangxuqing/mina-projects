@@ -1,0 +1,7 @@
+ <view class="contact">咨询
+      <contact-button class="button" size="40" ></contact-button>
+      <contact-button class="button" size="40" ></contact-button>
+      <contact-button  class="button" size="40" ></contact-button>
+      <contact-button class="button"  size="40" ></contact-button>
+    </view>
+<view class="zixun"></view>

@@ -1,0 +1,65 @@
+@import "/template/toptip/toptip.wxss";
+@import "/template/userinfo/userinfo.wxss";
+@import "/template/mobile/mobile.wxss";
+
+page {
+  background: #eeeff3;
+  margin-bottom: 400rpx;
+}
+
+.page-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100rpx;
+  padding: 16rpx 30rpx;
+  background-color: #fff;
+  box-sizing: border-box;
+  margin-bottom: 1px;
+}
+
+.navbar-icon {
+  flex-shrink: 0;
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 20rpx;
+}
+
+.navbar-label {
+  flex-shrink: 0;
+  margin-right: 30rpx;
+}
+
+.navbar-value {
+  flex-grow: 1;
+  margin-right: 20rpx;
+}
+
+.navbar-mark {
+  flex-shrink: 0;
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.navbar-separater {
+  height: 40rpx;
+  background-color: transparent;
+}
+.contact{
+    margin-right: 10rpx;
+    width: 60rpx;
+    height: 60rpx;
+    background: #07c56f;
+    border-radius: 50%;
+    
+}
