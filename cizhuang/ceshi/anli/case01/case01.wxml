@@ -1,0 +1,22 @@
+<view class="container">
+  <view class="list">
+    <block wx:for="{{items}}">
+      <view class="item">
+        <view class="image">
+          <image src="{{item.image}}"></image>
+        </view>
+        <view class="text">
+          <view class="title">{{item.title}}</view>
+          <view class="subTitle">{{item.subTitle}}</view>
+          <view class="desc">{{item.desc}}</view>
+          <view class="createtime">
+            <view class="time">{{item.time}}</view>
+            <view class="praise">
+              <image src="/images/icon/praise.png"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

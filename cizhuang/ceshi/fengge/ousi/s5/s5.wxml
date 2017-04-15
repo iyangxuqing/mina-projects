@@ -1,2 +1,0 @@
-<import src="../../../template/style-danpin/style-danpin.wxml" />
-<template is="danpin" data="{{...s5}}" />

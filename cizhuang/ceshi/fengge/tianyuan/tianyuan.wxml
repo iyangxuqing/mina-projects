@@ -1,2 +1,0 @@
-<import src="../../template/style/style.wxml" />
-<template is="style" data="{{...tianyuan}}" />
