@@ -1,0 +1,18 @@
+<view class="container">
+  <view class="head">
+    <view class="title">{{title}}</view>
+  </view>
+  <view class="list">
+    <block wx:for="{{items}}" wx:key="">
+      <view class="item" catchtap="onItemTap" data-index="{{index}}">
+        <view class="text">
+          <view class="time" wx:if="{{item.time}}">{{item.time}}</view>
+          <view class="desc">{{item.desc}}</view>
+        </view>
+        <view class="image">
+          <image src="/images/icon/camera-golden.png"></image>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

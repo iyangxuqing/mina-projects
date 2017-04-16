@@ -4,6 +4,7 @@ import { caseData } from '../case.data.js'
 
 Page({
   data: {},
+
   onLoad: function (options) {
     let imagesUrl = config.imagesUrl
     let items = []
@@ -11,6 +12,7 @@ Page({
       let data = caseData[i]
       let last = data.process[data.process.length - 1]
       let item = {
+        id: data.id,
         title: data.subdistrict,
         subTitle: data.houseAddress,
         state: data.state,
@@ -23,5 +25,11 @@ Page({
     this.setData({
       items: items
     })
+  },
+
+  onItemTap: function (e) {
+    let id = e.currentTarget.dataset.id
+    console.log(id)
   }
+
 })

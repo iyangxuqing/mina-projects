@@ -4,6 +4,7 @@ export var caseData = [
         subdistrict: '义乌银河湾',
         houseAddress: '2幢赵先生家装修',
         style: '欧式装修',
+        state: '未完成',
         image: 'anli/s02.jpg',
         process: [
             {
@@ -31,7 +32,6 @@ export var caseData = [
                 ]
             },
         ],
-
     },
     {
         id: 1002,
