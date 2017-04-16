@@ -1,2 +1,0 @@
-<import src="../../template/case-flow/case-flow.wxml" />
-<template is="case-flow" data="{{...s04xiangqing}}" />

@@ -29,7 +29,9 @@ Page({
 
   onItemTap: function (e) {
     let id = e.currentTarget.dataset.id
-    console.log(id)
+    wx.navigateTo({
+      url: '../case02/case02?id=' + id
+    })
   }
 
 })

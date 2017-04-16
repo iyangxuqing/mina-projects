@@ -7,7 +7,7 @@
 .item {
   display: flex;
   position: relative;
-  padding: 30rpx 0;
+  padding: 20rpx 0;
   border-bottom: 2rpx solid #ccc;
 }
 

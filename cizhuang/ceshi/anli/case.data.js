@@ -38,6 +38,7 @@ export var caseData = [
         subdistrict: '江东菊园小区',
         houseAddress: '2幢302室张先生家装修',
         style: '现代简约装修',
+        state: '未完成',
         image: 'anli/s03.jpg',
         process: [
             {
@@ -81,6 +82,7 @@ export var caseData = [
         subdistrict: '永盛小区',
         houseAddress: '39幢302室刘先生家装修',
         style: '田园风装修',
+        state: '完成',
         image: 'anli/s01.jpg',
         process: [
             {
@@ -134,6 +136,7 @@ export var caseData = [
         subdistrict: '佛堂江滨小区',
         houseAddress: '39幢张小姐家装修',
         style: '新中式装修',
+        state: '完成',
         image: 'anli/s04.jpg',
         process: [
             {

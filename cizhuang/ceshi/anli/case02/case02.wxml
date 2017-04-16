@@ -4,7 +4,7 @@
   </view>
   <view class="list">
     <block wx:for="{{items}}" wx:key="">
-      <view class="item" catchtap="onItemTap" data-index="{{index}}">
+      <view class="item" catchtap="onItemTap" data-id="{{id}}" data-index="{{index}}">
         <view class="text">
           <view class="time" wx:if="{{item.time}}">{{item.time}}</view>
           <view class="desc">{{item.desc}}</view>
