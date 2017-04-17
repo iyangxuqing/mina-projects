@@ -1,7 +1,13 @@
-page {
-  background-image: url(http://122.226.60.90:8092/images/cizhuang/dongpeng/anli/s01xiangqing/s01.jpg);
-  background-size: cover;
-  background-attachment: fixed;
+page:before {
+  content: ' ';
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url(http://122.226.60.90:8092/images/cizhuang/dongpeng/anli/s01xiangqing/s01.jpg) center 0 no-repeat;
+  background-size: 100% 100%;
 }
 
 .container {

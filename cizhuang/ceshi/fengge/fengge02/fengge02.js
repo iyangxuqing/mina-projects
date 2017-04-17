@@ -1,4 +1,5 @@
-import { ModelRoom } from '../modelRoom.data.js'
+let config = require('../../../utils/config.js')
+import { ModelRoomData } from '../modelRoom.data.js'
 
 Page({
   data: {
@@ -8,14 +9,13 @@ Page({
 
   onLoad: function (options) {
     let cid = options.cid
-    let imagePath = ModelRoom.imagePath
-    let data = ModelRoom.data
+    let data = ModelRoomData
     for (let i in data) {
       if (data[i].id == cid) {
-        let hImage = imagePath + data[i].hImage
+        let hImage = config.imagesUrl + data[i].hImage
         let title = data[i].title
         let desc = data[i].desc
-        let logo = imagePath + data[i].logo
+        let logo = config.imagesUrl + data[i].logo
         wx.setNavigationBarTitle({
           title: '样板房 - ' + title
         })
@@ -34,7 +34,7 @@ Page({
         items.push({
           id: data[i].id,
           title: data[i].title,
-          thumb: imagePath + data[i].thumb
+          thumb: config.imagesUrl + data[i].thumb
         })
       }
     }

@@ -1,0 +1,32 @@
+<view class="container">
+  <view class="head">
+    <swiper class="swiper" indicator-dots="{{hImages.length>1}}">
+      <block wx:for="{{hImages}}" wx:for-item="image" wx:key="">
+        <swiper-item>
+          <image src="{{image}}" mode="widthFix"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <template is="products" data="{{...lists[0]}}" wx:if="{{lists[0]}}" />
+</view>
+<template name="products">
+  <view class="products">
+    <view class="head">
+      <view class="title">{{title}}</view>
+      <view class="sub-title">{{subTitle}}</view>
+    </view>
+    <view class="list">
+      <block wx:for="{{items}}" wx:key="">
+        <view class="item" data-cid="{{id}}" data-id="{{item.id}}" catchtap="onItemTap">
+          <view class="thumb">
+            <image src="{{item.thumb}}"></image>
+          </view>
+          <view class="title">{{item.title}}</view>
+          <view class="code">{{item.code}}</view>
+          <view class="size">{{item.size}}</view>
+        </view>
+      </block>
+    </view>
+  </view>
+</template>

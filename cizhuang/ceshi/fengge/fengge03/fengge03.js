@@ -1,13 +1,12 @@
-import { ModelRoom } from '../modelRoom.data.js'
+let config = require('../../../utils/config.js')
+import { ModelRoomData } from '../modelRoom.data.js'
 
 Page({
-
   data: {
   },
 
   onLoad: function (options) {
-    let imagePath = ModelRoom.imagePath
-    let data = ModelRoom.data
+    let data = ModelRoomData
     let id = options.id
     let index = -1
     for (let i in data) {
@@ -31,7 +30,7 @@ Page({
     let images = data[index].images
     let desc = data[index].descs[0]
     images = images.map(function (image, i) {
-      return imagePath + image
+      return config.imagesUrl + image
     })
 
     wx.setNavigationBarTitle({

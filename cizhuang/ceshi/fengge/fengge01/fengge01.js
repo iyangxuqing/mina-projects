@@ -1,16 +1,16 @@
-import { ModelRoom } from '../modelRoom.data.js'
+let config = require('../../../utils/config.js')
+import { ModelRoomData } from '../modelRoom.data.js'
 
 Page({
   data: {},
 
   onLoad: function (options) {
-    let imagePath = ModelRoom.imagePath
-    let data = ModelRoom.data
+    let data = ModelRoomData
     for (let i in data) {
       if (data[i].id == 0) {
         let title = data[i].title
-        let hImage = imagePath + data[i].hImage
-        let logo = imagePath + data[i].logo
+        let hImage = config.imagesUrl + data[i].hImage
+        let logo = config.imagesUrl + data[i].logo
         this.setData({
           title: title,
           hImage: hImage,
@@ -25,7 +25,7 @@ Page({
         items.push({
           id: data[i].id,
           title: data[i].title + "装修",
-          thumb: imagePath + data[i].thumb
+          thumb: config.imagesUrl + data[i].thumb
         })
       }
     }

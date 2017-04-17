@@ -1,14 +1,16 @@
 {
   "pages": [
+    "ceshi/home/home",
+    "pages/wode/wode",
+    "ceshi/wode/wode",
     "ceshi/anli/case01/case01",
     "ceshi/anli/case02/case02",
     "ceshi/anli/case03/case03",
     "ceshi/fengge/fengge01/fengge01",
     "ceshi/fengge/fengge02/fengge02",
     "ceshi/fengge/fengge03/fengge03",
-    "ceshi/home/home",
-    "pages/wode/wode",
-    "ceshi/wode/wode",
+    "ceshi/recommend/recommend01/recommend01",
+    "ceshi/recommend/recommend02/recommend02",
     "pages/brand_intro/brand_intro",
     "ceshi/wode/notice/402/402",
     "ceshi/wode/notice/notice",
@@ -18,14 +20,7 @@
     "ceshi/wode/dongpeng/dongpeng",
     "ceshi/home/home2",
     "ceshi/wode/Collection/Collection",
-    "ceshi/recommend/recommend",
     "ceshi/service/service",
-    "ceshi/recommend/s6/s6",
-    "ceshi/recommend/s5/s5",
-    "ceshi/recommend/s4/s4",
-    "ceshi/recommend/s3/s3",
-    "ceshi/recommend/s2/s2",
-    "ceshi/recommend/s1/s1",
     "ceshi/Search/Search"
   ],
   "window": {
@@ -53,7 +48,7 @@
         "selectedIconPath": "images/tab/nine/fengge.png"
       },
       {
-        "pagePath": "ceshi/anli/anli",
+        "pagePath": "ceshi/anli/case01/case01",
         "text": "身边案例",
         "iconPath": "images/tab/fif/case1.png",
         "selectedIconPath": "images/tab/nine/case.png"

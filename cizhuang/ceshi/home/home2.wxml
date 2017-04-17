@@ -1,7 +1,7 @@
 <view class="home-container">
   <view class="head">
     <swiper class="head-swiper" indicator-dots="true">
-      <block wx:for="{{home.headSwiper}}">
+      <block wx:for="{{home.headSwiper}}" wx:key="">
         <navigator url="{{item.url}}" open-type="{{item.type}}" hover-class="other-navigator-hover">
           <swiper-item>
             <image src="{{item.image}}"></image>

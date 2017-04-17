@@ -5,12 +5,12 @@ Page({
       headSwiper: [
         {
           type: 'navigate',
-          url: '../recommend/recommend',
+          url: '../recommend/recommend01/recommend01',
           image: 'http://122.226.60.90:8092/images/cizhuang/dongpeng/home/s04.jpg',
         },
         {
           type: 'switchTab',
-          url: '../fengge/fengge',
+          url: '../fengge/fengge01/fengge01',
           image: 'http://122.226.60.90:8092/images/cizhuang/dongpeng/home/s03.jpg',
         },
         {
@@ -25,7 +25,7 @@ Page({
       text: '家是温暖的港湾',
       row: [
         {
-          url: '../anli/anli',
+          url: '../anli/case01/case01',
           key: '身边案例',
         },
         {
