@@ -1,5 +1,4 @@
-// template/comment-new/comment-new.js
-var http = require("../../utils/http.js");
+import { http } from '../../utils/http.js'
 var db = require("../../utils/db.js");
 
 function commentNew(page) {
@@ -17,10 +16,10 @@ function commentNew(page) {
   page.onCommentAdded = onCommentAdded
 }
 
-function onCommentAdded(e){
+function onCommentAdded(e) {
   var that = this;
   db.getComments({
-    success: function(res){
+    success: function (res) {
       that.setData({
         comments: res,
         commentNew: {

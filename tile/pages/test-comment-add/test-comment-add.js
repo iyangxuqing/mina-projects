@@ -1,5 +1,4 @@
 // pages/test-comment-add/test-comment-add.js
-let WeToast = require("../../template/wetoast/wetoast.js");
 let commentNew = require("../../template/comment-new2/comment-new.js");
 var {Event} = require("../../utils/event.js");
 

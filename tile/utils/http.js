@@ -58,32 +58,21 @@ function post(options) {
 }
 
 /*
-    options = {
-        paths: [],
-        uploadUrl,
-        uploadDir,
-    }
+    options.paths = []
+    options.uploadDir = 'dongpeng'
 */
 function upload(options) {
     var uploadedNum = 0
     var uploadedFiles = []
     var paths = option.paths
-    var uploadUrl = options.uploadUrl || 'upload/uploadImage.php'
-    var uploadDir = options.uploadDir || 'upload/images'
+    var uploadDir = options.uploadDir || config.uploadDir
+    var uploadUrl = config.apiUrl + 'upload/uploadImage.php'
 
     return new Promise(function (resolve, reject) {
-        if (paths.length == 0) {
-            resolve({
-                errno: 0,
-                error: '没有文件需要上传',
-                uploadedFiles: []
-            })
-            return;
-        }
-        for (var i = 0; i < paths.length; i++) {
+        for (let i in paths) {
             var path = paths[i]
             wx.uploadFile({
-                url: API_BASE_URL + uploadUrl,
+                url: uploadUrl,
                 filePath: path,
                 name: 'file',
                 header: {
@@ -100,28 +89,20 @@ function upload(options) {
                         uploadedFiles.push({
                             source: data.source,
                             target: data.target
-                        });
+                        })
+                    } else {
+                        reject(res)
                     }
+                },
+                fail: function (res) {
+                    reject(res)
                 },
                 complete: function () {
                     uploadedNum++;
                     if (uploadedNum == paths.length) {
-                        var result = {};
-                        if (uploadedFiles.length == paths.length) {
-                            result = {
-                                errno: 0,
-                                error: '',
-                                uploadedFiles: uploadedFiles
-                            }
-                            resolve(result)
-                        } else {
-                            result = {
-                                errno: 1,
-                                error: '文件上传错误',
-                                uploadedFiles: uploadedFiles
-                            }
-                            reject(result)
-                        }
+                        resolve({
+                            uploadedFiles: uploadedFiles
+                        })
                     }
                 }
             })

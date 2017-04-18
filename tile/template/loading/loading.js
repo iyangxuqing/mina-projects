@@ -4,14 +4,16 @@ export class Loading {
         this.timer = null
     }
 
-    show() {
+    show(options={}) {
         let page = getCurrentPages().pop()
         this.timer = setTimeout(function () {
             page.setData({
+                'loading.mask': options.mask || true,
+                'loading.title': options.title || '',
                 'loading.visible': true,
                 'loading.animateCss': 'animate-fade-in'
             })
-        }, 1500)
+        }, 1000)
     }
 
     hide() {

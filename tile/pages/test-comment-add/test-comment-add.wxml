@@ -1,10 +1,4 @@
-<!--pages/test-comment-add/test-comment-add.wxml-->
-
-<import src="../../template/wetoast/wetoast.wxml"/>
-<import src="../../template/comment-new/comment-new.wxml"/>
-
-<view class="page-container">
-    <template is="comment-new" data="{{...commentNew}}"/>
+<import src="../../template/comment-new/comment-new.wxml" />
+<view class="container">
+  <template is="comment-new" data="{{...commentNew}}" />
 </view>
-
-<template is="wetoast" data="{{...__wetoast__}}"/>

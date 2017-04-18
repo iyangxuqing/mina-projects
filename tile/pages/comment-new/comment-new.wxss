@@ -1,0 +1,62 @@
+@import '/template/toast/toast.wxss';
+@import '/template/loading/loading.wxss';
+
+.comment-new-container {
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+}
+
+.comment-new-text {
+  padding: 20rpx;
+  border: 1px solid #ccc;
+  margin-bottom: 40rpx;
+}
+
+.comment-new-text textarea {
+  width: 100%;
+  height: 300rpx;
+}
+
+.comment-new-photos {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.comment-new-photo {
+  width: calc((100% - 80rpx)/3);
+  height: 196rpx;
+  position: relative;
+  margin-bottom: 40rpx;
+}
+
+.comment-new-photo:nth-child(3n+2) {
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+}
+
+.comment-photo-add {
+  opacity: 0.5;
+  border: 1px solid #ccc;
+  background-size: 80rpx;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('/images/icon/camera.png');
+}
+
+.comment-photo-del {
+  position: absolute;
+  top: -20rpx;
+  right: -20rpx;
+  width: 80rpx;
+  height: 80rpx;
+  padding: 20rpx;
+  background-clip: content-box;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-size: 40rpx;
+  background-position: center;
+  background-image: url('/images/icon/close-white.png');
+}

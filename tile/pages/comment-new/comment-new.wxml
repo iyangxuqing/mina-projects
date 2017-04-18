@@ -1,0 +1,27 @@
+<import src='/template/toast/toast.wxml' />
+<template is="toast" data="{{...toast}}" />
+<import src='/template/loading/loading.wxml' />
+<template is="loading" data="{{...loading}}" />
+
+<!-- -->
+<view class="comment-new-container">
+  <form bindsubmit="onCommentSubmit">
+    <view class="comment-new-text">
+      <textarea placeholder="发表评论..." name="text" />
+    </view>
+    <view class="comment-new-photos">
+      <block wx:if="{{photos}}">
+        <block wx:for="{{photos}}" wx:key="" wx:for-item="photo">
+          <view class="comment-new-photo">
+            <image src="{{photo}}" />
+            <view class="comment-photo-del" wx:if="{{!published}}" catchtap="onCommentPhotoDel" data-index="{{index}}">
+            </view>
+          </view>
+        </block>
+      </block>
+      <view class="comment-new-photo comment-photo-add" catchtap="onCommentPhotoAdd" wx:if="{{!photos || photos.length<9}}">
+      </view>
+    </view>
+    <button class="comment-new-publish" form-type="submit" loading="{{publishState=='publishing'}}">发表评论</button>
+  </form>
+</view>
