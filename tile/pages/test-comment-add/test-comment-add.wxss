@@ -1,6 +1,0 @@
-/* pages/test-comment-add/test-comment-add.wxss */
-@import "../../template/comment-new/comment-new.wxss";
-.container{
-    padding-left: 30rpx;
-    padding-right: 30rpx;
-}

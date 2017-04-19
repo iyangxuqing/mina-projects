@@ -8,7 +8,7 @@ export class TopTip {
 
     init() {
         this.defaults = {
-            mask: false,
+            mask: true,
             type: 'error',
             title: 'topTip',
             visible: false,

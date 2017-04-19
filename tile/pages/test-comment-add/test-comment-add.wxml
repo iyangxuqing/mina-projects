@@ -1,4 +1,0 @@
-<import src="../../template/comment-new/comment-new.wxml" />
-<view class="container">
-  <template is="comment-new" data="{{...commentNew}}" />
-</view>

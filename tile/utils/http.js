@@ -64,11 +64,17 @@ function post(options) {
 function upload(options) {
     var uploadedNum = 0
     var uploadedFiles = []
-    var paths = option.paths
+    var paths = options.paths || []
     var uploadDir = options.uploadDir || config.uploadDir
     var uploadUrl = config.apiUrl + 'upload/uploadImage.php'
 
     return new Promise(function (resolve, reject) {
+        if (paths.length == 0) {
+            resolve({
+                uploadedFiles: []
+            })
+            return
+        }
         for (let i in paths) {
             var path = paths[i]
             wx.uploadFile({

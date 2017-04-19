@@ -1,23 +1,19 @@
-// pages/comment-list/comment-list.js
-var http = require("../../utils/http.js");
-var db = require("../../utils/db.js");
-var WeToast = require("../../template/wetoast/wetoast.js");
-var commentNew = require("../../template/comment-new/comment-new.js");
+import { http } from '../../utils/http.js'
+import { Comment } from '../../utils/comment.js'
 
 Page({
   data: {
   },
-  onLoad: function (options) {
-    commentNew.commentNew(this);
-    WeToast.WeToast();
 
-    var that = this;
-    db.getComments({
-      success: function(res){
-        that.setData({
-          comments: res
-        })
-      }
+  onLoad: function (options) {
+
+    let comment = new Comment()
+    let that = this
+    comment.get().then(function(comments){
+      console.log(comments)
+      that.setData({
+        comments: comments
+      })
     })
 
   },

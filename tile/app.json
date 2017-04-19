@@ -1,7 +1,7 @@
 {
   "pages": [
+    "pages/comment-list1/comment-list1",
     "pages/comment-new/comment-new",
-    "pages/test-comment-add/test-comment-add",
     "pages/review/review",
     "pages/home/home2",
     "pages/addressEdit/addressEdit",

@@ -51,17 +51,17 @@
 }
 
 .topTip.info {
-  background-color: rgba(16, 174, 254, 0.68);
+  background-color: rgba(16, 174, 254, 0.9);
 }
 
 .topTip.warn {
-  background-color: rgba(255, 190, 0, 0.78);
+  background-color: rgba(255, 190, 0, 0.9);
 }
 
 .topTip.error {
-  background-color: rgba(230, 80, 64, 0.88);
+  background-color: rgba(230, 80, 64, 0.9);
 }
 
 .topTip.success {
-  background-color: rgba(9, 187, 8, 0.68);
+  background-color: rgba(9, 187, 8, 0.9);
 }

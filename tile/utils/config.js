@@ -4,7 +4,7 @@ var version = "weApp/" + versionNumber;
 
 var apiUrl = 'https://yixing02.applinzi.com/api/';
 var imagesUrl = 'http://yixing02-images.stor.sinaapp.com/';
-var uploadDir = 'upload/dongpeng';
+var uploadDir = 'upload/dongpeng/';
 
 module.exports.debug = debug;
 module.exports.versionNumber = versionNumber;

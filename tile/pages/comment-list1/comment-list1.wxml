@@ -1,9 +1,4 @@
-<import src="/template/wetoast/wetoast.wxml"/>
-<import src="/template/comment-new/comment-new.wxml"/>
-
-<template is="comment-new" data="{{...commentNew}}"/>
 <template is="comments" data="{{comments}}"/>
-<template is="wetoast" data="{{...__wetoast__}}"/>
 
 <template name="comments">
   <view class="comments">
