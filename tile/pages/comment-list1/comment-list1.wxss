@@ -9,8 +9,8 @@ page {
 
 .comment {
   display: flex;
-  padding: 20rpx 36rpx;
-  margin: 0 -36rpx;
+  padding: 20rpx 24rpx;
+  margin: 0 -24rpx;
   border-bottom: 2rpx solid #ccc;
 }
 
@@ -46,6 +46,7 @@ page {
 
 .comment-photos {
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 10rpx;
 }
 
@@ -53,7 +54,8 @@ page {
   width: 180rpx;
   height: 180rpx;
   flex-shrink: 0;
-  margin-right: 15rpx;
+  margin-right: 16rpx;
+  margin-bottom: 16rpx;
 }
 
 .comment-foot {
@@ -61,6 +63,10 @@ page {
   justify-content: space-between;
   align-items: center;
   color: #999;
+}
+
+.comment-created {
+  font-size: 32rpx;
 }
 
 .comment-icons {
@@ -71,5 +77,5 @@ page {
   width: 88rpx;
   height: 88rpx;
   padding: 24rpx;
-  margin: -14rpx 0;
+  margin: -16rpx 0;
 }

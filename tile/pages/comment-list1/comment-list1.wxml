@@ -1,5 +1,4 @@
-<template is="comments" data="{{comments}}"/>
-
+<template is="comments" data="{{comments}}" />
 <template name="comments">
   <view class="comments">
     <block wx:for="{{comments}}" wx:for-item="comment" wx:key="">
@@ -15,7 +14,7 @@
           </view>
           <view class="comment-body">
             <view class="comment-texts">
-              <block wx:for="{{comment.texts}}" wx:key="" wx:for-item="text">
+              <block wx:for="{{comment.texts}}" wx:for-item="text" wx:key="">
                 <view class="comment-text">{{text}}</view>
               </block>
             </view>
@@ -28,13 +27,13 @@
             </view>
           </view>
           <view class="comment-foot">
-            <view class="createtime">{{comment.created}}</view>
+            <view class="comment-created">{{comment.created}}</view>
             <view class="comment-icons">
-              <view class="comment-icon">
-                <image src="../../images/icon/praise.png"></image>
+              <view class="comment-icon" catchtap="onPraiseTap" data-id="{{comment.id}}">
+                <image src="{{comment.userPraised ? '../../images/icon/praise_hl.png' : '../../images/icon/praise.png'}}"></image>
               </view>
-              <view class="comment-icon">
-                <image src="../../images/icon/comment2.png"></image>
+              <view class="comment-icon" catchtap="onReviewTap" data-id="{{comment.id}}">
+                <image src="../../images/icon/comment.png"></image>
               </view>
             </view>
           </view>

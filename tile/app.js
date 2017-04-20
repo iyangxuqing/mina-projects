@@ -8,7 +8,7 @@ App({
   onLaunch: function () {
     this.listener = new Listener()
     setTimeout(function () {
-      User.login()
+      // User.login()
       User.getSystemInfo()
       Citys.getCitys()      
     }, 0)
