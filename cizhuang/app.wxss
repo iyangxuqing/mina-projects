@@ -1,24 +1,24 @@
-
-page{
+page {
   height: 100%;
-  font-size: 16px;
-  line-height: 1.2;
-  color: #666;
-  /*background-image: url(http://122.226.60.90:8092/images/cizhuang/images/s12.jpg);
-  background-attachment: fixed;*/
+  font-size: 32rpx;
+  box-sizing: border-box;
 }
 
-image{
-    width: 100%;
-    height: 100%;
-    display: block;
-    box-sizing: border-box;
+::-webkit-scrollbar {
+  display: none;
 }
 
-text{
+image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  box-sizing: border-box;
+}
+
+text {
   display: block;
 }
 
-view{
+view {
   box-sizing: border-box;
 }

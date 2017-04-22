@@ -1,32 +1,30 @@
 <view class="container">
-  <view class="notice">
-    <navigator url="{{notice.url}}">
-      <view class="head">
-        <view class="head-image">
-          <image src="{{notice.image}}"></image>
-        </view>
-        <view class="head-title">{{notice.title}}</view>
-      </view>
-    </navigator>
-    <view class="list">
-      <block wx:for="{{notice.list}}">
-        <navigator url="{{item.url}}">
-          <view class="item">
-            <view class="list-title">{{item.title}}</view>
-            <view class="list-image">
-              <image src="{{item.image}}"></image>
-            </view>
-          </view>
-        </navigator>
-      </block>
-    </view>
-  </view>
-  <view class="notice-two">
-    <view class="title">{{noticeTwo.title}}</view>
-    <view class="createtime">{{noticeTwo.createtime}}</view>
-    <navigator url="402/402" hover-class="none">
-    <view class="image"><image src="{{noticeTwo.image}}"></image></view>
-    <view class="paragraph">{{noticeTwo.paragraph}}</view>
-    <view class="key">{{noticeTwo.key}}</view></navigator>
-  </view>
+  <block wx:for="{{notices}}" wx:for-item="notice" wx:key="">
+    <template is="notice" data="{{...notice}}" />
+  </block>
 </view>
+
+<!-- -->
+<template name="notice">
+  <view class="notice {{list.length==1?'single':''}}">
+    <block wx:for="{{list}}" wx:for-item="item" wx:key="">
+      <navigator class="item" url="{{item.url}}" hover-class="">
+        <view class="item-title">
+          <text>{{item.title}}</text>
+        </view>
+        <view class="item-sub-title">
+          <text>{{item.time}}</text>
+        </view>
+        <view class="item-image">
+          <image src="{{item.image}}"></image>
+        </view>
+        <view class="item-desc">
+          <text>{{item.desc}}</text>
+        </view>
+        <view class="item-foot">
+          <text>查看全文</text>
+        </view>
+      </navigator>
+    </block>
+  </view>
+</template>

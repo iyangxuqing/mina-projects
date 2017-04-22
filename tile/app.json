@@ -1,9 +1,10 @@
 {
   "pages": [
-    "pages/comment-list1/comment-list1",
     "pages/comment-new/comment-new",
-    "pages/review/review",
+    "pages/comment-list1/comment-list1",
+    
     "pages/home/home2",
+    "pages/review/review",
     "pages/addressEdit/addressEdit",
     "pages/fengge/fengge",
     "pages/anli/anli",

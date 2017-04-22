@@ -1,5 +1,6 @@
 {
   "pages": [
+    "ceshi/wode/notice/notice",
     "ceshi/home/home",
     "pages/wode/wode",
     "ceshi/wode/wode",
@@ -14,7 +15,6 @@
     "pages/brand_intro/brand_intro",
     
     "ceshi/wode/notice/402/402",
-    "ceshi/wode/notice/notice",
     "ceshi/wode/dingjin/dingjin",
     "ceshi/contact/contact",
     "ceshi/wode/message/message",
