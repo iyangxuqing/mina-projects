@@ -1,28 +1,38 @@
-<view class="notice402-container">
-  <view class="head">
-    <view class="title ">{{n402.title}}</view>
-    <view class="createtime">{{n402.createtime}}</view>
-  </view>
-  <view class="body ">
-    <view class="contents ">
-      <block wx:for="{{n402.contents}}" wx:for-item="content">
-        <view class="content">
-          <view class="content-title">{{content.title}}</view>
-          <view class="image-text">
-            <block wx:for="{{content.imageText}}">
-              <view class="item ">
-                <view class="paragraph">{{item.paragraph}}</view>
-                <view class="image">
-                  <image src="{{item.scr}} "></image>
-                </view>
+<view class="container">
+  <template is="article" data="{{...article}}" />
+</view>
+
+<!-- -->
+<template name="article">
+  <view class="article">
+    <view class="article-head">
+      <view class="title">{{title}}</view>
+      <view class="createTime">{{createTime}}</view>
+    </view>
+    <view class="article-body">
+      <block wx:for="{{items}}" wx:for-item="item" wx:key="">
+        <view class="item">
+          <view class="title" wx:if="{{item.title}}">
+            <text>{{item.title}}</text>
+          </view>
+          <view class="sub-title" wx:if="{{item.subTitle}}">
+            <text>{{item.subTitle}}</text>
+          </view>
+          <view class="image" wx:if="{{item.image}}">
+            <image src="{{item.image}}" mode="widthFix" />
+          </view>
+          <view class="texts" wx:if="{{item.texts}}">
+            <block wx:for="{{item.texts}}" wx:for-item="text" wx:key="">
+              <view class="text">
+                <text>{{text}}</text>
               </view>
             </block>
           </view>
         </view>
       </block>
     </view>
+    <view class="article-foot">
+      <view class="note">{{note}}</view>
+    </view>
   </view>
-  <view class="foot">
-  <view class="foot-text">{{n402.footText}}</view>
-  </view>
-</view>
+</template>

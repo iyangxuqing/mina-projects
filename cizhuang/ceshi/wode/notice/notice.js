@@ -5,6 +5,7 @@ Page({
       {
         list: [
           {
+            url: '402/402',
             image: 'http://122.226.60.90:8092/images/cizhuang/dongpeng/wode/notice/s04.jpg?',
             title: '你没看错。。现金红包真的免费领',
           },
