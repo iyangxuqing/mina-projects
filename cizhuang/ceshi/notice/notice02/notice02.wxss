@@ -1,0 +1,27 @@
+.container {
+  padding: 40rpx;
+}
+
+.article-title {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.article-sub-title {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.article-text {
+  color: #666;
+  margin-bottom: 20rpx;
+}
+
+.article-image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20rpx;
+}

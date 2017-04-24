@@ -1,7 +1,8 @@
 {
   "pages": [
+    "ceshi/notice/notice01/notice01",
+    "ceshi/notice/notice02/notice02",
     "ceshi/wode/notice/402/402",
-    "ceshi/wode/notice/notice",
     "ceshi/home/home",
     "pages/wode/wode",
     "ceshi/wode/wode",

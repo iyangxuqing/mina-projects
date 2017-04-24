@@ -1,0 +1,24 @@
+<template name="article">
+  <view class="article">
+    <block wx:for="{{contents}}" wx:for-item="item" wx:key="">
+      <view class="article-item">
+        <view class="article-title {{item.css}}" wx:if="{{item.title}}">
+          <text>{{item.title}}</text>
+        </view>
+        <view class="article-sub-title {{item.css}}" wx:if="{{item.subTitle}}">
+          <text>{{item.subTitle}}</text>
+        </view>
+        <view class="article-image {{item.css}}" wx:if="{{item.image}}">
+          <image src="{{item.image}}" mode="widthFix" />
+        </view>
+        <view class="article-texts" wx:if="{{item.texts}}">
+          <block wx:for="{{item.texts}}" wx:for-item="text" wx:key="">
+            <view class="article-text {{item.css}}">
+              <text>{{text}}</text>
+            </view>
+          </block>
+        </view>
+      </view>
+    </block>
+  </view>
+</template>
