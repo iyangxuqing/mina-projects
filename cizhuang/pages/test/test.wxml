@@ -1,0 +1,58 @@
+
+<!--pages/test/test.wxml-->
+<view class="image">
+  <image mode="widthFix" src="http://122.226.60.90:8092/images/cizhuang/dongpeng/s07/s07.jpg" />
+  <view class="title">s07原图片， 1327px， 187KB</view>
+</view>
+
+<view class="image">
+  <image mode="widthFix" src="http://122.226.60.90:8092/images/cizhuang/dongpeng/s07/s07-1200-8.jpg" />
+  <view class="title">s07-1200-8， 1200px， 152KB</view>
+</view>
+
+<view class="image">
+  <image mode="widthFix" src="http://122.226.60.90:8092/images/cizhuang/dongpeng/s07/s07-1200-5.jpg" />
+  <view class="title">s07-1200-5， 1200px， 92KB</view>
+</view>
+
+<view class="image">
+  <image mode="widthFix" src="http://122.226.60.90:8092/images/cizhuang/dongpeng/s07/s07-1200-3.jpg" />
+  <view class="title">s07-1200-3， 1200px， 62KB</view>
+</view>
+
+<view class="image">
+  <image mode="widthFix" src="http://122.226.60.90:8092/images/cizhuang/dongpeng/s07/s07-1000-8.jpg" />
+  <view class="title">s07-1000-8， 1000px， 108KB</view>
+</view>
+
+<view class="image">
+  <image mode="widthFix" src="http://122.226.60.90:8092/images/cizhuang/dongpeng/s07/s07-1000-5.jpg" />
+  <view class="title">s07-1000-5， 1000px， 66KB</view>
+</view>
+
+<view class="image">
+  <image mode="widthFix" src="http://122.226.60.90:8092/images/cizhuang/dongpeng/s07/s07-1000-3.jpg" />
+  <view class="title">s07-1000-3， 1000px， 47KB</view>
+</view>
+
+<view class="image">
+  <image mode="widthFix" src="http://122.226.60.90:8092/images/cizhuang/dongpeng/s07/s07-750-8.jpg" />
+  <view class="title">s07-750-8， 750px， 67KB</view>
+</view>
+
+<view class="image">
+  <image mode="widthFix" src="http://122.226.60.90:8092/images/cizhuang/dongpeng/s07/s07-750-5.jpg" />
+  <view class="title">s07-750-5， 750px， 43KB</view>
+</view>
+
+<view class="image">
+  <image mode="widthFix" src="http://122.226.60.90:8092/images/cizhuang/dongpeng/s07/s07-750-3.jpg" />
+  <view class="title">s07-750-3， 750px， 33KB</view>
+</view>
+
+<view class="image">
+  <image mode="widthFix" src="http://122.226.60.90:8092/images/cizhuang/dongpeng/s07/s07-750-3_1.jpg" />
+  <view class="title">s07-750-3_1， 750px， 26KB</view>
+</view>
+
+

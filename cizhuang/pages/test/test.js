@@ -1,4 +1,4 @@
-// ceshi/wode/notice/402/402.js
+// pages/test/test.js
 Page({
   data:{},
   onLoad:function(options){

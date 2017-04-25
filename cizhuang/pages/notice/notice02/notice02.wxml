@@ -1,19 +1,24 @@
+<view class="container">
+  <template is="article" data="{{...article}}" />
+</view>
+
+<!-- -->
 <template name="article">
   <view class="article">
     <block wx:for="{{contents}}" wx:for-item="item" wx:key="">
       <view class="article-item">
-        <view class="article-title {{item.css}}" wx:if="{{item.title}}">
+        <view class="article-title" wx:if="{{item.title}}" style="{{item.style}}">
           <text>{{item.title}}</text>
         </view>
-        <view class="article-sub-title {{item.css}}" wx:if="{{item.subTitle}}">
+        <view class="article-sub-title" wx:if="{{item.subTitle}}" style="{{item.style}}">
           <text>{{item.subTitle}}</text>
         </view>
-        <view class="article-image {{item.css}}" wx:if="{{item.image}}">
+        <view class="article-image" wx:if="{{item.image}}" style="{{item.style}}">
           <image src="{{item.image}}" mode="widthFix" />
         </view>
         <view class="article-texts" wx:if="{{item.texts}}">
           <block wx:for="{{item.texts}}" wx:for-item="text" wx:key="">
-            <view class="article-text {{item.css}}">
+            <view class="article-text" style="{{item.style}}">
               <text>{{text}}</text>
             </view>
           </block>

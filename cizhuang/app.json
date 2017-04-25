@@ -1,8 +1,7 @@
 {
   "pages": [
-    "ceshi/notice/notice01/notice01",
-    "ceshi/notice/notice02/notice02",
-    "ceshi/wode/notice/402/402",
+    "pages/notice/notice01/notice01",
+    "pages/notice/notice02/notice02",
     "ceshi/home/home",
     "pages/wode/wode",
     "ceshi/wode/wode",
@@ -16,7 +15,6 @@
     "ceshi/recommend/recommend02/recommend02",
     "pages/brand_intro/brand_intro",
     
-    "ceshi/wode/notice/402/402",
     "ceshi/wode/dingjin/dingjin",
     "ceshi/contact/contact",
     "ceshi/wode/message/message",

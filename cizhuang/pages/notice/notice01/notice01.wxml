@@ -1,0 +1,30 @@
+<view class="container">
+  <block wx:for="{{notices}}" wx:for-item="notice" wx:key="">
+    <template is="notice" data="{{notice}}" />
+  </block>
+</view>
+
+<!-- -->
+<template name="notice">
+  <view class="notice {{notice.length==1?'single':''}}">
+    <block wx:for="{{notice}}" wx:for-item="item" wx:key="">
+      <view class="item" data-id="{{item.id}}" catchtap="onItemTap">
+        <view class="item-title">
+          <text>{{item.title}}</text>
+        </view>
+        <view class="item-sub-title">
+          <text>{{item.time}}</text>
+        </view>
+        <view class="item-image">
+          <image src="{{item.image}}"></image>
+        </view>
+        <view class="item-desc">
+          <text>{{item.desc}}</text>
+        </view>
+        <view class="item-foot">
+          <text>查看全文</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</template>
